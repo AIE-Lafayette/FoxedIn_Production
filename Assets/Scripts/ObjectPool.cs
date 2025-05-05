@@ -23,7 +23,7 @@ public class ObjectPool : MonoBehaviour
     //Get the first not active object in the pool
     public GameObject GetPooledObject()
     {
-        for (int i = 0; i < amountToPool * 4; i++)
+        for (int i = 0; i < pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
             {
@@ -36,14 +36,14 @@ public class ObjectPool : MonoBehaviour
     //Activates the first gameObject that is the same as the one entered
     public GameObject ActivateAnObject(GameObject gameObject)
     {
-        for (int i = 0; i < amountToPool * 4; i++)
+        for (int i = 0; i < pooledObjects.Count; i++)
         {
             if (pooledObjects[i].activeInHierarchy)
             {
                 continue;
             }
 
-            if (pooledObjects[i].gameObject == gameObject)
+            if (pooledObjects[i].gameObject.tag == gameObject.tag)
             {
                 pooledObjects[i].SetActive(true);
                 return pooledObjects[i];
