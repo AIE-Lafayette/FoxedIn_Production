@@ -54,15 +54,17 @@ public class BoxSpawner : MonoBehaviour
         _spawningActive = false;
     }
 
+    //The whole spawning functinality
     void SpawnTarget()
     {
         _spawningActive = true;
 
+        //Gets a random X from 0-_gridWidth to use to find a random spawning position for the next box
         float randomX = Random.Range(0, _gridWidth);
         float randomPositionX = randomX * _BoxSize;
         Vector3 randomPosition = new Vector3(randomPositionX, _gridHeight * _BoxSize, 5);
 
-
+        //Gets a number 0-100 to choose the next box
         int boxChoice = Random.Range(0, 100);
         GameObject boxToSpawn;
         //5% chance for gold
@@ -90,7 +92,8 @@ public class BoxSpawner : MonoBehaviour
             boxToSpawn = ObjectPool.SharedInstance.brownToPool;
         }
 
-        GameObject Box = ObjectPool.SharedInstance.ActivateAnObject(boxToSpawn);
+        GameObject Box = ObjectPool.SharedInstance.GetSpecifiedPooledObject(boxToSpawn);
+        //If somehow all the boxes of this color are already active then instantiate a new one
         if (Box == null)
         {
             GameObject temp = Instantiate(boxToSpawn);
@@ -99,7 +102,7 @@ public class BoxSpawner : MonoBehaviour
             Box = temp;
         }
 
-        //Box = ObjectPool.SharedInstance.ActivateAnObject(boxChoice);
+        ObjectPool.SharedInstance.ActivateAnObject(Box);
         Box.transform.position = randomPosition;
         Box.transform.localScale = new Vector3(_BoxSize, _BoxSize, 10);
 
@@ -110,6 +113,7 @@ public class BoxSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Activates spawning if it was false
         if (_spawningActive == false)
         {
             Invoke(nameof(SpawnTarget), 0);

@@ -32,6 +32,24 @@ public class ObjectPool : MonoBehaviour
         }
         return null;
     }
+    //Gets the first non active object of a specified type
+    public GameObject GetSpecifiedPooledObject(GameObject gameObject)
+    {
+        for (int i = 0; i < pooledObjects.Count; i++)
+        {
+            if (pooledObjects[i].activeInHierarchy)
+            {
+                continue;
+            }
+
+            if (pooledObjects[i].gameObject.tag == gameObject.tag)
+            {
+                return pooledObjects[i];
+            }
+        }
+        //If all objects of type are already active return null
+        return null;
+    }
 
     //Activates the first gameObject that is the same as the one entered
     public GameObject ActivateAnObject(GameObject gameObject)
@@ -49,7 +67,7 @@ public class ObjectPool : MonoBehaviour
                 return pooledObjects[i];
             }
         }
-
+        //If all objects of type are already active return null
         return null;
     }
 
@@ -86,11 +104,14 @@ public class ObjectPool : MonoBehaviour
 
         return count;
     }
-    //Gets an object in the pool
+    //Gets an object in the pool using its int position in the pool
     public GameObject GetActiveObject(int Object)
     {
         return pooledObjects[Object];
     }
+    
+
+
     //Add the object given into the pool
     public void AddObjectToPool(GameObject addedObject)
     {
