@@ -15,15 +15,17 @@ public class BoxSpawner : MonoBehaviour
     //[SerializeField]
     //GameObject _goldBox;
 
+    [Header ("Spawning")]
     [SerializeField]
     float _startingSpawnRate = 4.0f;
 
-    GameObject[] _Boxes;
-
+    [Header("Grid Setting")]
     [SerializeField]
     private int _gridWidth = 10;
     [SerializeField]
     private int _gridHeight = 10;
+
+    [Header("Box Setting")]
     [SerializeField]
     private int _BoxSize = 5;
 

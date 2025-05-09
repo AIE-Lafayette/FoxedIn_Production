@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2704489106955213472}
   - component: {fileID: 7764236231607760812}
   - component: {fileID: 1333708409260121125}
+  - component: {fileID: -2472276723010198731}
   m_Layer: 0
   m_Name: GreenBoxB
   m_TagString: GreenBox
@@ -133,3 +134,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &-2472276723010198731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6308788570755824627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2670153bc9582479f9e5c7a2f2c158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
