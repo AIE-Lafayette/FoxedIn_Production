@@ -505,6 +505,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7443712832505885525, guid: 712270658a342b64cbd72d9b39a5ce81, type: 3}
+      propertyPath: ShapeModule.type
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7550141344377389859, guid: 712270658a342b64cbd72d9b39a5ce81, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -548,6 +552,10 @@ PrefabInstance:
     - target: {fileID: 8365906925173201175, guid: 712270658a342b64cbd72d9b39a5ce81, type: 3}
       propertyPath: m_Name
       value: StylizedExplosionVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897557393880885147, guid: 712270658a342b64cbd72d9b39a5ce81, type: 3}
+      propertyPath: ShapeModule.type
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
