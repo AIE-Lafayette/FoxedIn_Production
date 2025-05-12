@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
     {
         if (_playerDeath.WasCrushed && player.activeInHierarchy)
         {
-            Debug.Log("Invoked");
             OnPlayerCrushed.Invoke();
         }
     }

@@ -7,6 +7,8 @@ public class BoxFallingBehavior : MonoBehaviour
 {
     Rigidbody ObjectRigidBody;
     bool colliding;
+    bool _falling = true;
+    public bool Falling { get { return _falling; } }
 
     // Start is called before the first frame update
     void Start()
@@ -33,15 +35,18 @@ public class BoxFallingBehavior : MonoBehaviour
 
     void DisableFalling()
     {
+        _falling = false;
         //Disable gravity
         ObjectRigidBody.useGravity = false;
         //Set velocity to 0
         ObjectRigidBody.velocity = new Vector3(0, 0, 0);
         //Set y position to the nearest grid point
         transform.position = new Vector3(transform.position.x, FindNearestGridPoint(), transform.position.z);
+
     }
     void EnableFalling()
     {
+        _falling = true;
         //Enable gravity
         ObjectRigidBody.useGravity = true;
     }
