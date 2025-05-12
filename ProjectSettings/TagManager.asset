@@ -8,6 +8,7 @@ TagManager:
   - GreenBox
   - BlueBox
   - GoldBox
+  - TestBox
   layers:
   - Default
   - TransparentFX
