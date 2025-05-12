@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7764236231607760812}
   - component: {fileID: -547225752037169560}
   - component: {fileID: -8687157673886042187}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BlueBoxC
   m_TagString: BlueBox
   m_Icon: {fileID: 0}

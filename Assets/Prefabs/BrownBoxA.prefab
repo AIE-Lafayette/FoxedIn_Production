@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7764236231607760812}
   - component: {fileID: -5876743681479010708}
   - component: {fileID: 1328563705820810577}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BrownBoxA
   m_TagString: BrownBox
   m_Icon: {fileID: 0}

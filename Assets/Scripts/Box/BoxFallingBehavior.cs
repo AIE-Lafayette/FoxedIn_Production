@@ -54,7 +54,7 @@ public class BoxFallingBehavior : MonoBehaviour
         {
             DisableFalling();
         }
-        //If object is not at  0 and isnt colliding
+        //If object is not at 0 and isnt colliding
         else if(colliding == false)
         {
             EnableFalling();

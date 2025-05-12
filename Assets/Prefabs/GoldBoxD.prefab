@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7764236231607760812}
   - component: {fileID: 6937495558542074390}
   - component: {fileID: 5022601509187992941}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GoldBoxD
   m_TagString: GoldBox
   m_Icon: {fileID: 0}
