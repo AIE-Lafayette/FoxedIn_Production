@@ -31,7 +31,7 @@ public class LineManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (triggeredBoxes < 10 || clearedBoxes == 10)
+        if (triggeredBoxes < 10 || clearedBoxes >= 10)
         {
             triggeredBoxes = 0;
             clearedBoxes = 0;
