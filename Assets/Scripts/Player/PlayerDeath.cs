@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 public class PlayerDeath : MonoBehaviour
 {
-    [Header("Particles")]
-    public ParticleSystem crushedParticle;
-
     private bool _wasCrushed = false;
 
     public bool WasCrushed { get { return _wasCrushed; } }
@@ -27,7 +24,6 @@ public class PlayerDeath : MonoBehaviour
         if (collisionAbove && collisionBelow)
         {
             _wasCrushed = true;
-            crushedParticle.Play();
         }
         else
         {
@@ -50,7 +46,7 @@ public class PlayerDeath : MonoBehaviour
             collisionAbove = true;
         }
         //If the collision is below them
-        if (collision.transform.position.y < transform.position.y || transform.position.y <= 0)
+        if (collision.transform.position.y < transform.position.y || transform.position.y <= -1.3)
         {
             //collisionBelow is true
             collisionBelow = true;
