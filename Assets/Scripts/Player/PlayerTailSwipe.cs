@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerTailSwipe : MonoBehaviour
 {
@@ -15,4 +17,24 @@ public class PlayerTailSwipe : MonoBehaviour
     [Header("Player Settings")]
     // How far the box will be pushed
     [SerializeField] private float _pushPower;
+
+    private bool _attackable = false;
+
+    //private void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+
+    //}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        _attackable = true;
+    }
+
+    public void TailSwipe(InputAction.CallbackContext context)
+    {
+        if (context.performed && _attackable)
+        {
+            _brb.AddForce(10, 0, 0);
+        }
+    }
 }

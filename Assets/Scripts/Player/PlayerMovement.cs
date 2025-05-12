@@ -45,6 +45,29 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<Vector2>().x;
+
+        // Prevent wall stuck bug here
+        // The friction is messing up the player getting stuck.
+        // Raycast ahead of the player.
+        // If wall is hit, drop the player using the player's y variable.
+        
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, _moveDirection, out hit, _moveDirection.magnitude))
+        {
+            // Converting the move direction magnitude to a float
+            float _moveDirectionMag = _moveDirection.magnitude;
+
+            Vector2 wallNormal = hit.normal;
+
+            // We do not want to affect our y so make it null
+            wallNormal.y = 0.0f;
+            wallNormal.Normalize();
+
+            float wallDot = Vector2.Dot(_moveDirection.normalized, wallNormal);
+
+            _moveDirection -= (wallNormal * _moveDirectionMag) * wallDot;
+        }
+
     }
 
     public void Jump(InputAction.CallbackContext context)
