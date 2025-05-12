@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7764236231607760812}
   - component: {fileID: 1333708409260121125}
   - component: {fileID: -2472276723010198731}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GreenBoxB
   m_TagString: GreenBox
   m_Icon: {fileID: 0}

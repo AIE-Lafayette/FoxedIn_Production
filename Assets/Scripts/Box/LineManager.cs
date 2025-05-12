@@ -11,6 +11,7 @@ public class LineManager : MonoBehaviour
     void Start()
     {
         triggeredBoxes = 0;
+        clearedBoxes = 0;
     }
 
     // Update is called once per frame
@@ -21,18 +22,30 @@ public class LineManager : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        //If total boxes touched by trigger is >= 10
         if(triggeredBoxes >= 10)
         {
-            other.transform.gameObject.SetActive(false);
-            clearedBoxes++;
+            //Clear boxes
+            if (other.transform.TryGetComponent(out BoxFallingBehavior boxFalling))
+            {
+                other.transform.gameObject.SetActive(false);
+                clearedBoxes++;
+            }
         }
-        triggeredBoxes++;
+        //If trigger is colliding with a box
+        if(other.transform.TryGetComponent(out BoxFallingBehavior boxFallingBehavior))
+        {
+            //Increment trigggeredBoxes
+            triggeredBoxes++;
+        }
     }
 
     private void LateUpdate()
     {
-        if (triggeredBoxes < 10 || clearedBoxes == 10)
+        //If triggeredBoxes is less than 10 or clearedBoxes is less than or equal to 10
+        if (triggeredBoxes < 10 || clearedBoxes >= 10)
         {
+            //Reset them
             triggeredBoxes = 0;
             clearedBoxes = 0;
         }

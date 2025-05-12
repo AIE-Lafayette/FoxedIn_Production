@@ -7,6 +7,7 @@ using UnityEngine.Pool;
 public class ObjectPool : MonoBehaviour
 {
     public static ObjectPool SharedInstance;
+
     [Header("ObjectPool")]
     public List<GameObject> pooledObjects;
 
