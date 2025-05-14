@@ -11,11 +11,14 @@ public class PlayerTailSwipe : MonoBehaviour
     [SerializeField] private GameObject _tailSwipeHitbox;
 
     private BoxCollider boxCol;
+    private MeshRenderer boxRend;
 
     private void Start()
     {
         boxCol = _tailSwipeHitbox.GetComponent<BoxCollider>();
+        boxRend = _tailSwipeHitbox.GetComponent<MeshRenderer>();
         boxCol.enabled = false;
+        boxRend.enabled = false;
     }
 
     void Update()
@@ -23,11 +26,12 @@ public class PlayerTailSwipe : MonoBehaviour
         GameObject.FindGameObjectsWithTag("TestBox");
     }
 
-    void TailSwipe(InputAction.CallbackContext context)
+    public void TailSwipe(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             boxCol.enabled = true;
+            boxRend.enabled = true;
             Invoke(nameof(DisableSwipeHitBox), 0.5f);
         }
     }
@@ -35,7 +39,6 @@ public class PlayerTailSwipe : MonoBehaviour
     void DisableSwipeHitBox()
     {
         boxCol.enabled = false;
+        boxRend.enabled = false;
     }
-
-   
 }

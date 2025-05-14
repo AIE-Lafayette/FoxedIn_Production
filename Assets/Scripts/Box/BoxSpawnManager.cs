@@ -75,28 +75,50 @@ public class BoxSpawner : MonoBehaviour
         int boxChoice = Random.Range(0, 100);
         GameObject boxToSpawn;
         //5% chance for gold
-        if (boxChoice < 5)
+        if (boxChoice < 5 && ObjectPool.SharedInstance.useGold)
         {
             boxChoice = 100;
             boxToSpawn = ObjectPool.SharedInstance.goldToPool;
         }
         //15% chance for blue
-        else if (boxChoice < 20)
+        else if (boxChoice < 20 && ObjectPool.SharedInstance.useBlue)
         {
             boxChoice = 50;
             boxToSpawn = ObjectPool.SharedInstance.blueToPool;
         }
         //30% chance for green
-        else if (boxChoice < 50)
+        else if (boxChoice < 50 && ObjectPool.SharedInstance.useGreen)
         {
             boxChoice = 25;
             boxToSpawn = ObjectPool.SharedInstance.greenToPool;
         }
         //50% chance for brown
-        else
+        else if (boxChoice >= 50 && ObjectPool.SharedInstance.useBrown)
         {
             boxChoice = 10;
             boxToSpawn = ObjectPool.SharedInstance.brownToPool;
+        }
+        //If number is >= 50 and brown is disabled
+        else
+        {
+            //Check if green is enabled
+            if(ObjectPool.SharedInstance.useGreen)
+            {
+                //Spawn a green
+                boxToSpawn = ObjectPool.SharedInstance.greenToPool;
+            }
+            //Otherwise check if blue is enabled
+            else if (ObjectPool.SharedInstance.useBlue)
+            {
+                //Spawn a blue
+                boxToSpawn = ObjectPool.SharedInstance.blueToPool;
+            }
+            //If all else fails
+            else
+            {
+                //Spawn a gold
+                boxToSpawn = ObjectPool.SharedInstance.goldToPool;
+            }
         }
 
         GameObject Box = ObjectPool.SharedInstance.GetSpecifiedPooledObject(boxToSpawn);

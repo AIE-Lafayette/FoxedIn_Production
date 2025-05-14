@@ -4,20 +4,28 @@ using UnityEngine;
 
 public class TailSwipeCollision : MonoBehaviour
 {
-    private bool _canSwipe = false;
     private void Update()
     {
-        Debug.Log(_canSwipe);
+
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "TestBox")
+        //Layer 3 is Box
+        if (other.gameObject.layer == 3)
         {
-            _canSwipe = true;
-        }
-        else
-        {
-            _canSwipe = false;
+            Rigidbody boxRigidBody = other.GetComponent<Rigidbody>();
+            BoxMovement boxMove = other.GetComponent<BoxMovement>();
+            boxMove.StartSliding();
+            //If the box is on the right
+            if (other.transform.position.x - transform.position.x > 0)
+            {
+                boxRigidBody.velocity = new Vector3(30, 0, 0);
+            }
+            //If the box is on the left
+            else
+            {
+                boxRigidBody.velocity = new Vector3(-30, 0, 0);
+            }
         }
     }
 }
