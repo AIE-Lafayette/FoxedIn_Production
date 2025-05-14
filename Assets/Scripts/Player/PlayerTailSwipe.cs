@@ -23,7 +23,7 @@ public class PlayerTailSwipe : MonoBehaviour
         GameObject.FindGameObjectsWithTag("TestBox");
     }
 
-    void TailSwipe(InputAction.CallbackContext context)
+    public void TailSwipe(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
