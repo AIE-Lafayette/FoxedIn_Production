@@ -7,9 +7,6 @@ using UnityEngine.InputSystem;
 // The player currently gets stuck on walls if either the a or d key is held. This could either be a feature to the game such as holding on to walls for potentially a wall jump or it will have to be prevented
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Player Component Reference")]
-    [SerializeField] private Rigidbody _rigidBody;
-
     [Header("Player Settings")]
     [SerializeField] private float _moveSpeed = 10.0f;
     [SerializeField] private float _jumpPower = 12.5f;
@@ -25,8 +22,14 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private Vector2 _moveDirection;
     private bool _jumped = false;
+    private Rigidbody _playerRB;
 
     public InputActionReference move;
+
+    private void Start()
+    {
+        _playerRB = GetComponent<Rigidbody>();
+    }
 
     // Checking the value of a vector2 composite.
     private void Update()
@@ -38,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // Moves the character
-        _rigidBody.velocity = new Vector2(horizontal * _moveSpeed, _rigidBody.velocity.y);
+        _playerRB.velocity = new Vector2(horizontal * _moveSpeed, _playerRB.velocity.y);
 
         //Rotates the character
         Vector3 movement = new Vector3(horizontal, 0.0f, 0.0f);
@@ -61,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && GroundCheck())
         {
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
-            _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, _jumpPower);
+            _playerRB.velocity = new Vector2(_playerRB.velocity.x, _jumpPower);
             _jumped = true;
             Invoke(nameof(JumpCheck), 0.45f);
  
@@ -79,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && _jumped/* GroundCheck()*/)
         {
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
-            _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, _jumpPowerLong);
+            _playerRB.velocity = new Vector2(_playerRB.velocity.x, _jumpPowerLong);
         }
     }
 
@@ -87,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, -_jumpPower);
+            _playerRB.velocity = new Vector2(_playerRB.velocity.x, -_jumpPower);
         }
     }
 
