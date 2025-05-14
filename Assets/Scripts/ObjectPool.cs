@@ -18,6 +18,7 @@ public class ObjectPool : MonoBehaviour
     public GameObject goldToPool;
 
     [Header("Amount of each object in pool")]
+    [Range(0, 100)]
     public int amountToPool;
 
     void Awake()

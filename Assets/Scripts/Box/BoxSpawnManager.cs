@@ -16,7 +16,7 @@ public class BoxSpawner : MonoBehaviour
     //GameObject _goldBox;
 
     [Header ("Spawning")]
-    [SerializeField]
+    [Range(0, 5), SerializeField]
     float _startingSpawnRate = 4.0f;
 
     [Header("Grid Setting")]
@@ -27,13 +27,18 @@ public class BoxSpawner : MonoBehaviour
 
     [Header("Box Setting")]
     [SerializeField]
-    private int _BoxSize = 5;
+    private int _boxSize = 5;
+
+    //The grid will be a _gridWidth * _gridHeight grid where the grid points will be spaced out by _boxSize
+    //So the values we are sticking with (10 width, 10 height, and 5 box size) will make a 10*10 grid with points spaced out by 5
 
     private bool _spawningActive;
+    private float _spawnRate;
 
     // Start is called before the first frame update
     void Start()
     {
+        _spawnRate = _startingSpawnRate;
         _spawningActive = true;
         Invoke(nameof(SpawnTarget), 0);
     }
@@ -48,7 +53,7 @@ public class BoxSpawner : MonoBehaviour
     }
     public int BoxSize()
     {
-        return _BoxSize;
+        return _boxSize;
     }
 
     private void DisableSpawning()
@@ -63,8 +68,8 @@ public class BoxSpawner : MonoBehaviour
 
         //Gets a random X from 0-_gridWidth to use to find a random spawning position for the next box
         float randomX = Random.Range(0, _gridWidth);
-        float randomPositionX = randomX * _BoxSize;
-        Vector3 randomPosition = new Vector3(randomPositionX, _gridHeight * _BoxSize, 5);
+        float randomPositionX = randomX * _boxSize;
+        Vector3 randomPosition = new Vector3(randomPositionX, _gridHeight * _boxSize, 5);
 
         //Gets a number 0-100 to choose the next box
         int boxChoice = Random.Range(0, 100);
@@ -106,10 +111,10 @@ public class BoxSpawner : MonoBehaviour
 
         ObjectPool.SharedInstance.ActivateAnObject(Box);
         Box.transform.position = randomPosition;
-        Box.transform.localScale = new Vector3(_BoxSize, _BoxSize, 10);
+        Box.transform.localScale = new Vector3(_boxSize, _boxSize, 10);
 
 
-        Invoke(nameof(SpawnTarget), _startingSpawnRate);
+        Invoke(nameof(SpawnTarget), _spawnRate);
     }
 
     // Update is called once per frame

@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Component Reference")]
-    [SerializeField] private Rigidbody _rb;
+    [SerializeField] private Rigidbody _rigidBody;
 
     [Header("Player Settings")]
     [SerializeField] private float _moveSpeed = 10.0f;
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // Moves the character
-        _rb.velocity = new Vector2(horizontal * _moveSpeed, _rb.velocity.y);
+        _rigidBody.velocity = new Vector2(horizontal * _moveSpeed, _rigidBody.velocity.y);
 
         //Rotates the character
         Vector3 movement = new Vector3(horizontal, 0.0f, 0.0f);
@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && GroundCheck())
         {
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
-            _rb.velocity = new Vector2(_rb.velocity.x, _jumpPower);
+            _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, _jumpPower);
             _jumped = true;
             Invoke(nameof(JumpCheck), 0.45f);
  
@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && _jumped/* GroundCheck()*/)
         {
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
-            _rb.velocity = new Vector2(_rb.velocity.x, _jumpPowerLong);
+            _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, _jumpPowerLong);
         }
     }
 
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            _rb.velocity = new Vector2(_rb.velocity.x, -_jumpPower);
+            _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, -_jumpPower);
         }
     }
 
