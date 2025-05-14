@@ -9,18 +9,12 @@ public class PlayerTailSwipe : MonoBehaviour
 {
     [Header("Box Component References")]
     [SerializeField] private GameObject _tailSwipeHitbox;
-    [SerializeField] private Rigidbody _boxrb;
-
-    [Header("Child Box Reference")]
-    [SerializeField] private GameObject _boxChild;
-
-    [Header("Player Settings")]
 
     private BoxCollider boxCol;
 
     private void Start()
     {
-        boxCol = _boxChild.GetComponent<BoxCollider>();
+        boxCol = _tailSwipeHitbox.GetComponent<BoxCollider>();
         boxCol.enabled = false;
     }
 
