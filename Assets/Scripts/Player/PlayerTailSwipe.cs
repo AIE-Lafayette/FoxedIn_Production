@@ -12,6 +12,9 @@ public class PlayerTailSwipe : MonoBehaviour
 
     private BoxCollider boxCol;
     private MeshRenderer boxRend;
+    //private bool _canSwing = true;
+    private bool _cannotSwing = false;
+    private float _reloadSwingTimer = 0.75f;
 
     private void Start()
     {
@@ -28,8 +31,10 @@ public class PlayerTailSwipe : MonoBehaviour
 
     public void TailSwipe(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !_cannotSwing)
         {
+            StartCoroutine(PreparingSwing());
+
             boxCol.enabled = true;
             boxRend.enabled = true;
             Invoke(nameof(DisableSwipeHitBox), 0.5f);
@@ -40,5 +45,17 @@ public class PlayerTailSwipe : MonoBehaviour
     {
         boxCol.enabled = false;
         boxRend.enabled = false;
+    }
+
+    IEnumerator PreparingSwing()
+    {
+        //_canSwing = false;
+        _cannotSwing = true;
+
+        // This causes the code to wait here for the specified time.
+        yield return new WaitForSeconds(_reloadSwingTimer);
+
+        //_canSwing = true;
+        _cannotSwing = false;
     }
 }
