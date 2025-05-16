@@ -36,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // Seeing what button is being pressed and if it is a button that moves the player. Apply it in fixed update.
-           _moveDirection = move.action.ReadValue<Vector2>();
+        //_moveDirection = move.action.ReadValue<Vector2>();
+        //_moveDirection = move.action.ReadValue<Vector2>();
     }
 
     private void FixedUpdate()
