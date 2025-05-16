@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _maxDistance = 1.0f;
 
     [Header("Ground Check")]
+    //The Layermask is what the ground check will be checking for
     [SerializeField] LayerMask layerMask;
     [SerializeField] Transform groundCheck;
     [SerializeField] private Vector3 _objectSize;
