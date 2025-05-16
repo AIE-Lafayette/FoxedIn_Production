@@ -14,4 +14,9 @@ public class StartScene : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void DisplayCredits()
+    {
+
+    }
 }
