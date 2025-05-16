@@ -18,6 +18,8 @@ public class BoxSpawner : MonoBehaviour
     [Header ("Spawning")]
     [Range(0, 5), SerializeField]
     float _startingSpawnRate = 4.0f;
+    [Range(0, 100), SerializeField]
+    int _spawnLimit = 100;
 
     [Header("Grid Setting")]
     [SerializeField]
@@ -142,8 +144,14 @@ public class BoxSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //If the spawn limit is reached prevent spawning
+        if (ObjectPool.SharedInstance.ActiveObjectCount() >= _spawnLimit)
+        {
+            DisableSpawning();
+            return;
+        }
         //Activates spawning if it was false
-        if (_spawningActive == false)
+        else if (_spawningActive == false)
         {
             Invoke(nameof(SpawnTarget), 0);
         }

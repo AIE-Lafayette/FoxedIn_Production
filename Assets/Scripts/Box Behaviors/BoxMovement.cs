@@ -15,7 +15,8 @@ public class BoxMovement : MonoBehaviour
     private GameObject _objectToLeft;
     private bool _anObjectToRight;
     private GameObject _objectToRight;
-    private float _distancePerIter = 0.05f;
+    private float _distancePerIter = 0.25f;
+    private float _adjustingDistancePerIter;
     private float _distanceTracker = 0.0f;
 
     // Start is called before the first frame update
@@ -42,6 +43,7 @@ public class BoxMovement : MonoBehaviour
     {
         _sliding = false;
         _distanceTracker = 0;
+        _adjustingDistancePerIter = _distancePerIter;
     }
 
     //True means hit from left false means hit from right
@@ -77,7 +79,7 @@ public class BoxMovement : MonoBehaviour
         #region "Raycast Checks"
 
         //Left Cast
-        if (Physics.Raycast(transform.position, new Vector3(-1, 0, 0), 5))
+        if (Physics.Raycast(transform.position, new Vector3(-1, 0, 0), 2.5f))
         {
             _anObjectToLeft = true;
         }
@@ -86,7 +88,7 @@ public class BoxMovement : MonoBehaviour
             _anObjectToLeft = false;
         }
         //Right Cast
-        if (Physics.Raycast(transform.position, new Vector3(1, 0, 0), 5))
+        if (Physics.Raycast(transform.position, new Vector3(1, 0, 0), 2.5f))
         {
             _anObjectToRight = true;
         }
@@ -96,6 +98,7 @@ public class BoxMovement : MonoBehaviour
         }
         if (!_sliding)
         {
+            _nearestGridPoint = FindNearestXGridPoint();
             transform.position = new Vector3 (_nearestGridPoint, transform.position.y, transform.position.z);
             _distanceTracker = 0;
             return;
@@ -113,13 +116,14 @@ public class BoxMovement : MonoBehaviour
 
             //Setting iter value
             _distancePerIter = Mathf.Abs(_distancePerIter);
+            _adjustingDistancePerIter = _adjustingDistancePerIter - 0.01f;
 
             //Translating right
-            Vector3 translate = new Vector3(_distancePerIter, 0.0f, 0.0f);
+            Vector3 translate = new Vector3(_adjustingDistancePerIter, 0.0f, 0.0f);
             transform.Translate(translate);
 
-            //Increment __distanceTracker
-            _distanceTracker += _distancePerIter;
+            //Increment _distanceTracker
+            _distanceTracker += _adjustingDistancePerIter;
 
             //Stop sliding after translating a total of a box to the right
             if (_distanceTracker >= 5)
@@ -149,14 +153,15 @@ public class BoxMovement : MonoBehaviour
 
             //Setting iter value
             _distancePerIter = Mathf.Abs(_distancePerIter);
-            _distancePerIter = _distancePerIter * -1;
+            _adjustingDistancePerIter = _distancePerIter * -1;
+            _adjustingDistancePerIter = _adjustingDistancePerIter + 0.05f;
 
             //Translating left
-            Vector3 translate = new Vector3(_distancePerIter, 0.0f, 0.0f);
+            Vector3 translate = new Vector3(_adjustingDistancePerIter, 0.0f, 0.0f);
             transform.Translate(translate);
 
-            //Increment i
-            _distanceTracker -= _distancePerIter;
+            //Increment _distanceTracker
+            _distanceTracker -= _adjustingDistancePerIter;
 
             //Stop sliding after translating a total of a box to the left
             if (_distanceTracker >= 5)
@@ -177,6 +182,16 @@ public class BoxMovement : MonoBehaviour
 
         }
 
+        //If the box was hit from the left and there is an object to the right of the box
+        else if (_hitFromLeft == true && _anObjectToRight == true)
+        {
+            StopSliding();
+        }
+        //If the box was hit from the right and there is an object to the left of the box
+        else if (_hitFromLeft == false && _anObjectToLeft == true)
+        {
+            StopSliding();
+        }
     }
 
 
