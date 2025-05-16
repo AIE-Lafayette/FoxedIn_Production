@@ -17,7 +17,7 @@ public class BoxFallingBehavior : MonoBehaviour
         colliding = false;
     }
 
-    float FindNearestGridPoint()
+    float FindNearestYGridPoint()
     {
         float pos = transform.position.y;
         float closestGridPoint = 0.0f;
@@ -39,9 +39,9 @@ public class BoxFallingBehavior : MonoBehaviour
         //Disable gravity
         ObjectRigidBody.useGravity = false;
         //Set velocity to 0
-        ObjectRigidBody.velocity = new Vector3(0, 0, 0);
+        ObjectRigidBody.velocity = new Vector3(ObjectRigidBody.velocity.x, 0, 0);
         //Set y position to the nearest grid point
-        transform.position = new Vector3(transform.position.x, FindNearestGridPoint(), transform.position.z);
+        transform.position = new Vector3(transform.position.x, FindNearestYGridPoint(), transform.position.z);
 
     }
     void EnableFalling()

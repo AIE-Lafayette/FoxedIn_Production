@@ -1,23 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TailSwipeCollision : MonoBehaviour
 {
-    private bool _canSwipe = false;
     private void Update()
     {
-        Debug.Log(_canSwipe);
+
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "TestBox")
+        //Layer 3 is Box
+        if (other.gameObject.layer == 3)
         {
-            _canSwipe = true;
-        }
-        else
-        {
-            _canSwipe = false;
+            Rigidbody boxRigidBody = other.GetComponent<Rigidbody>();
+            BoxMovement boxMove = other.GetComponent<BoxMovement>();
+
+            #region "Moving Boxes"
+            //If box is sliding
+            if (boxMove.IsSliding())
+            {
+                //Ignore
+                return;
+            }
+            boxMove.StartSliding();
+
+            //If the box is on the right
+            if (other.transform.position.x - transform.position.x > 0)
+            {
+                boxMove.SetHitDirection(true);
+
+                ////Box pushing with velocity
+                //boxRigidBody.velocity = new Vector3(15, 0, 0);
+            }
+            //If the box is on the left
+            else
+            {
+                boxMove.SetHitDirection(false);
+
+                ////Box pushing with velocity
+                //boxRigidBody.velocity = new Vector3(-15, 0, 0);
+            }
+            #endregion
+
+            #region "Damaging Boxes"
+
+            #endregion
         }
     }
 }
