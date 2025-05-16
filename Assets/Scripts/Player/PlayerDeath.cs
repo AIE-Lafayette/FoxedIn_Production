@@ -59,14 +59,12 @@ public class PlayerDeath : MonoBehaviour
         if (collision.transform.position.y > transform.position.y)
         {
             //collisionAbove is true
-            Debug.Log("Box Above");
             collisionAbove = true;
         }
         //If the collision is below them or they are low enough
         if (collision.transform.position.y < transform.position.y || transform.position.y <= -1.3)
         {
             //collisionBelow is true
-            Debug.Log("Box Below");
             collisionBelow = true;
         }
     }

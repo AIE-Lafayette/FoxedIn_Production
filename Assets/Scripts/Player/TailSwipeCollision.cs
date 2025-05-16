@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TailSwipeCollision : MonoBehaviour
 {
@@ -15,17 +16,37 @@ public class TailSwipeCollision : MonoBehaviour
         {
             Rigidbody boxRigidBody = other.GetComponent<Rigidbody>();
             BoxMovement boxMove = other.GetComponent<BoxMovement>();
+
+            #region "Moving Boxes"
+            //If box is sliding
+            if (boxMove.IsSliding())
+            {
+                //Ignore
+                return;
+            }
             boxMove.StartSliding();
+
             //If the box is on the right
             if (other.transform.position.x - transform.position.x > 0)
             {
-                boxRigidBody.velocity = new Vector3(30, 0, 0);
+                boxMove.SetHitDirection(true);
+
+                ////Box pushing with velocity
+                //boxRigidBody.velocity = new Vector3(15, 0, 0);
             }
             //If the box is on the left
             else
             {
-                boxRigidBody.velocity = new Vector3(-30, 0, 0);
+                boxMove.SetHitDirection(false);
+
+                ////Box pushing with velocity
+                //boxRigidBody.velocity = new Vector3(-15, 0, 0);
             }
+            #endregion
+
+            #region "Damaging Boxes"
+
+            #endregion
         }
     }
 }
