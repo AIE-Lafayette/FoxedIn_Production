@@ -77,7 +77,7 @@ public class BoxMovement : MonoBehaviour
         #region "Raycast Checks"
 
         //Left Cast
-        if (Physics.Raycast(transform.position, new Vector3(-1, 0, 0), 5))
+        if (Physics.Raycast(transform.position, new Vector3(-1, 0, 0), transform.localScale.x / 2))
         {
             _anObjectToLeft = true;
         }
@@ -86,7 +86,7 @@ public class BoxMovement : MonoBehaviour
             _anObjectToLeft = false;
         }
         //Right Cast
-        if (Physics.Raycast(transform.position, new Vector3(1, 0, 0), 5))
+        if (Physics.Raycast(transform.position, new Vector3(1, 0, 0), transform.localScale.x / 2))
         {
             _anObjectToRight = true;
         }

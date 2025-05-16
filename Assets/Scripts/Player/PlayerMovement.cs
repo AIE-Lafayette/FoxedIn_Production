@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _jumped = false;
     private Rigidbody _playerRB;
 
-    public InputActionReference move;
+    //public InputActionReference move;
 
     private void Start()
     {
