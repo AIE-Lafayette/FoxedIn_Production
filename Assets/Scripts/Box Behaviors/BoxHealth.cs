@@ -33,6 +33,11 @@ void Update()
         Debug.Log("Max" + _boxMaxHealth);
         Debug.Log("Start" + _boxStartingHealth);
         Debug.Log("current" + _boxCurrentHealth);
+
+        if (CurrentHealth() <= 0)
+        {
+            transform.gameObject.SetActive(false);
+        }
     }
 
     private void OnDisable()

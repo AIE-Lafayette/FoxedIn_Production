@@ -16,8 +16,10 @@ public class TailSwipeCollision : MonoBehaviour
         {
             Rigidbody boxRigidBody = other.GetComponent<Rigidbody>();
             BoxMovement boxMove = other.GetComponent<BoxMovement>();
+            BoxHealth boxHealth = other.GetComponent<BoxHealth>();
 
             #region "Moving Boxes"
+
             //If box is sliding
             if (boxMove.IsSliding())
             {
@@ -42,9 +44,12 @@ public class TailSwipeCollision : MonoBehaviour
                 ////Box pushing with velocity
                 //boxRigidBody.velocity = new Vector3(-15, 0, 0);
             }
+
             #endregion
 
             #region "Damaging Boxes"
+
+            boxHealth.SubtractHealth();
 
             #endregion
         }

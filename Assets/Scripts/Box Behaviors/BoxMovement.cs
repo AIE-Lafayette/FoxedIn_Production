@@ -28,6 +28,7 @@ public class BoxMovement : MonoBehaviour
 
         _sliding = false;
         _nearestGridPoint = FindNearestXGridPoint();
+        _adjustingDistancePerIter = _distancePerIter;
     }
 
     public bool IsSliding()
@@ -116,7 +117,7 @@ public class BoxMovement : MonoBehaviour
 
             //Setting iter value
             _distancePerIter = Mathf.Abs(_distancePerIter);
-            _adjustingDistancePerIter = _adjustingDistancePerIter - 0.01f;
+            _adjustingDistancePerIter = _adjustingDistancePerIter - 0.006f;
 
             //Translating right
             Vector3 translate = new Vector3(_adjustingDistancePerIter, 0.0f, 0.0f);
@@ -153,15 +154,17 @@ public class BoxMovement : MonoBehaviour
 
             //Setting iter value
             _distancePerIter = Mathf.Abs(_distancePerIter);
-            _adjustingDistancePerIter = _distancePerIter * -1;
-            _adjustingDistancePerIter = _adjustingDistancePerIter + 0.05f;
+            _adjustingDistancePerIter = _adjustingDistancePerIter - 0.006f;
 
             //Translating left
-            Vector3 translate = new Vector3(_adjustingDistancePerIter, 0.0f, 0.0f);
+            Vector3 translate = new Vector3(-_adjustingDistancePerIter, 0.0f, 0.0f);
             transform.Translate(translate);
 
             //Increment _distanceTracker
-            _distanceTracker -= _adjustingDistancePerIter;
+            _distanceTracker += _adjustingDistancePerIter;
+
+            Debug.Log("iter" + _adjustingDistancePerIter);
+            Debug.Log("Distance" + _distanceTracker);
 
             //Stop sliding after translating a total of a box to the left
             if (_distanceTracker >= 5)
