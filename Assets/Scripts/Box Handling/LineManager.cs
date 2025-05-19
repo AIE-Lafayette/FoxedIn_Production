@@ -14,12 +14,6 @@ public class LineManager : MonoBehaviour
         clearedBoxes = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerStay(Collider other)
     {
         //If total boxes touched by trigger is >= 10

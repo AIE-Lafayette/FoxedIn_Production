@@ -66,8 +66,6 @@ public class BoxSpawner : MonoBehaviour
     //The whole spawning functinality
     void SpawnTarget()
     {
-        _spawningActive = true;
-
         //Gets a random X from 0-_gridWidth to use to find a random spawning position for the next box
         float randomX = Random.Range(0, _gridWidth);
         float randomPositionX = randomX * _boxSize;
@@ -100,6 +98,7 @@ public class BoxSpawner : MonoBehaviour
             boxChoice = 10;
             boxToSpawn = ObjectPool.SharedInstance.brownToPool;
         }
+
         //If number is >= 50 and brown is disabled
         else
         {
@@ -134,25 +133,31 @@ public class BoxSpawner : MonoBehaviour
         }
 
         ObjectPool.SharedInstance.ActivateAnObject(Box);
-        Box.transform.position = randomPosition;
+        //Box.transform.position = randomPosition;
         Box.transform.localScale = new Vector3(_boxSize, _boxSize, 10);
 
+        //For testing
+        Box.transform.position = new Vector3(15, _gridHeight * _boxSize, 5);
 
-        Invoke(nameof(SpawnTarget), _spawnRate);
+        if(_spawningActive)
+        {
+            Invoke(nameof(SpawnTarget), _spawnRate);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         //If the spawn limit is reached prevent spawning
-        if (ObjectPool.SharedInstance.ActiveObjectCount() >= _spawnLimit)
+        if (ObjectPool.SharedInstance.ActiveObjectCount() >= _spawnLimit - 1)
         {
-            DisableSpawning();
+            _spawningActive = false;
             return;
         }
         //Activates spawning if it was false
         else if (_spawningActive == false)
         {
+            _spawningActive = true;
             Invoke(nameof(SpawnTarget), 0);
         }
     }

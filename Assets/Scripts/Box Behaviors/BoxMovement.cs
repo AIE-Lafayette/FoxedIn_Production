@@ -94,14 +94,15 @@ public class BoxMovement : MonoBehaviour
         {
             _anObjectToRight = false;
         }
+
+        #endregion
+
         if (!_sliding)
         {
             transform.position = new Vector3 (_nearestGridPoint, transform.position.y, transform.position.z);
             _distanceTracker = 0;
             return;
         }
-
-        #endregion
 
         //If the box was hit from the left (meaning the player was on the left on the box)
         if (_hitFromLeft == true && _anObjectToRight == false)
@@ -178,7 +179,6 @@ public class BoxMovement : MonoBehaviour
         }
 
     }
-
 
     void LateUpdate()
     {
