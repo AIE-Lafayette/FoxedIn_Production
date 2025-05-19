@@ -37,25 +37,16 @@ public class BoxSpawner : MonoBehaviour
     private bool _spawningActive;
     private float _spawnRate;
 
+    public int GridWidth { get { return _gridWidth; } }
+    public int GridHeight { get { return _gridHeight; } }
+    public int BoxSize { get { return _boxSize; } }
+
     // Start is called before the first frame update
     void Start()
     {
         _spawnRate = _startingSpawnRate;
         _spawningActive = true;
         Invoke(nameof(SpawnTarget), 0);
-    }
-
-    public int GridWidth()
-    {
-        return _gridWidth;
-    }
-    public int GridHeight()
-    {
-        return _gridHeight;
-    }
-    public int BoxSize()
-    {
-        return _boxSize;
     }
 
     private void DisableSpawning()

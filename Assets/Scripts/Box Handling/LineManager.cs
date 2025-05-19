@@ -24,6 +24,10 @@ public class LineManager : MonoBehaviour
             {
                 other.transform.gameObject.SetActive(false);
                 clearedBoxes++;
+                if (clearedBoxes >= 10)
+                {
+
+                }
             }
         }
         //If trigger is colliding with a box

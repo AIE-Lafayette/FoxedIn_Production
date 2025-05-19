@@ -1112,6 +1112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1816555574}
+  lineCheck: {fileID: 0}
+  roofBoxcheck: {fileID: 0}
   OnPlayerCrushed:
     m_PersistentCalls:
       m_Calls:
@@ -1127,6 +1129,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnBoxReachesTop:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGamePause:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameResume:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &903926874
 GameObject:
   m_ObjectHideFlags: 0
@@ -11490,7 +11501,7 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 252279818}
+  - {fileID: 1543800463}
   - {fileID: 360565609}
   - {fileID: 1500962850}
   - {fileID: 1629005732}
-  - {fileID: 1543800463}

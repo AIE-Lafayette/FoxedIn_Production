@@ -27,7 +27,7 @@ public class TailSwipeCollision : MonoBehaviour
             #region "Moving Boxes"
 
             //If box is sliding
-            if (boxMove.IsSliding())
+            if (boxMove.IsSliding)
             {
                 //Ignore
                 return;

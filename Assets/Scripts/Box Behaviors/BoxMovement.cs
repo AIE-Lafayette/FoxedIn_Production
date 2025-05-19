@@ -18,6 +18,13 @@ public class BoxMovement : MonoBehaviour
     private float _distancePerIter = 0.05f;
     private float _distanceTracker = 0.0f;
 
+    public bool IsSliding { get { return _sliding; } }
+
+    //True means hit from left false means hit from right
+    public bool HitDirection { get { return _hitFromLeft; } }
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +34,6 @@ public class BoxMovement : MonoBehaviour
 
         _sliding = false;
         _nearestGridPoint = FindNearestXGridPoint();
-    }
-
-    public bool IsSliding()
-    {
-        return _sliding;
     }
 
     public void StartSliding()
@@ -44,11 +46,6 @@ public class BoxMovement : MonoBehaviour
         _distanceTracker = 0;
     }
 
-    //True means hit from left false means hit from right
-    public bool GetHitDirection()
-    {
-        return _hitFromLeft;
-    }
     //True means hit from left false means hit from right
     public void SetHitDirection(bool boxWasHitFromLeft)
     {
