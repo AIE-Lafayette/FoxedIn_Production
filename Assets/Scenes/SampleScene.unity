@@ -5810,7 +5810,7 @@ MonoBehaviour:
   useGreen: 0
   useBlue: 1
   useGold: 0
-  amountToPool: 100
+  amountToPool: 0
 --- !u!1 &1500962849
 GameObject:
   m_ObjectHideFlags: 0

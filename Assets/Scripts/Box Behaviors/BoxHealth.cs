@@ -26,13 +26,12 @@ public class BoxHealth : MonoBehaviour
         _boxCurrentHealth--;
     }
 
-
-// Update is called once per frame
-void Update()
+    // Update is called once per frame
+    void Update()
     {
-        Debug.Log("Max" + _boxMaxHealth);
-        Debug.Log("Start" + _boxStartingHealth);
-        Debug.Log("current" + _boxCurrentHealth);
+        //Debug.Log("Max" + _boxMaxHealth);
+        //Debug.Log("Start" + _boxStartingHealth);
+        //Debug.Log("current" + _boxCurrentHealth);
 
         if (CurrentHealth() <= 0)
         {
@@ -41,7 +40,9 @@ void Update()
     }
 
     private void OnDisable()
+
     {
         _boxCurrentHealth = _boxMaxHealth;
     }
 }
+

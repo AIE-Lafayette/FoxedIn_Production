@@ -18,6 +18,12 @@ public class TailSwipeCollision : MonoBehaviour
             BoxMovement boxMove = other.GetComponent<BoxMovement>();
             BoxHealth boxHealth = other.GetComponent<BoxHealth>();
 
+            #region "Damaging Boxes"
+
+            boxHealth.SubtractHealth();
+
+            #endregion
+
             #region "Moving Boxes"
 
             //If box is sliding
@@ -47,11 +53,6 @@ public class TailSwipeCollision : MonoBehaviour
 
             #endregion
 
-            #region "Damaging Boxes"
-
-            boxHealth.SubtractHealth();
-
-            #endregion
         }
     }
 }
