@@ -6353,6 +6353,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6599551837934855347, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
+      propertyPath: _jumpPower
+      value: 22.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599551837934855347, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
+      propertyPath: _jumpPowerLong
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7175487583469276240, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
       propertyPath: m_IsTrigger
       value: 1
