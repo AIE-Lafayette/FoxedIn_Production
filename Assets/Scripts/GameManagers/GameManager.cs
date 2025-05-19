@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnPlayerCrushed;
 
     private PlayerDeath _playerDeath;
+
+    [Header("End Screen Reference")]
+    [SerializeField]
+    private GameObject _endScreenTextBackground;
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +32,12 @@ public class GameManager : MonoBehaviour
         if (_playerDeath.WasCrushed && player.activeInHierarchy)
         {
             OnPlayerCrushed.Invoke();
+            RestartGame();
         }
     }
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        _endScreenTextBackground.SetActive(true);
     }
 }
