@@ -9,8 +9,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Settings")]
     [SerializeField] private float _moveSpeed = 10.0f;
-    [SerializeField] private float _jumpPower = 12.5f;
-    [SerializeField] private float _jumpPowerLong = 17.5f;
+    [SerializeField] private float _jumpPower = 22.6f;
+    [SerializeField] private float _jumpPowerLong = 25.0f;
     [SerializeField] private float _maxDistance = 1.0f;
 
     [Header("Ground Check")]
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
     public void HighJump(InputAction.CallbackContext context)
     {
         // If the high jump control is performed and the player is grounded
-        if (context.performed && _jumped/* GroundCheck()*/)
+        if (context.performed /*&& _jumped*//* GroundCheck()*/)
         {
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
             _playerRB.velocity = new Vector2(_playerRB.velocity.x, _jumpPowerLong);
