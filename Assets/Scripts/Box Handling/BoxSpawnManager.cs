@@ -37,25 +37,18 @@ public class BoxSpawner : MonoBehaviour
     private bool _spawningActive;
     private float _spawnRate;
 
+    private float boxNextSpawn = 0.0f;
+
+    public int GridWidth { get { return _gridWidth; } }
+    public int GridHeight { get { return _gridHeight; } }
+    public int BoxSize { get { return _boxSize; } }
+
     // Start is called before the first frame update
     void Start()
     {
         _spawnRate = _startingSpawnRate;
         _spawningActive = true;
         Invoke(nameof(SpawnTarget), 0);
-    }
-
-    public int GridWidth()
-    {
-        return _gridWidth;
-    }
-    public int GridHeight()
-    {
-        return _gridHeight;
-    }
-    public int BoxSize()
-    {
-        return _boxSize;
     }
 
     private void DisableSpawning()
@@ -66,8 +59,6 @@ public class BoxSpawner : MonoBehaviour
     //The whole spawning functinality
     void SpawnTarget()
     {
-        _spawningActive = true;
-
         //Gets a random X from 0-_gridWidth to use to find a random spawning position for the next box
         float randomX = Random.Range(0, _gridWidth);
         float randomPositionX = randomX * _boxSize;
@@ -76,6 +67,7 @@ public class BoxSpawner : MonoBehaviour
         //Gets a number 0-100 to choose the next box
         int boxChoice = Random.Range(0, 100);
         GameObject boxToSpawn;
+
         //5% chance for gold
         if (boxChoice < 5 && ObjectPool.SharedInstance.useGold)
         {
@@ -95,11 +87,12 @@ public class BoxSpawner : MonoBehaviour
             boxToSpawn = ObjectPool.SharedInstance.greenToPool;
         }
         //50% chance for brown
-        else if (boxChoice >= 50 && ObjectPool.SharedInstance.useBrown)
+        else if (ObjectPool.SharedInstance.useBrown)
         {
             boxChoice = 10;
             boxToSpawn = ObjectPool.SharedInstance.brownToPool;
         }
+
         //If number is >= 50 and brown is disabled
         else
         {
@@ -134,25 +127,46 @@ public class BoxSpawner : MonoBehaviour
         }
 
         ObjectPool.SharedInstance.ActivateAnObject(Box);
-        Box.transform.position = randomPosition;
         Box.transform.localScale = new Vector3(_boxSize, _boxSize, 10);
+        //Box.transform.position = randomPosition;
 
+        #region "Debug Spawn Options"
 
-        Invoke(nameof(SpawnTarget), _spawnRate);
+        //For testing, boxes will all fall in a specific column
+        //Box.transform.position = new Vector3(15, _gridHeight * _boxSize, 5);
+
+        //For testing, boxes will all fall in a row, Left to right
+        Box.transform.position = new Vector3(boxNextSpawn, _gridHeight * _boxSize, 5);
+        if (boxNextSpawn >= 50)
+        {
+            boxNextSpawn = 0;
+        }
+        else
+        {
+            boxNextSpawn += 5;
+        }
+
+        #endregion
+
+        if (_spawningActive)
+        {
+            Invoke(nameof(SpawnTarget), _spawnRate);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         //If the spawn limit is reached prevent spawning
-        if (ObjectPool.SharedInstance.ActiveObjectCount() >= _spawnLimit)
+        if (ObjectPool.SharedInstance.ActiveObjectCount() >= _spawnLimit - 1)
         {
-            DisableSpawning();
+            _spawningActive = false;
             return;
         }
         //Activates spawning if it was false
         else if (_spawningActive == false)
         {
+            _spawningActive = true;
             Invoke(nameof(SpawnTarget), 0);
         }
     }
