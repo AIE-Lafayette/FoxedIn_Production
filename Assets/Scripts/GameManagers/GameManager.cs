@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,6 +30,10 @@ public class GameManager : MonoBehaviour
     //Trigger based box managers
     private LineClearingManager _lineManager;
     private RoofBoxManager _roofBoxManager;
+
+    [Header("End Screen Reference")]
+    [SerializeField]
+    private GameObject _endScreenTextBackground;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +64,7 @@ public class GameManager : MonoBehaviour
         if (_playerDeath.WasCrushed && player.activeInHierarchy)
         {
             OnPlayerCrushed.Invoke();
+            RestartGame();
         }
         if (_roofBoxManager.BoxAtTop)
         {
@@ -71,6 +77,6 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        _endScreenTextBackground.SetActive(true);
     }
 }
