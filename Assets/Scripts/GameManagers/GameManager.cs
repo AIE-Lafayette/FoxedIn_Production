@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     private PlayerTailSwipe _playerTailSwipe;
 
     //Trigger based box managers
-    private LineManager _lineManager;
+    private LineClearingManager _lineManager;
     private RoofBoxManager _roofBoxManager;
 
     // Start is called before the first frame update
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("GameManager: Start, Could not get _playerTailSwipe");
 
         //Line Manager script checks
-        if (!(lineCheck.TryGetComponent<LineManager>(out _lineManager)))
+        if (!(lineCheck.TryGetComponent<LineClearingManager>(out _lineManager)))
             Debug.LogError("GameManager: Start, Could not get _lineManager");
 
         //Roof box scripts checks

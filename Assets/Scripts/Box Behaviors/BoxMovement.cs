@@ -177,6 +177,11 @@ public class BoxMovement : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        StopSliding();
+    }
+
     void LateUpdate()
     {
         if (!_sliding)
