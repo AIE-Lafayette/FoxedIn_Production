@@ -9,9 +9,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Settings")]
     [SerializeField] private float _moveSpeed = 10.0f;
-    [SerializeField] private float _jumpPower = 22.6f;
-    [SerializeField] private float _jumpPowerLong = 25.0f;
+    [SerializeField] private float _jumpPower = 25.0f;
     [SerializeField] private float _maxDistance = 1.0f;
+    [SerializeField] private float _jumpTime = 0.35f;
 
     [Header("Ground Check")]
     //The Layermask is what the ground check will be checking for
@@ -21,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     // Standard float for horizontal movement
     private float horizontal;
-    private Vector2 _moveDirection;
-    private bool _jumped = false;
     private Rigidbody _playerRB;
 
     //public InputActionReference move;
@@ -30,14 +28,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _playerRB = GetComponent<Rigidbody>();
-    }
-
-    // Checking the value of a vector2 composite.
-    private void Update()
-    {
-        // Seeing what button is being pressed and if it is a button that moves the player. Apply it in fixed update.
-        //_moveDirection = move.action.ReadValue<Vector2>();
-        //_moveDirection = move.action.ReadValue<Vector2>();
     }
 
     private void FixedUpdate()
@@ -67,24 +57,13 @@ public class PlayerMovement : MonoBehaviour
         {
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
             _playerRB.velocity = new Vector2(_playerRB.velocity.x, _jumpPower);
-            _jumped = true;
-            Invoke(nameof(JumpCheck), 0.45f);
  
         }
-    }
 
-    private void JumpCheck()
-    {
-        _jumped = false;
-    }
-
-    public void HighJump(InputAction.CallbackContext context)
-    {
-        // If the high jump control is performed and the player is grounded
-        if (context.performed /*&& _jumped*//* GroundCheck()*/)
+        // Whenever button is released, cut the y velocity in half.
+        if (context.canceled && _playerRB.velocity.y > 0f)
         {
-            // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
-            _playerRB.velocity = new Vector2(_playerRB.velocity.x, _jumpPowerLong);
+            _playerRB.velocity = new Vector2(_playerRB.velocity.x, _playerRB.velocity.y * 0.75f);
         }
     }
 
@@ -100,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Physics.BoxCast(transform.position, _objectSize, -transform.up, transform.rotation, _maxDistance, layerMask))
         {
-            _jumped = false;
+            //_jumped = false;
             return true;
             
         }
