@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1328563705820810577}
   - component: {fileID: 5233310437685252217}
   - component: {fileID: 521153729361113004}
+  - component: {fileID: -8472896696136577556}
   m_Layer: 3
   m_Name: BrownBoxA
   m_TagString: BrownBox
@@ -107,7 +108,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.975, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-5876743681479010708
 Rigidbody:
@@ -175,3 +176,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1950176223605209737, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
+--- !u!114 &-8472896696136577556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6308788570755824627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 219fcd39d4a0b0844b2814d7e455cf91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _boxWorth: 10
+  _boxMultiplier: 2

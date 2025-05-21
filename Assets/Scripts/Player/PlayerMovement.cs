@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
     public void HighJump(InputAction.CallbackContext context)
     {
         // If the high jump control is performed and the player is grounded
-        if (context.performed /*&& _jumped*//* GroundCheck()*/)
+        if (context.performed && _jumped)//* GroundCheck()*/)
         {
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
             _playerRB.velocity = new Vector2(_playerRB.velocity.x, _jumpPowerLong);

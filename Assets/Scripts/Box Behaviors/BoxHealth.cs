@@ -11,16 +11,14 @@ public class BoxHealth : MonoBehaviour
     int _boxStartingHealth;
     int _boxCurrentHealth;
 
+    public int CurrentHealth { get { return _boxCurrentHealth; } }
+
     // Start is called before the first frame update
     void Start()
     {
         _boxCurrentHealth = _boxStartingHealth;
     }
 
-    public int CurrentHealth()
-    {
-        return _boxCurrentHealth;
-    }
     public void SubtractHealth()
     {
         _boxCurrentHealth--;
@@ -33,7 +31,7 @@ public class BoxHealth : MonoBehaviour
         //Debug.Log("Start" + _boxStartingHealth);
         //Debug.Log("current" + _boxCurrentHealth);
 
-        if (CurrentHealth() <= 0)
+        if (CurrentHealth <= 0)
         {
             transform.gameObject.SetActive(false);
         }

@@ -23,9 +23,9 @@ public class ObjectPool : MonoBehaviour
     public bool useBlue = false;
     public bool useGold = false;
 
-    [Header("Amount of each object in pool")]
-    [Range(0, 100)]
-    public int amountToPool;
+    //[Header("Amount of each object in pool")]
+    //[Range(0, 100)]
+    int amountToPool = 100;
 
     void Awake()
     {
