@@ -10,6 +10,13 @@ public class StartScene : MonoBehaviour
 
     [Header("Credits Text Reference")]
     [SerializeField] private GameObject _creditsTextBackground;
+
+    [Header("Options Text Reference")]
+    [SerializeField] private GameObject _optionsTextBackground;
+
+    [Header("Scoreboard Text Reference")]
+    [SerializeField] private GameObject _scoreboardTextBackground;
+
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -28,12 +35,31 @@ public class StartScene : MonoBehaviour
 
     public void ExitCredits()
     {
-        _creditsTextBackground.SetActive(false);
         _MainMenuButtonsBackground.SetActive(true);
+        _creditsTextBackground.SetActive(false);
     }
 
     public void DisplayOptions()
     {
+        _MainMenuButtonsBackground.SetActive(false);
+        _optionsTextBackground.SetActive(true);
+    }
 
+    public void ExitOptions()
+    {
+        _MainMenuButtonsBackground.SetActive(true);
+        _optionsTextBackground.SetActive(false);
+    }
+
+    public void DisplayScoreboard()
+    {
+        _MainMenuButtonsBackground.SetActive(false);
+        _scoreboardTextBackground.SetActive(true);
+    }
+
+    public void ExitScoreboard()
+    {
+        _MainMenuButtonsBackground.SetActive(true);
+        _scoreboardTextBackground.SetActive(false);
     }
 }
