@@ -55,6 +55,14 @@ public class LineClearingManager : MonoBehaviour
 
     private void Update()
     {
+        //If triggeredBoxes is less than 10 or clearedBoxes is greater than or equal to 10
+        if (triggeredBoxes < 10 || clearedBoxes >= 10)
+        {
+            //Reset them
+            triggeredBoxes = 0;
+            clearedBoxes = 0;
+        }
+
         Debug.Log(scoreTotal);
     }
 
@@ -105,6 +113,8 @@ public class LineClearingManager : MonoBehaviour
             multToAdd = multToAdd * brownScoreMult;
         }
         finalMult += multToAdd;
+        multToAdd = 1;
+        Debug.Log("Mult" + finalMult);
 
         //Get the multiplier added by the green boxes
         for (int i = 0; i < greenCount; i++)
@@ -112,6 +122,8 @@ public class LineClearingManager : MonoBehaviour
             multToAdd = multToAdd * greenScoreMult;
         }
         finalMult += multToAdd;
+        multToAdd = 1;
+        Debug.Log("Mult" + finalMult);
 
         //Get the multiplier added by the blue boxes
         for (int i = 0; i < blueCount; i++)
@@ -119,6 +131,8 @@ public class LineClearingManager : MonoBehaviour
             multToAdd = multToAdd * blueScoreMult;
         }
         finalMult += multToAdd;
+        multToAdd = 1;
+        Debug.Log("Mult" + finalMult);
 
         //Get the multiplier added by the gold boxes
         for (int i = 0; i < goldCount; i++)
@@ -126,6 +140,8 @@ public class LineClearingManager : MonoBehaviour
             multToAdd = multToAdd * goldScoreMult;
         }
         finalMult += multToAdd;
+        multToAdd = 1;
+        Debug.Log("Mult" + finalMult);
 
         //Calcluate the total score
         finalScore = scoreToAdd * (finalMult / differentBoxes);
@@ -137,6 +153,15 @@ public class LineClearingManager : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        
+
+        //If trigger is colliding with a box
+        if(other.transform.TryGetComponent(out BoxFallingBehavior boxFallingBehavior))
+        {
+            //Increment trigggeredBoxes
+            triggeredBoxes++;
+        }
+
         //If total boxes touched by trigger is >= 10
         if(triggeredBoxes >= 10)
         {
@@ -174,28 +199,17 @@ public class LineClearingManager : MonoBehaviour
 
                 other.transform.gameObject.SetActive(false);
                 clearedBoxes++;
+
                 if (clearedBoxes >= 10)
                 {
                     CalculateScore();
                 }
             }
         }
-        //If trigger is colliding with a box
-        if(other.transform.TryGetComponent(out BoxFallingBehavior boxFallingBehavior))
-        {
-            //Increment trigggeredBoxes
-            triggeredBoxes++;
-        }
     }
 
     private void LateUpdate()
     {
-        //If triggeredBoxes is less than 10 or clearedBoxes is less than or equal to 10
-        if (triggeredBoxes < 10 || clearedBoxes >= 10)
-        {
-            //Reset them
-            triggeredBoxes = 0;
-            clearedBoxes = 0;
-        }
+        
     }
 }

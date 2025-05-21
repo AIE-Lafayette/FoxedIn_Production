@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84150debefb87aa4db408c35a701c00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingSpawnRate: 0.25
+  _startingSpawnRate: 1
   _spawnLimit: 100
   _gridWidth: 10
   _gridHeight: 10
@@ -1443,8 +1443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa0c12b60ac81b48b9ec37feafde286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreText: {fileID: 524788344}
-  _lineManager: {fileID: 1951798124}
 --- !u!1 &903926874
 GameObject:
   m_ObjectHideFlags: 0
