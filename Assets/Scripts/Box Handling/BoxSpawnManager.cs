@@ -128,7 +128,7 @@ public class BoxSpawner : MonoBehaviour
 
         ObjectPool.SharedInstance.ActivateAnObject(Box);
         Box.transform.localScale = new Vector3(_boxSize, _boxSize, 10);
-        //Box.transform.position = randomPosition;
+        Box.transform.position = randomPosition;
 
         #region "Debug Spawn Options"
 
@@ -136,15 +136,15 @@ public class BoxSpawner : MonoBehaviour
         //Box.transform.position = new Vector3(15, _gridHeight * _boxSize, 5);
 
         //For testing, boxes will all fall in a row, Left to right
-        Box.transform.position = new Vector3(boxNextSpawn, _gridHeight * _boxSize, 5);
-        if (boxNextSpawn >= 50)
-        {
-            boxNextSpawn = 0;
-        }
-        else
-        {
-            boxNextSpawn += 5;
-        }
+        //Box.transform.position = new Vector3(boxNextSpawn, _gridHeight * _boxSize, 5);
+        //if (boxNextSpawn >= 50)
+        //{
+        //    boxNextSpawn = 0;
+        //}
+        //else
+        //{
+        //    boxNextSpawn += 5;
+        //}
 
         #endregion
 

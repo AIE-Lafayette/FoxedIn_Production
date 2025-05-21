@@ -105,6 +105,7 @@ public class LineClearingManager : MonoBehaviour
             multToAdd = multToAdd * brownScoreMult;
         }
         finalMult += multToAdd;
+        multToAdd = 1;
 
         //Get the multiplier added by the green boxes
         for (int i = 0; i < greenCount; i++)
@@ -112,6 +113,7 @@ public class LineClearingManager : MonoBehaviour
             multToAdd = multToAdd * greenScoreMult;
         }
         finalMult += multToAdd;
+        multToAdd = 1;
 
         //Get the multiplier added by the blue boxes
         for (int i = 0; i < blueCount; i++)
@@ -119,6 +121,7 @@ public class LineClearingManager : MonoBehaviour
             multToAdd = multToAdd * blueScoreMult;
         }
         finalMult += multToAdd;
+        multToAdd = 1;
 
         //Get the multiplier added by the gold boxes
         for (int i = 0; i < goldCount; i++)
@@ -126,6 +129,7 @@ public class LineClearingManager : MonoBehaviour
             multToAdd = multToAdd * goldScoreMult;
         }
         finalMult += multToAdd;
+        multToAdd = 1;
 
         //Calcluate the total score
         finalScore = scoreToAdd * (finalMult / differentBoxes);
