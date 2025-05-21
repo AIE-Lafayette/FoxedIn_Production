@@ -131,6 +131,7 @@ public class LineClearingManager : MonoBehaviour
         finalScore = scoreToAdd * (finalMult / differentBoxes);
 
         scoreTotal += finalScore;
+        PlayerScore.instance.IncreaseScore(finalScore);
 
         ResetAllValues();
     }

@@ -24,15 +24,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "High Jump",
-                    "type": "Button",
-                    "id": "d96bdc61-52ba-43b5-9033-2dcfa5335475",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Fall",
                     "type": "Button",
                     "id": "c98919f6-f388-49a9-9f5a-9c7f00336fd4",
@@ -258,50 +249,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3edc7625-a36d-4989-a500-45b9759f1ffd",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "High Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "29520d79-3380-42da-83d8-beb21b21da7c",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "High Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4857cbaf-9d8b-4d63-8b76-5b726b8ccb1d",
-                    "path": "<Keyboard>/w",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "High Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e5c3a119-bdc1-4411-b0c3-1670badc3fb2",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "High Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

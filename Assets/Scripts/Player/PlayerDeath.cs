@@ -56,7 +56,7 @@ public class PlayerDeath : MonoBehaviour
             collisionAbove = true;
         }
         //If the collision is below them or they are low enough
-        if (collision.transform.position.y < transform.position.y || transform.position.y <= -1.3)
+        if (collision.transform.position.y < transform.position.y || transform.position.y <= 0)
         {
             //collisionBelow is true
             collisionBelow = true;
