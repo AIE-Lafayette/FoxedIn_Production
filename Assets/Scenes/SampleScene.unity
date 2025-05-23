@@ -1148,7 +1148,7 @@ PrefabInstance:
     - target: {fileID: 4812393951941680528, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1816555577}
+      objectReference: {fileID: 1816555578}
     - target: {fileID: 4812393951941680528, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1187,7 +1187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4812393951941680528, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerTailSwipe, Assembly-CSharp
+      value: PlayerMovement, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4812393951941680528, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
