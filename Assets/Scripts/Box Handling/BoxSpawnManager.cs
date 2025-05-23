@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Pool;
+using UnityEditor;
 
 public class BoxSpawner : MonoBehaviour
 {
@@ -20,6 +22,14 @@ public class BoxSpawner : MonoBehaviour
     float _startingSpawnRate = 4.0f;
     [Range(0, 100), SerializeField]
     int _spawnLimit = 100;
+
+    [Header ("Debug Spawning (ONLY ONE AT A TIME)")]
+    [SerializeField]
+    public bool _debugSpawnInOneSpot = false;
+    [Range(0, 45)]
+    float _debugSpawnLocation = 15.0f;
+    [SerializeField]
+    public bool _debugSpawnLeftToRight = false;
 
     [Header("Grid Setting")]
     [SerializeField]
@@ -128,22 +138,32 @@ public class BoxSpawner : MonoBehaviour
 
         ObjectPool.SharedInstance.ActivateAnObject(Box);
         Box.transform.localScale = new Vector3(_boxSize, _boxSize, 10);
-        //Box.transform.position = randomPosition;
+
+        if (!(_debugSpawnLeftToRight) && !(_debugSpawnInOneSpot))
+        {
+            Box.transform.position = randomPosition;
+        }
 
         #region "Debug Spawn Options"
 
         //For testing, boxes will all fall in a specific column
-        //Box.transform.position = new Vector3(15, _gridHeight * _boxSize, 5);
-
-        //For testing, boxes will all fall in a row, Left to right
-        Box.transform.position = new Vector3(boxNextSpawn, _gridHeight * _boxSize, 5);
-        if (boxNextSpawn >= 50)
+        if (_debugSpawnInOneSpot)
         {
-            boxNextSpawn = 0;
+            Box.transform.position = new Vector3(15, _gridHeight * _boxSize, 5);
         }
-        else
+
+        if (_debugSpawnLeftToRight)
         {
-            boxNextSpawn += 5;
+            //For testing, boxes will all fall in a row, Left to right
+            Box.transform.position = new Vector3(boxNextSpawn, _gridHeight * _boxSize, 5);
+            if (boxNextSpawn >= 50)
+            {
+                boxNextSpawn = 0;
+            }
+            else
+            {
+                boxNextSpawn += 5;
+            }
         }
 
         #endregion

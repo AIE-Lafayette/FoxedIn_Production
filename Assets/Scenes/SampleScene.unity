@@ -168,6 +168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingSpawnRate: 3
   _spawnLimit: 100
+  _debugSpawnInOneSpot: 0
+  _debugSpawnLeftToRight: 0
   _gridWidth: 10
   _gridHeight: 10
   _boxSize: 5
