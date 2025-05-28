@@ -109,10 +109,8 @@ public class LineClearingManager : MonoBehaviour
             for (int i = 0; i < brownCount; i++)
             {
                 multToAdd = multToAdd * brownScoreMult;
-                Debug.Log("brownCount" + brownCount);
             }
             finalMult += multToAdd;
-            Debug.Log("BrMult" + finalMult);
         }
 
         if (greenCount > 0)
@@ -123,10 +121,8 @@ public class LineClearingManager : MonoBehaviour
             for (int i = 0; i < greenCount; i++)
             {
                 multToAdd = multToAdd * greenScoreMult;
-                Debug.Log("greenCount" + greenCount);
             }
             finalMult += multToAdd;
-            Debug.Log("GrMult" + finalMult);
         }
 
         if (blueCount > 0)
@@ -137,10 +133,8 @@ public class LineClearingManager : MonoBehaviour
             for (int i = 0; i < blueCount; i++)
             {
                 multToAdd = multToAdd * blueScoreMult;
-                Debug.Log("blueCount" + blueCount);
             }
             finalMult += multToAdd;
-            Debug.Log("BlMult" + finalMult);
         }
 
         if (goldCount > 0)
@@ -151,10 +145,8 @@ public class LineClearingManager : MonoBehaviour
             for (int i = 0; i < goldCount; i++)
             {
                 multToAdd = multToAdd * goldScoreMult;
-                Debug.Log("goldCount" + goldCount);
             }
             finalMult += multToAdd;
-            Debug.Log("GoMult" + finalMult);
         }
 
         //Calcluate the total score
@@ -163,12 +155,10 @@ public class LineClearingManager : MonoBehaviour
         scoreToAdd += (greenWorth * greenCount);
         scoreToAdd += (blueWorth * blueCount);
         scoreToAdd += (goldWorth * goldCount);
-        Debug.Log("scoreToAdd" + scoreToAdd);
         //Final score is total points multiplied by (total mult divided by total of different boxes)
         finalScore = scoreToAdd * (finalMult / differentBoxes);
 
         currentScoreTotal += finalScore;
-        Debug.Log("final" + finalScore);
         PlayerScore.instance.IncreaseScore(finalScore);
 
         ResetAllValues();
