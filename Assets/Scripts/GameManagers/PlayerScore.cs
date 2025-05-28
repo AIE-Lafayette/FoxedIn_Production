@@ -25,4 +25,9 @@ public class PlayerScore : MonoBehaviour
     {
         _currentScore += v;
     }
+
+    public void SetCurrentScore(int v)
+    {
+        _currentScore = v;
+    }
 }

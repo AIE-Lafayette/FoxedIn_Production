@@ -166,10 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84150debefb87aa4db408c35a701c00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingSpawnRate: 3
+  _startingSpawnRate: 0.36
   _spawnLimit: 100
   _debugSpawnInOneSpot: 0
-  _debugSpawnLeftToRight: 0
+  _debugSpawnLeftToRight: 1
   _gridWidth: 10
   _gridHeight: 10
   _boxSize: 5
@@ -1201,7 +1201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5922064123709004589, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
       propertyPath: _canDie
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5952771938373175827, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
       propertyPath: m_Layer
@@ -1278,7 +1278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 145, y: 45}
+  m_AnchoredPosition: {x: 145, y: 36.4}
   m_SizeDelta: {x: 350, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &524788344
@@ -1364,7 +1364,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -132.20004, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7709,6 +7709,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2704489106955213472, guid: 7f8274e67e92fb04594bcd4228eba3cf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3218248208947462411, guid: 7f8274e67e92fb04594bcd4228eba3cf, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -7768,6 +7772,10 @@ PrefabInstance:
     - target: {fileID: 6308788570755824627, guid: 7f8274e67e92fb04594bcd4228eba3cf, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7764236231607760812, guid: 7f8274e67e92fb04594bcd4228eba3cf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

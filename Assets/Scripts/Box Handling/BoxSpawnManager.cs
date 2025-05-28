@@ -156,7 +156,7 @@ public class BoxSpawner : MonoBehaviour
         {
             //For testing, boxes will all fall in a row, Left to right
             Box.transform.position = new Vector3(boxNextSpawn, _gridHeight * _boxSize, 5);
-            if (boxNextSpawn >= 50)
+            if (boxNextSpawn >= 45)
             {
                 boxNextSpawn = 0;
             }
