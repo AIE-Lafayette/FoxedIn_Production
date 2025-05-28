@@ -15,7 +15,7 @@ public class BoxMovement : MonoBehaviour
     private GameObject _objectToLeft;
     private bool _anObjectToRight;
     private GameObject _objectToRight;
-    private float _distancePerIter = 0.05f;
+    private float _distancePerIter = 0.15f;
     private float _distanceTracker = 0.0f;
 
     public bool IsSliding { get { return _sliding; } }

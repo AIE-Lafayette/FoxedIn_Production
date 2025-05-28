@@ -33,12 +33,24 @@ public class BoxHealth : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
+            if (tag == "RocketBox" || tag == "BombBox")
+            {
+                if (transform.TryGetComponent(out RocketBoxBehavior rocketBoxBehavior))
+                {
+                    RocketBoxBehavior rocketBehavior = GetComponent<RocketBoxBehavior>();
+                    rocketBehavior.SpawnRocket();
+                }
+                else if (transform.TryGetComponent(out BombBoxBehavior bombBoxBehavior))
+                {
+                    BombBoxBehavior bombBehavior = GetComponent<BombBoxBehavior>();
+                    bombBehavior.SpawnBomb();
+                }
+            }
             transform.gameObject.SetActive(false);
         }
     }
 
     private void OnDisable()
-
     {
         _boxCurrentHealth = _boxMaxHealth;
     }

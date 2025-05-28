@@ -75,35 +75,45 @@ public class BoxSpawner : MonoBehaviour
         Vector3 randomPosition = new Vector3(randomPositionX, _gridHeight * _boxSize, 5);
 
         //Gets a number 0-100 to choose the next box
-        int boxChoice = Random.Range(0, 100);
-        GameObject boxToSpawn;
+        int boxChoice = Random.Range(0, 105);
+        GameObject boxToSpawn = null;
 
-        //5% chance for gold
+        //gold
         if (boxChoice < 5 && ObjectPool.SharedInstance.useGold)
         {
             boxChoice = 100;
             boxToSpawn = ObjectPool.SharedInstance.goldToPool;
         }
-        //15% chance for blue
+        //blue
         else if (boxChoice < 20 && ObjectPool.SharedInstance.useBlue)
         {
             boxChoice = 50;
             boxToSpawn = ObjectPool.SharedInstance.blueToPool;
         }
-        //30% chance for green
+        //green
         else if (boxChoice < 50 && ObjectPool.SharedInstance.useGreen)
         {
             boxChoice = 25;
             boxToSpawn = ObjectPool.SharedInstance.greenToPool;
         }
-        //50% chance for brown
-        else if (ObjectPool.SharedInstance.useBrown)
+        //brown
+        else if (boxChoice < 100 && ObjectPool.SharedInstance.useBrown)
         {
             boxChoice = 10;
             boxToSpawn = ObjectPool.SharedInstance.brownToPool;
         }
+        //bomb
+        else if (boxChoice <= 102 && ObjectPool.SharedInstance.useBomb)
+        {
+            boxToSpawn = ObjectPool.SharedInstance.bombToPool;
+        }
+        //rocket
+        else if(ObjectPool.SharedInstance.useBomb)
+        {
+            boxToSpawn = ObjectPool.SharedInstance.rocketToPool;
+        }
 
-        //If number is >= 50 and brown is disabled
+        //If number doesn't allign with anything that is enabled
         else
         {
             //Check if green is enabled
@@ -118,12 +128,47 @@ public class BoxSpawner : MonoBehaviour
                 //Spawn a blue
                 boxToSpawn = ObjectPool.SharedInstance.blueToPool;
             }
-            //If all else fails
-            else
+            //else check if gold is enabled
+            else if (ObjectPool.SharedInstance.useGold)
             {
                 //Spawn a gold
                 boxToSpawn = ObjectPool.SharedInstance.goldToPool;
             }
+            //if all else fails
+            else
+            {
+                //Spawn a rocket or a bomb
+
+                // If bomb is disabled use rocket
+                if (!(ObjectPool.SharedInstance.useBomb))
+                {
+                    boxToSpawn = ObjectPool.SharedInstance.rocketToPool;
+                }
+                // If rocket is disabled use bomb
+                if (!(ObjectPool.SharedInstance.useRocket))
+                {
+                    boxToSpawn = ObjectPool.SharedInstance.bombToPool;
+                }
+
+                // If both are active choose one
+                int ranBox = Random.Range(0, 100);
+                //If ranBox is one use bomb
+                if (ranBox < 50)
+                {
+                    boxToSpawn = ObjectPool.SharedInstance.bombToPool;
+                }
+                //If ranBox is two use rocket
+                if (ranBox >= 50)
+                {
+                    boxToSpawn = ObjectPool.SharedInstance.rocketToPool;
+                }
+            }
+        }
+
+        if (boxToSpawn == null)
+        {
+            Invoke(nameof(SpawnTarget), _spawnRate);
+            return;
         }
 
         GameObject Box = ObjectPool.SharedInstance.GetSpecifiedPooledObject(boxToSpawn);
@@ -138,6 +183,7 @@ public class BoxSpawner : MonoBehaviour
 
         ObjectPool.SharedInstance.ActivateAnObject(Box);
         Box.transform.localScale = new Vector3(_boxSize, _boxSize, 10);
+        Box.transform.GetComponent<Rigidbody>().velocity = new Vector3(0, 5, 0);
 
         if (!(_debugSpawnLeftToRight) && !(_debugSpawnInOneSpot))
         {

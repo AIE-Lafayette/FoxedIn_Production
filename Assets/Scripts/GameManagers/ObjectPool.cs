@@ -16,12 +16,19 @@ public class ObjectPool : MonoBehaviour
     public GameObject greenToPool;
     public GameObject blueToPool;
     public GameObject goldToPool;
+    public GameObject bombToPool;
+    public GameObject rocketToPool;
+    public GameObject bombLineToPool;
+    public GameObject rocketLineToPool;
 
     [Header("Objects To Use")]
     public bool useBrown = false;
     public bool useGreen = false;
     public bool useBlue = false;
     public bool useGold = false;
+    public bool useBomb = false;
+    public bool useRocket = false;
+
 
     //[Header("Amount of each object in pool")]
     //[Range(0, 100)]
@@ -144,8 +151,6 @@ public class ObjectPool : MonoBehaviour
         return pooledObjects[Object];
     }
     
-
-
     //Add the object given into the pool
     public void AddObjectToPool(GameObject addedObject)
     {
@@ -159,6 +164,12 @@ public class ObjectPool : MonoBehaviour
     {
         //Makes the pool
         pooledObjects = new List<GameObject>();
+        for (int i = 0; i < 10; i++)
+        {
+            AddObjectToPool(bombLineToPool);
+            AddObjectToPool(rocketLineToPool);
+        }
+
         for (int i = 0; i < amountToPool; i++)
         {
             if (useGold)
@@ -176,6 +187,14 @@ public class ObjectPool : MonoBehaviour
             if (useBrown)
             {
                 AddObjectToPool(brownToPool);
+            }
+            if (useBomb)
+            {
+                AddObjectToPool(bombToPool);
+            }
+            if (useRocket)
+            {
+                AddObjectToPool(rocketToPool);
             }
         }
     }
