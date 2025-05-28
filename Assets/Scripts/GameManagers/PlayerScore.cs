@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class PlayerScore : MonoBehaviour
 {
+    // Singleton Pattern for the player score, allows for the reference of its own instance in the scene
     public static PlayerScore instance;
 
     [SerializeField] private TextMeshProUGUI _playerScore;
 
-    public int _currentScore;
+    private int _currentScore;
 
     public void Awake()
     {
@@ -18,6 +19,7 @@ public class PlayerScore : MonoBehaviour
 
     public void Update()
     {
+        // Updating the displayed score
         _playerScore.text = "Current Score:  " + _currentScore.ToString();
     }
 
