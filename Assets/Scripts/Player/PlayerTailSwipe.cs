@@ -37,7 +37,8 @@ public class PlayerTailSwipe : MonoBehaviour
 
             boxCol.enabled = true;
             boxRend.enabled = true;
-            Invoke(nameof(DisableSwipeHitBox), 0.5f);
+            // was previously set to 0.5f
+            Invoke(nameof(DisableSwipeHitBox), 0.2f);
         }
     }
 
