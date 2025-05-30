@@ -38,6 +38,7 @@ public class PlayerTailSwipe : MonoBehaviour
             boxCol.enabled = true;
             boxRend.enabled = true;
             // was previously set to 0.5f
+            // How long the hitbox appears for after the tailswipe button is pressed
             Invoke(nameof(DisableSwipeHitBox), 0.2f);
         }
     }

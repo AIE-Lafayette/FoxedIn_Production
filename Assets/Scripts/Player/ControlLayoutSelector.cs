@@ -5,11 +5,12 @@ using UnityEngine.InputSystem;
 
 public class ControlLayoutSelector : MonoBehaviour
 {
-    private PlayerInput _inputSelector;
+    private GameObject _player;
+    private PlayerInput _playerInput;
 
     public void Awake()
     {
-        _inputSelector = GetComponent<PlayerInput>();
+        _playerInput = GetComponent<PlayerInput>();
         // Setting the defauly action map
         //_inputSelector.SwitchCurrentActionMap("Player");
     }
@@ -21,12 +22,16 @@ public class ControlLayoutSelector : MonoBehaviour
     public void DefaultControls()
     {
         // This is an option to switch back to the standard action map
-        _inputSelector.SwitchCurrentActionMap("Player");
+        //_playerInput.SwitchCurrentActionMap("Player");
+        _playerInput.actions.FindActionMap("Player").Enable();
+        _playerInput.actions.FindActionMap("Player1").Disable();
     }
 
     public void ControlScheme2()
     {
         // This is an option to switch to an action map that uses space as jump.
-        _inputSelector.SwitchCurrentActionMap("Player1");
+        //_playerInput.SwitchCurrentActionMap("Player1");
+        _playerInput.actions.FindActionMap("Player1").Enable();
+        _playerInput.actions.FindActionMap("Player").Disable();
     }
 }
