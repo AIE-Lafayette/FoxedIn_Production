@@ -274,14 +274,6 @@ MonoBehaviour:
     m_ActionId: 50522bdd-2f2a-41dd-9e82-80ad3d44145d
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 24266a4f-49d4-4147-bb3c-cb25c1e67ee7
-    m_ActionName: Player/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: df59980a-1bcf-4f7f-aa5a-f4e1af1a0948
-    m_ActionName: Player/Fire[/Mouse/leftButton]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6599551837934855347}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
@@ -297,22 +289,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 93571792-4866-4706-846b-155e3f4c9632
     m_ActionName: Player/Jump[/Keyboard/w,/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6599551837934855347}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: HighJump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: d96bdc61-52ba-43b5-9033-2dcfa5335475
-    m_ActionName: Player/High Jump[/Keyboard/w,/Keyboard/upArrow]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6599551837934855347}
@@ -402,16 +378,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67c0bed0ac9a9c43b3539699f739011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 10
-  _jumpPower: 12.5
-  _jumpPowerLong: 17.5
+  _moveSpeed: 15
+  _jumpPower: 28.5
   _maxDistance: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 72
   groundCheck: {fileID: 5872566131305109085}
   _objectSize: {x: 1, y: 0.2, z: 1}
-  move: {fileID: 4790970657544881278, guid: a5202b8d38e709941b3e3d5852d6f4c3, type: 3}
 --- !u!114 &4425300515672272893
 MonoBehaviour:
   m_ObjectHideFlags: 0
