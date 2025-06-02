@@ -15,10 +15,10 @@ public class HighScores : MonoBehaviour
     private void Start()
     {
         // test for adding high scores
-        AddNewHighScore(/*1,*/ "Keith", 10000);
-        AddNewHighScore(/*2,*/ "Hudson", 9);
-        AddNewHighScore(/*3,*/ "Chuck", 0);
-        AddNewHighScore(/*4,*/ "Walter", 10);
+        AddNewHighScore(/*1,*/ "Bronny", 10000);
+        AddNewHighScore(/*2,*/ "Bron", 9);
+        AddNewHighScore(/*3,*/ "Leebron", 0);
+        AddNewHighScore(/*4,*/ "Lebronto", 10);
         AddNewHighScore(/*5,*/ "Lebron", 1);
 
         UpdateDisplay();

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LineClearingManager : MonoBehaviour
@@ -55,7 +56,7 @@ public class LineClearingManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(scoreTotal);
+        //Debug.Log(scoreTotal);
     }
 
     private void ResetAllValues()
@@ -135,7 +136,10 @@ public class LineClearingManager : MonoBehaviour
         finalScore = scoreToAdd * (finalMult / differentBoxes);
 
         scoreTotal += finalScore;
-        PlayerScore.instance.IncreaseScore(finalScore);
+
+        PlayerScore.instance.IncreaseScore(scoreTotal);
+        PlayerScore.instance.DisplayGainedScore(finalScore);
+        //PlayerScoreEarned.instance.SpawnScoreVFX();
 
         ResetAllValues();
     }
