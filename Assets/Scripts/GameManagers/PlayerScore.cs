@@ -11,14 +11,17 @@ public class PlayerScore : MonoBehaviour
     [Header("Player Score References")]
     [SerializeField] private TextMeshProUGUI _playerScoreEarned;
     [SerializeField] private TextMeshProUGUI _playerScore;
+    [SerializeField] private GameObject _scoreEarnedImage;
 
     private int _currentScore;
     private int _scoreEarned;
-
+    private bool _cannotDisplay = true;
+    private float _displayLength = 5.0f;
 
     public void Awake()
     {
         instance = this;
+        _scoreEarnedImage.SetActive(false);
     }
 
     public void Update()
@@ -35,6 +38,9 @@ public class PlayerScore : MonoBehaviour
 
     public void DisplayGainedScore(int v)
     {
+        _scoreEarnedImage.SetActive(true);
         _scoreEarned = v;
+        _displayLength -= Time.deltaTime;
     }
+
 }
