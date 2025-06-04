@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Settings")]
     [SerializeField] private float _moveSpeed = 10.0f;
-    [SerializeField] private float _jumpPower = 25.0f;
+    [SerializeField] private float _jumpPower = 28.5f;
     [SerializeField] private float _maxDistance = 1.0f;
 
     [Header("Ground Check")]
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
  
         }
 
-        // Whenever button is released, cut the y velocity in half.
+        // Whenever button is released, cut the y velocity.
         if (context.canceled && _playerRB.velocity.y > 0f)
         {
             _playerRB.velocity = new Vector2(_playerRB.velocity.x, _playerRB.velocity.y * 0.3f);

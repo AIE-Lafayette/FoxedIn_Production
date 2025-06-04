@@ -10,6 +10,10 @@ TagManager:
   - GoldBox
   - TestBox
   - TailSwipeHItBox
+  - BombBox
+  - RocketBox
+  - Bomb
+  - Rocket
   layers:
   - Default
   - TransparentFX

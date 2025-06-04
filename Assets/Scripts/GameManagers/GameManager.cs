@@ -68,7 +68,6 @@ public class GameManager : MonoBehaviour
         }
         if (_roofBoxManager.BoxAtTop)
         {
-            Debug.Log("On Box invoked");
             OnBoxReachesTop.Invoke();
         }
 
