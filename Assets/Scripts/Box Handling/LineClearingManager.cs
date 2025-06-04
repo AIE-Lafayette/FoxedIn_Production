@@ -72,8 +72,6 @@ public class LineClearingManager : MonoBehaviour
             triggeredBoxes = 0;
             clearedBoxes = 0;
         }
-
-        Debug.Log(currentScoreTotal);
     }
 
     private void ResetAllValues()

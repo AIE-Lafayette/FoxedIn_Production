@@ -27,10 +27,6 @@ public class BoxHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Max" + _boxMaxHealth);
-        //Debug.Log("Start" + _boxStartingHealth);
-        //Debug.Log("current" + _boxCurrentHealth);
-
         if (CurrentHealth <= 0)
         {
             if (tag == "RocketBox" || tag == "BombBox")
