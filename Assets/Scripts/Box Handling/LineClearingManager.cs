@@ -63,7 +63,7 @@ public class LineClearingManager : MonoBehaviour
         goldScoreMult = 0;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //If triggeredBoxes is less than 10 or clearedBoxes is greater than or equal to 10
         if (triggeredBoxes < 10 || clearedBoxes >= 10)

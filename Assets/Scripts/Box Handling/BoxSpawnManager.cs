@@ -103,12 +103,12 @@ public class BoxSpawner : MonoBehaviour
             boxToSpawn = ObjectPool.SharedInstance.brownToPool;
         }
         //bomb
-        else if (boxChoice <= 102 && ObjectPool.SharedInstance.useBomb)
+        else if (boxChoice < 103 && ObjectPool.SharedInstance.useBomb)
         {
             boxToSpawn = ObjectPool.SharedInstance.bombToPool;
         }
         //rocket
-        else if(ObjectPool.SharedInstance.useBomb)
+        else if(boxChoice <= 105 && ObjectPool.SharedInstance.useRocket)
         {
             boxToSpawn = ObjectPool.SharedInstance.rocketToPool;
         }
