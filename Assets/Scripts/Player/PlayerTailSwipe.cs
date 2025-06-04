@@ -10,6 +10,9 @@ public class PlayerTailSwipe : MonoBehaviour
     [Header("Box Component References")]
     [SerializeField] private GameObject _tailSwipeHitbox;
 
+    //[Header("Tail Swipe VFX")]
+    //[SerializeField] private GameObject _tailSwipeVFX;
+
     private BoxCollider boxCol;
     private MeshRenderer boxRend;
     //private bool _canSwing = true;
