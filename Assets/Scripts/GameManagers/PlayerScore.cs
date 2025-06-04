@@ -17,6 +17,7 @@ public class PlayerScore : MonoBehaviour
     private int _scoreEarned;
     private bool _cannotDisplay = true;
     private float _displayLength = 5.0f;
+    private bool _displayActive = false;
 
     public void Awake()
     {
@@ -28,7 +29,13 @@ public class PlayerScore : MonoBehaviour
     {
         // Updating the displayed score
         _playerScore.text = "Current Score: " + _currentScore.ToString();
-        _playerScoreEarned.text = _scoreEarned.ToString();
+        _playerScoreEarned.text = "+" + _scoreEarned.ToString();
+
+        if (_displayActive)
+        {
+            StartCoroutine(DeativateScore());
+            _displayActive = false;
+        }
     }
 
     public void IncreaseScore(int v)
@@ -41,6 +48,13 @@ public class PlayerScore : MonoBehaviour
         _scoreEarnedImage.SetActive(true);
         _scoreEarned = v;
         _displayLength -= Time.deltaTime;
+        _displayActive = true;
+    }
+
+    IEnumerator DeativateScore()
+    {
+        yield return new WaitForSeconds(_displayLength);
+        _scoreEarnedImage.SetActive(false);
     }
 
 }
