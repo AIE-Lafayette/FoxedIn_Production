@@ -20,7 +20,6 @@ public class RoofBoxManager : MonoBehaviour
         {
             if (!(boxFalling.Falling))
             {
-                Debug.Log("Box is at top");
                 _boxAtTop = true;
             }
         }
