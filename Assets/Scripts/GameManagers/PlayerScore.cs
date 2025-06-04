@@ -15,7 +15,6 @@ public class PlayerScore : MonoBehaviour
 
     private int _currentScore;
     private int _scoreEarned;
-    private bool _cannotDisplay = true;
     private float _displayLength = 5.0f;
     private bool _displayActive = false;
 

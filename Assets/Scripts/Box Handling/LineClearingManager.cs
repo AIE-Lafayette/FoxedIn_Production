@@ -158,6 +158,7 @@ public class LineClearingManager : MonoBehaviour
 
         currentScoreTotal += finalScore;
         PlayerScore.instance.IncreaseScore(finalScore);
+        PlayerScore.instance.DisplayGainedScore(finalScore);
 
         ResetAllValues();
     }

@@ -168,6 +168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingSpawnRate: 3
   _spawnLimit: 100
+  _debugSpawnInOneSpot: 0
+  _debugSpawnLeftToRight: 0
   _gridWidth: 10
   _gridHeight: 10
   _boxSize: 5
@@ -8534,10 +8536,16 @@ MonoBehaviour:
   greenToPool: {fileID: 6308788570755824627, guid: be5d5945caaccce4385901d1985811cc, type: 3}
   blueToPool: {fileID: 6308788570755824627, guid: 3fe109820bd78d64899cbe5381971f64, type: 3}
   goldToPool: {fileID: 6308788570755824627, guid: a446fa30c0b20ab4886312874e8bbdb1, type: 3}
+  bombToPool: {fileID: 6308788570755824627, guid: b4a0ca8f37f7d6b448a971c48e7be4d4, type: 3}
+  rocketToPool: {fileID: 6308788570755824627, guid: ee542c48348f5f44e8fef512aeae1482, type: 3}
+  bombLineToPool: {fileID: 6308788570755824627, guid: 1e421804321772b45aee02d3088b0f84, type: 3}
+  rocketLineToPool: {fileID: 6308788570755824627, guid: f13d63151477be34b9c11f23b636ad83, type: 3}
   useBrown: 1
   useGreen: 1
   useBlue: 1
   useGold: 1
+  useBomb: 0
+  useRocket: 0
 --- !u!1 &1462134045
 GameObject:
   m_ObjectHideFlags: 0
