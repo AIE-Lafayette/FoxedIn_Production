@@ -24,7 +24,7 @@ public class BombBoxBehavior : MonoBehaviour
     public void SpawnBomb()
     {
         GameObject bomb = ObjectPool.SharedInstance.ActivateAnObject(_bomb);
-        bomb.transform.position = new Vector3(22.50f, transform.position.y, transform.position.z);
+        bomb.transform.position = transform.position;
         bomb.SetActive(true);
     }
 }

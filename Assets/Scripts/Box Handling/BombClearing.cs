@@ -16,21 +16,32 @@ public class BombClearing : MonoBehaviour
         
     }
 
+    void RemoveBombCollider()
+    {
+        transform.GetComponent<BoxCollider>().enabled = false;
+        Invoke(nameof(RemoveBomb), 1.0f);
+    }
+
     void RemoveBomb()
     {
         transform.gameObject.SetActive(false);
+        transform.GetComponent<BoxCollider>().enabled = true;
     }
 
     private void OnEnable()
     {
-        Invoke(nameof(RemoveBomb), 0.5f);
+        Invoke(nameof(RemoveBombCollider), 0.25f);
     }
 
-    private void OnCollisionStay(Collision other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.transform.TryGetComponent(out BoxHealth boxHealth))
+        if (other.transform.TryGetComponent(out BoxFallingBehavior boxFalling))
         {
             other.transform.gameObject.SetActive(false);
+            BoxWorth worth = other.transform.GetComponent<BoxWorth>();
+            PlayerScore.instance.IncreaseScore(worth.BoxPointWorth);
+            PlayerScore.instance.DisplayGainedScore(worth.BoxPointWorth);
+            PlayerScore.instance.SetGainedScorePosition(other.transform.position);
         }
     }
 }

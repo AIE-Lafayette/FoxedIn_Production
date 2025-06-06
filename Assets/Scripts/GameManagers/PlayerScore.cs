@@ -9,9 +9,11 @@ public class PlayerScore : MonoBehaviour
     public static PlayerScore instance;
 
     [Header("Player Score References")]
-    [SerializeField] private TextMeshProUGUI _playerScoreEarned;
     [SerializeField] private TextMeshProUGUI _playerScore;
     [SerializeField] private GameObject _scoreEarnedImage;
+    public GameObject canvasUI;
+    private TextMeshProUGUI _playerScoreEarned;
+    private GameObject _scoreVFX;
 
     private int _currentScore;
     private int _scoreEarned;
@@ -21,17 +23,16 @@ public class PlayerScore : MonoBehaviour
     public void Awake()
     {
         instance = this;
-        _scoreEarnedImage.SetActive(false);
     }
 
     public void Update()
     {
         // Updating the displayed score
         _playerScore.text = "Current Score: " + _currentScore.ToString();
-        _playerScoreEarned.text = "+" + _scoreEarned.ToString();
 
         if (_displayActive)
         {
+            _playerScoreEarned.text = "+" + _scoreEarned.ToString();
             StartCoroutine(DeativateScore());
             _displayActive = false;
         }
@@ -44,10 +45,24 @@ public class PlayerScore : MonoBehaviour
 
     public void DisplayGainedScore(int v)
     {
-        _scoreEarnedImage.SetActive(true);
+        GameObject image = ObjectPool.SharedInstance.ActivateAnObject(_scoreEarnedImage);
+        image.transform.SetParent(canvasUI.transform);
+        Transform PointsEarnedText = image.gameObject.transform.GetChild(0);
+        _scoreVFX = image.gameObject.transform.GetChild(1).gameObject;
+        _playerScoreEarned = PointsEarnedText.GetComponent<TextMeshProUGUI>();
+
         _scoreEarned = v;
         _displayLength -= Time.deltaTime;
         _displayActive = true;
+    }
+
+    public void SetGainedScorePosition(Vector3 pos)
+    {
+        Vector3 posSet = new Vector3(pos.x - 5, pos.y, 0);
+        _scoreVFX.transform.position = posSet;
+
+        Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, posSet);
+        _playerScoreEarned.transform.position = screenPoint;
     }
 
     IEnumerator DeativateScore()

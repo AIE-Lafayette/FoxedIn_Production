@@ -77,6 +77,10 @@ public class BoxMovement : MonoBehaviour
         if (Physics.Raycast(transform.position, new Vector3(-1, 0, 0), transform.localScale.x / 2))
         {
             _anObjectToLeft = true;
+            if (!_hitFromLeft)
+            {
+                StopSliding();
+            }
         }
         else
         {
@@ -86,6 +90,10 @@ public class BoxMovement : MonoBehaviour
         if (Physics.Raycast(transform.position, new Vector3(1, 0, 0), transform.localScale.x / 2))
         {
             _anObjectToRight = true;
+            if (_hitFromLeft)
+            {
+                StopSliding();
+            }
         }
         else
         {
@@ -96,7 +104,8 @@ public class BoxMovement : MonoBehaviour
 
         if (!_sliding)
         {
-            transform.position = new Vector3 (_nearestGridPoint, transform.position.y, transform.position.z);
+            transform.position = new Vector3 (FindNearestXGridPoint(), transform.position.y, transform.position.z);
+            Debug.Log("Locked to nearest grid point: " + transform.position.x);
             _distanceTracker = 0;
             return;
         }
@@ -122,7 +131,8 @@ public class BoxMovement : MonoBehaviour
             //Stop sliding after translating a total of a box to the right
             if (_distanceTracker >= 5)
             {
-                _nearestGridPoint = _nearestGridPoint + 5;
+                Debug.Log("stopped sliding right");
+                _nearestGridPoint = FindNearestXGridPoint();
                 StopSliding();
             }
 
@@ -159,7 +169,8 @@ public class BoxMovement : MonoBehaviour
             //Stop sliding after translating a total of a box to the left
             if (_distanceTracker >= 5)
             {
-                _nearestGridPoint = _nearestGridPoint - 5;
+                Debug.Log("stopped sliding left");
+                _nearestGridPoint = FindNearestXGridPoint();
                 StopSliding();
             }
 
