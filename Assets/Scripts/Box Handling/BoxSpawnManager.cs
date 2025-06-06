@@ -82,35 +82,35 @@ public class BoxSpawner : MonoBehaviour
         if (boxChoice < 5 && ObjectPool.SharedInstance.useGold)
         {
             boxChoice = 100;
-            boxToSpawn = ObjectPool.SharedInstance.goldToPool;
+            boxToSpawn = ObjectPool.SharedInstance.goldBoxToPool;
         }
         //blue
         else if (boxChoice < 20 && ObjectPool.SharedInstance.useBlue)
         {
             boxChoice = 50;
-            boxToSpawn = ObjectPool.SharedInstance.blueToPool;
+            boxToSpawn = ObjectPool.SharedInstance.blueBoxToPool;
         }
         //green
         else if (boxChoice < 50 && ObjectPool.SharedInstance.useGreen)
         {
             boxChoice = 25;
-            boxToSpawn = ObjectPool.SharedInstance.greenToPool;
+            boxToSpawn = ObjectPool.SharedInstance.greenBoxToPool;
         }
         //brown
         else if (boxChoice < 100 && ObjectPool.SharedInstance.useBrown)
         {
             boxChoice = 10;
-            boxToSpawn = ObjectPool.SharedInstance.brownToPool;
+            boxToSpawn = ObjectPool.SharedInstance.brownBoxToPool;
         }
         //bomb
         else if (boxChoice < 103 && ObjectPool.SharedInstance.useBomb)
         {
-            boxToSpawn = ObjectPool.SharedInstance.bombToPool;
+            boxToSpawn = ObjectPool.SharedInstance.bombBoxToPool;
         }
         //rocket
         else if(boxChoice <= 105 && ObjectPool.SharedInstance.useRocket)
         {
-            boxToSpawn = ObjectPool.SharedInstance.rocketToPool;
+            boxToSpawn = ObjectPool.SharedInstance.rocketBoxToPool;
         }
 
         //If number doesn't allign with anything that is enabled
@@ -120,19 +120,19 @@ public class BoxSpawner : MonoBehaviour
             if(ObjectPool.SharedInstance.useGreen)
             {
                 //Spawn a green
-                boxToSpawn = ObjectPool.SharedInstance.greenToPool;
+                boxToSpawn = ObjectPool.SharedInstance.greenBoxToPool;
             }
             //Otherwise check if blue is enabled
             else if (ObjectPool.SharedInstance.useBlue)
             {
                 //Spawn a blue
-                boxToSpawn = ObjectPool.SharedInstance.blueToPool;
+                boxToSpawn = ObjectPool.SharedInstance.blueBoxToPool;
             }
             //else check if gold is enabled
             else if (ObjectPool.SharedInstance.useGold)
             {
                 //Spawn a gold
-                boxToSpawn = ObjectPool.SharedInstance.goldToPool;
+                boxToSpawn = ObjectPool.SharedInstance.goldBoxToPool;
             }
             //if all else fails
             else
@@ -142,12 +142,12 @@ public class BoxSpawner : MonoBehaviour
                 // If bomb is disabled use rocket
                 if (!(ObjectPool.SharedInstance.useBomb))
                 {
-                    boxToSpawn = ObjectPool.SharedInstance.rocketToPool;
+                    boxToSpawn = ObjectPool.SharedInstance.rocketBoxToPool;
                 }
                 // If rocket is disabled use bomb
                 if (!(ObjectPool.SharedInstance.useRocket))
                 {
-                    boxToSpawn = ObjectPool.SharedInstance.bombToPool;
+                    boxToSpawn = ObjectPool.SharedInstance.bombBoxToPool;
                 }
 
                 // If both are active choose one
@@ -155,12 +155,12 @@ public class BoxSpawner : MonoBehaviour
                 //If ranBox is one use bomb
                 if (ranBox < 50)
                 {
-                    boxToSpawn = ObjectPool.SharedInstance.bombToPool;
+                    boxToSpawn = ObjectPool.SharedInstance.bombBoxToPool;
                 }
                 //If ranBox is two use rocket
                 if (ranBox >= 50)
                 {
-                    boxToSpawn = ObjectPool.SharedInstance.rocketToPool;
+                    boxToSpawn = ObjectPool.SharedInstance.rocketBoxToPool;
                 }
             }
         }
@@ -195,7 +195,7 @@ public class BoxSpawner : MonoBehaviour
         //For testing, boxes will all fall in a specific column
         if (_debugSpawnInOneSpot)
         {
-            Box.transform.position = new Vector3(15, _gridHeight * _boxSize, 5);
+            Box.transform.position = new Vector3(_debugSpawnLocation, _gridHeight * _boxSize, 5);
         }
 
         if (_debugSpawnLeftToRight)
