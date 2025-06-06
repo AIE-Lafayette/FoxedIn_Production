@@ -25,11 +25,15 @@ public class RocketClearing : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.transform.TryGetComponent(out BoxFallingBehavior boxFalling))
         {
             other.transform.gameObject.SetActive(false);
+            BoxWorth worth = other.transform.GetComponent<BoxWorth>();
+            PlayerScore.instance.IncreaseScore(worth.BoxPointWorth);
+            PlayerScore.instance.DisplayGainedScore(worth.BoxPointWorth);
+            PlayerScore.instance.SetGainedScorePosition(other.transform.position);
         }
     }
 }
