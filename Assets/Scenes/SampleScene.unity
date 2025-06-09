@@ -2487,7 +2487,7 @@ BoxCollider:
     m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 247
+    m_Bits: 503
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -2648,7 +2648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerScore: {fileID: 524788344}
-  _scoreEarnedImage: {fileID: 2082368392}
+  _scoreEarnedImage: {fileID: 1347644498676433263, guid: cea4f77cfeb2fc846a48579e520ae421, type: 3}
   canvasUI: {fileID: 1558722461}
 --- !u!114 &801490605
 MonoBehaviour:
@@ -8669,7 +8669,7 @@ MonoBehaviour:
   rocketBoxToPool: {fileID: 6308788570755824627, guid: ee542c48348f5f44e8fef512aeae1482, type: 3}
   bombToPool: {fileID: 6308788570755824627, guid: 1e421804321772b45aee02d3088b0f84, type: 3}
   rocketToPool: {fileID: 6308788570755824627, guid: f13d63151477be34b9c11f23b636ad83, type: 3}
-  scoreEarnedImage: {fileID: 524788342}
+  scoreEarnedImage: {fileID: 1347644498676433263, guid: cea4f77cfeb2fc846a48579e520ae421, type: 3}
   useBrown: 1
   useGreen: 1
   useBlue: 1
