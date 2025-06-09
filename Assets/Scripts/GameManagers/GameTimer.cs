@@ -8,19 +8,29 @@ public class PlayerTimer : MonoBehaviour
 {
     [Header("Game Timer Text Reference")]
     [SerializeField] private TextMeshProUGUI _timerText;
+    [Header("Player Object Reference")]
+    [SerializeField] private GameObject _player;
 
     // The time that has passed
     private float _currentTime;
-
+    private PlayerDeath _playerDeath;
     public float CurrentTime { get { return _currentTime; } }
 
-    private void Update()
+    void Update()
     {
+        //if (_playerDeath.WasCrushed)
+        //{
+        //    _currentTime = Time.deltaTime;
+        //}
+
         DisplayCurrentTime();
     }
 
     void DisplayCurrentTime()
     {
+        if (!_player)
+            return;
+
         _currentTime += Time.deltaTime;
         float minutes = Mathf.FloorToInt(_currentTime / 60);
         float seconds = Mathf.FloorToInt(_currentTime % 60);
