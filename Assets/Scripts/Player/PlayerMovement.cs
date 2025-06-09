@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Settings")]
     [SerializeField] private float _moveSpeed = 10.0f;
-    [SerializeField] private float _jumpPower = 28.5f;
+    [SerializeField] private float _jumpPower = 32.5f;
     [SerializeField] private float _maxDistance = 1.0f;
 
     [Header("Ground Check")]
@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private Rigidbody _playerRB;
     private Animator _animator;
+    private bool _increaseGravity;
+    private float _velocityCheck;
 
     //public InputActionReference move;
 
@@ -29,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _playerRB = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
+        _velocityCheck = 0.0f;
     }
 
     private void FixedUpdate()
@@ -36,12 +39,28 @@ public class PlayerMovement : MonoBehaviour
         // Moves the character
         _playerRB.velocity = new Vector2(horizontal * _moveSpeed, _playerRB.velocity.y);
 
+        
+
+        if (_velocityCheck > _playerRB.velocity.y)
+        {
+            _increaseGravity = true;
+        }
+
+        _velocityCheck = _playerRB.velocity.y;
+
+        if (_increaseGravity)
+        {
+            _playerRB.velocity = new Vector2(_playerRB.velocity.x, _playerRB.velocity.y - 0.5f);
+        }
+
         //Rotates the character
         Vector3 movement = new Vector3(horizontal, 0.0f, 0.0f);
+
         if (movement.x == 0)
         {
             return;
         }
+
         transform.rotation = Quaternion.LookRotation(movement);
     }
 
@@ -57,7 +76,8 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && GroundCheck())
         {
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
-            _playerRB.velocity = new Vector2(_playerRB.velocity.x, _jumpPower);
+            _playerRB.velocity = new Vector2(/*_playerRB.velocity.x*/0, _jumpPower);
+
  
         }
 
@@ -65,22 +85,23 @@ public class PlayerMovement : MonoBehaviour
         if (context.canceled && _playerRB.velocity.y > 0f)
         {
             _playerRB.velocity = new Vector2(_playerRB.velocity.x, _playerRB.velocity.y * 0.3f);
+            _increaseGravity = true;
         }
     }
 
-    public void Fall(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            _playerRB.velocity = new Vector2(_playerRB.velocity.x, -_jumpPower);
-        }
-    }
+    //public void Fall(InputAction.CallbackContext context)
+    //{
+    //    if (context.performed)
+    //    {
+    //        _playerRB.velocity = new Vector2(_playerRB.velocity.x, -_jumpPower);
+    //    }
+    //}
 
     bool GroundCheck()
     {
         if (Physics.BoxCast(transform.position, _objectSize, -transform.up, transform.rotation, _maxDistance, layerMask))
         {
-            //_jumped = false;
+            _increaseGravity = false;
             return true;
             
         }

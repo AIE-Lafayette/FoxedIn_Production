@@ -105,7 +105,7 @@ public class BoxMovement : MonoBehaviour
         if (!_sliding)
         {
             transform.position = new Vector3 (FindNearestXGridPoint(), transform.position.y, transform.position.z);
-            Debug.Log("Locked to nearest grid point: " + transform.position.x);
+            
             _distanceTracker = 0;
             return;
         }
