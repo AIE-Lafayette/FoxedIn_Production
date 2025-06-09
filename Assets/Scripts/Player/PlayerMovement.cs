@@ -21,12 +21,14 @@ public class PlayerMovement : MonoBehaviour
     // Standard float for horizontal movement
     private float horizontal;
     private Rigidbody _playerRB;
+    private Animator _animator;
 
     //public InputActionReference move;
 
     private void Start()
     {
         _playerRB = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
