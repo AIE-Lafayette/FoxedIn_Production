@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Settings")]
     [SerializeField] private float _moveSpeed = 10.0f;
-    [SerializeField] private float _jumpPower = 32.5f;
+    [SerializeField] private float _jumpPower = 20.0f;
     [SerializeField] private float _maxDistance = 1.0f;
 
     [Header("Ground Check")]
@@ -21,17 +21,20 @@ public class PlayerMovement : MonoBehaviour
     // Standard float for horizontal movement
     private float horizontal;
     private Rigidbody _playerRB;
-    private Animator _animator;
+    //private Animator _animator;
     private bool _increaseGravity;
     private float _velocityCheck;
+
+    //public float playerSpeed;
 
     //public InputActionReference move;
 
     private void Start()
     {
         _playerRB = GetComponent<Rigidbody>();
-        _animator = GetComponent<Animator>();
+        //_animator = GetComponent<Animator>();
         _velocityCheck = 0.0f;
+        //playerSpeed = _playerRB.velocity.x;
     }
 
     private void FixedUpdate()
@@ -77,8 +80,6 @@ public class PlayerMovement : MonoBehaviour
         {
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
             _playerRB.velocity = new Vector2(/*_playerRB.velocity.x*/0, _jumpPower);
-
- 
         }
 
         // Whenever button is released, cut the y velocity.
@@ -97,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
     //    }
     //}
 
-    bool GroundCheck()
+    public bool GroundCheck()
     {
         if (Physics.BoxCast(transform.position, _objectSize, -transform.up, transform.rotation, _maxDistance, layerMask))
         {
