@@ -2647,9 +2647,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa0c12b60ac81b48b9ec37feafde286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerScoreEarned: {fileID: 1850290242}
   _playerScore: {fileID: 524788344}
   _scoreEarnedImage: {fileID: 2082368392}
+  canvasUI: {fileID: 1558722461}
 --- !u!114 &801490605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8661,20 +8661,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  brownToPool: {fileID: 6308788570755824627, guid: 7f8274e67e92fb04594bcd4228eba3cf, type: 3}
-  greenToPool: {fileID: 6308788570755824627, guid: be5d5945caaccce4385901d1985811cc, type: 3}
-  blueToPool: {fileID: 6308788570755824627, guid: 3fe109820bd78d64899cbe5381971f64, type: 3}
-  goldToPool: {fileID: 6308788570755824627, guid: a446fa30c0b20ab4886312874e8bbdb1, type: 3}
-  bombToPool: {fileID: 6308788570755824627, guid: b4a0ca8f37f7d6b448a971c48e7be4d4, type: 3}
-  rocketToPool: {fileID: 6308788570755824627, guid: ee542c48348f5f44e8fef512aeae1482, type: 3}
-  bombLineToPool: {fileID: 6308788570755824627, guid: 1e421804321772b45aee02d3088b0f84, type: 3}
-  rocketLineToPool: {fileID: 6308788570755824627, guid: f13d63151477be34b9c11f23b636ad83, type: 3}
+  brownBoxToPool: {fileID: 6308788570755824627, guid: 7f8274e67e92fb04594bcd4228eba3cf, type: 3}
+  greenBoxToPool: {fileID: 6308788570755824627, guid: be5d5945caaccce4385901d1985811cc, type: 3}
+  blueBoxToPool: {fileID: 6308788570755824627, guid: 3fe109820bd78d64899cbe5381971f64, type: 3}
+  goldBoxToPool: {fileID: 6308788570755824627, guid: a446fa30c0b20ab4886312874e8bbdb1, type: 3}
+  bombBoxToPool: {fileID: 6308788570755824627, guid: b4a0ca8f37f7d6b448a971c48e7be4d4, type: 3}
+  rocketBoxToPool: {fileID: 6308788570755824627, guid: ee542c48348f5f44e8fef512aeae1482, type: 3}
+  bombToPool: {fileID: 6308788570755824627, guid: 1e421804321772b45aee02d3088b0f84, type: 3}
+  rocketToPool: {fileID: 6308788570755824627, guid: f13d63151477be34b9c11f23b636ad83, type: 3}
+  scoreEarnedImage: {fileID: 524788342}
   useBrown: 1
   useGreen: 1
   useBlue: 1
   useGold: 1
-  useBomb: 0
-  useRocket: 0
+  useBomb: 1
+  useRocket: 1
 --- !u!1 &1462134045
 GameObject:
   m_ObjectHideFlags: 0
@@ -9002,7 +9003,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543800462}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
