@@ -3,17 +3,28 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BrownBox
+  - GreenBox
+  - BlueBox
+  - GoldBox
+  - TestBox
+  - TailSwipeHItBox
+  - BombBox
+  - RocketBox
+  - Bomb
+  - Rocket
+  - scoreEarned
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Box
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Ground
+  - Player
+  - Trigger
   - 
   - 
   - 
