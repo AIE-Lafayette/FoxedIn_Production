@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
 public class PlayerTimer : MonoBehaviour
 {
+    [Header("Game Timer Text Reference")]
     [SerializeField] private TextMeshProUGUI _timerText;
 
     // The time that has passed

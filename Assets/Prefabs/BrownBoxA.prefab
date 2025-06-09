@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 7764236231607760812}
   - component: {fileID: -5876743681479010708}
   - component: {fileID: 1328563705820810577}
+  - component: {fileID: 5233310437685252217}
   - component: {fileID: 521153729361113004}
+  - component: {fileID: -8472896696136577556}
   m_Layer: 3
   m_Name: BrownBoxA
   m_TagString: BrownBox
@@ -106,7 +108,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.975, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-5876743681479010708
 Rigidbody:
@@ -147,6 +149,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2670153bc9582479f9e5c7a2f2c158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5233310437685252217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6308788570755824627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a768c10891a3ef5468d63e3cbbeef9a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _boxMaxHealth: 5
+  _boxStartingHealth: 5
 --- !u!114 &521153729361113004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,3 +176,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1950176223605209737, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
+--- !u!114 &-8472896696136577556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6308788570755824627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 219fcd39d4a0b0844b2814d7e455cf91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _boxWorth: 10
+  _boxMultiplier: 2

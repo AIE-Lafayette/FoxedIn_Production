@@ -15,12 +15,6 @@ public class PlayerDeath : MonoBehaviour
     private bool collisionAbove = false;
     private bool collisionBelow = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -62,7 +56,7 @@ public class PlayerDeath : MonoBehaviour
             collisionAbove = true;
         }
         //If the collision is below them or they are low enough
-        if (collision.transform.position.y < transform.position.y || transform.position.y <= -1.3)
+        if (collision.transform.position.y < transform.position.y || transform.position.y <= 0)
         {
             //collisionBelow is true
             collisionBelow = true;
