@@ -131,7 +131,6 @@ public class BoxMovement : MonoBehaviour
             //Stop sliding after translating a total of a box to the right
             if (_distanceTracker >= 5)
             {
-                Debug.Log("stopped sliding right");
                 _nearestGridPoint = FindNearestXGridPoint();
                 StopSliding();
             }
@@ -169,7 +168,6 @@ public class BoxMovement : MonoBehaviour
             //Stop sliding after translating a total of a box to the left
             if (_distanceTracker >= 5)
             {
-                Debug.Log("stopped sliding left");
                 _nearestGridPoint = FindNearestXGridPoint();
                 StopSliding();
             }
