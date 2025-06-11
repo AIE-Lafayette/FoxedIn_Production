@@ -624,9 +624,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801490605}
-        m_TargetAssemblyTypeName: EndScene, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 801490606}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2666,6 +2666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseMenu: {fileID: 2094339688}
+  _player: {fileID: 0}
 --- !u!1 &852210247
 GameObject:
   m_ObjectHideFlags: 0

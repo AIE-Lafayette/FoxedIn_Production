@@ -28,14 +28,19 @@ public class PlayerAnimationsTrigger : MonoBehaviour
     void Update()
     {
         bool moving = Input.GetKey("a") || Input.GetKey("d");
-        bool swiping = Input.GetKey("e");
+        bool swiping = Input.GetKeyDown("e");
+
+        if (swiping)
+        {
+            StartCoroutine(PreparingAnimations("SwipeGround"));
+        }
 
         if (moving)
         {
             //_anim.SetBool("IdleWalkRun", true);
             _anim.SetFloat("Speed", _speed);
         }
-        if (!moving)
+        else if (!moving)
         {
             _anim.SetFloat("Speed", 0);
         }
@@ -49,7 +54,7 @@ public class PlayerAnimationsTrigger : MonoBehaviour
             //_anim.SetFloat("Speed", _jumpSpeed);
             //_jumpSpeed += 0.1f;
         }
-        if (!jumping)
+        else if (!jumping)
         {
             _anim.SetBool("JumpCycle", false);
             //_jumpSpeed = 0.0f;
@@ -61,5 +66,23 @@ public class PlayerAnimationsTrigger : MonoBehaviour
         //    // Wait for the transition to end
         //    //yield return new WaitUntil(() => _anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f);
         //}
+    }
+
+    IEnumerator PreparingAnimations(string swipeGround)
+    {
+        _anim.SetTrigger("SwipeGround");
+
+        //// Wait for transition to end
+        //yield return new WaitUntil(() => _anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f);
+
+        //// Wait for the animation to end
+        //yield return new WaitWhile(() => _anim.GetCurrentAnimatorStateInfo(0).IsName("SwipeGround"));
+
+        while (_anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        {
+            yield return null;
+        }
+
+        Debug.Log("Animation finished");
     }
 }

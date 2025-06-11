@@ -26,7 +26,7 @@ public class ModelRotation : MonoBehaviour
         {
             // 200
             //transform.eulerAngles = new Vector3(0, -195, 0);
-            transform.eulerAngles = new Vector3(0, -200, 0);
+            transform.eulerAngles = new Vector3(0, -190, 0);
         }
     }
 }
