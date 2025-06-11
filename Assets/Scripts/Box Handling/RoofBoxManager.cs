@@ -18,7 +18,7 @@ public class RoofBoxManager : MonoBehaviour
     {
         if (other.transform.TryGetComponent(out BoxFallingBehavior boxFalling))
         {
-            if (!(boxFalling.Falling))
+            if (!boxFalling.Falling)
             {
                 _boxAtTop = true;
             }
