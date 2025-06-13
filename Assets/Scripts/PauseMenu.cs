@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameObject _player;
 
     private void Start()
     {
@@ -26,5 +28,11 @@ public class PauseMenu : MonoBehaviour
     {
         _pauseMenu.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void Retry()
+    {
+
+        SceneManager.LoadScene("SampleScene");
     }
 }
