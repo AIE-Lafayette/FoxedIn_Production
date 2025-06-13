@@ -12,16 +12,27 @@ public class ObjectPool : MonoBehaviour
     public List<GameObject> pooledObjects;
 
     [Header("Objects in pool")]
-    public GameObject brownToPool;
-    public GameObject greenToPool;
-    public GameObject blueToPool;
-    public GameObject goldToPool;
+    public GameObject brownBoxToPool;
+    public GameObject greenBoxToPool;
+    public GameObject blueBoxToPool;
+    public GameObject goldBoxToPool;
+    public GameObject bombBoxToPool;
+    public GameObject rocketBoxToPool;
+    public GameObject bombToPool;
+    public GameObject rocketToPool;
+
+
+    [Header("UI elements")]
+    public GameObject scoreEarnedImage;
 
     [Header("Objects To Use")]
     public bool useBrown = false;
     public bool useGreen = false;
     public bool useBlue = false;
     public bool useGold = false;
+    public bool useBomb = false;
+    public bool useRocket = false;
+
 
     //[Header("Amount of each object in pool")]
     //[Range(0, 100)]
@@ -144,8 +155,6 @@ public class ObjectPool : MonoBehaviour
         return pooledObjects[Object];
     }
     
-
-
     //Add the object given into the pool
     public void AddObjectToPool(GameObject addedObject)
     {
@@ -159,23 +168,43 @@ public class ObjectPool : MonoBehaviour
     {
         //Makes the pool
         pooledObjects = new List<GameObject>();
+
+        for (int i = 0; i < 25; i++)
+        {
+            AddObjectToPool(scoreEarnedImage);
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            AddObjectToPool(bombToPool);
+            AddObjectToPool(rocketToPool);
+        }
+
         for (int i = 0; i < amountToPool; i++)
         {
             if (useGold)
             {
-                AddObjectToPool(goldToPool);
+                AddObjectToPool(goldBoxToPool);
             }
             if (useBlue)
             {
-                AddObjectToPool(blueToPool);
+                AddObjectToPool(blueBoxToPool);
             }
             if (useGreen)
             {
-                AddObjectToPool(greenToPool);
+                AddObjectToPool(greenBoxToPool);
             }
             if (useBrown)
             {
-                AddObjectToPool(brownToPool);
+                AddObjectToPool(brownBoxToPool);
+            }
+            if (useBomb)
+            {
+                AddObjectToPool(bombBoxToPool);
+            }
+            if (useRocket)
+            {
+                AddObjectToPool(rocketBoxToPool);
             }
         }
     }
