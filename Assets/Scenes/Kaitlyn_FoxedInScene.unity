@@ -659,7 +659,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4692671863855545810, guid: 493ecae1966f38443b262e054dfc2e1c, type: 3}
       propertyPath: m_Name
-      value: BOXHER0Z_GOLDBox_TEST
+      value: BOXHER0Z_GOLDBox
       objectReference: {fileID: 0}
     - target: {fileID: 6507938605224203495, guid: 493ecae1966f38443b262e054dfc2e1c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -875,7 +875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 920011013029667495, guid: 54e7e97a44c6a4d49a75d9c14c0bf69b, type: 3}
       propertyPath: m_Name
-      value: BOXHER0Z_BLUEBox
+      value: BOXHER0Z_BLUEBox_OLD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -932,7 +932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7775088038837243238, guid: de33eebd7797e0e41adcc582c2b13b9f, type: 3}
       propertyPath: m_Name
-      value: BOXHER0Z_BROWNBox
+      value: BOXHER0Z_BROWNBox_OLD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -989,7 +989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1005743589492175810, guid: 7e9c05c9dc5e45545b29f34d1e327a90, type: 3}
       propertyPath: m_Name
-      value: BOXHER0Z_GREENBox_TEST
+      value: BOXHER0Z_GREENBox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1011,7 +1011,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 397756558678194957, guid: f1374ad772212a64e94cc6ac72d9cd42, type: 3}
       propertyPath: m_Name
-      value: BOXHER0Z_GREENBox
+      value: BOXHER0Z_GREENBox_OLD
       objectReference: {fileID: 0}
     - target: {fileID: 1067016485197062583, guid: f1374ad772212a64e94cc6ac72d9cd42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1068,7 +1068,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4737630365303614058, guid: 242dd141aed9812409ab9b8cab497f5a, type: 3}
       propertyPath: m_Name
-      value: BOXHER0Z_GOLDBox
+      value: BOXHER0Z_GOLDBox_OLD
       objectReference: {fileID: 0}
     - target: {fileID: 5401118993743802576, guid: 242dd141aed9812409ab9b8cab497f5a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1165,7 +1165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2218346712298856999, guid: d832aa89948608a48841a326708f6b0b, type: 3}
       propertyPath: m_Name
-      value: BOXHER0Z_BROWNBox_TEST
+      value: BOXHER0Z_BROWNBox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1187,7 +1187,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8071176967795100528, guid: 5de4718dd12d78743b1225d1b13ca468, type: 3}
       propertyPath: m_Name
-      value: BOXHER0Z_BLUEBox_TEST
+      value: BOXHER0Z_BLUEBox
       objectReference: {fileID: 0}
     - target: {fileID: 8883706631008653770, guid: 5de4718dd12d78743b1225d1b13ca468, type: 3}
       propertyPath: m_LocalPosition.x
