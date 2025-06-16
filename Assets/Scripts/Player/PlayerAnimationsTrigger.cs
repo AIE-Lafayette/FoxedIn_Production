@@ -42,7 +42,7 @@ public class PlayerAnimationsTrigger : MonoBehaviour
                 //reset triggers
 
                 //...return to idle animation
-                _anim.SetTrigger("IdleWalkRun");
+                _anim.SetBool("IdleWalkRun", true);
                 _anim.SetFloat("Speed", 0);
             }
         }
@@ -50,26 +50,26 @@ public class PlayerAnimationsTrigger : MonoBehaviour
         if (moving && _playerMovement.GroundCheck())
         {
             //Set to IdleWalkRun and set to the run value
-            _anim.SetTrigger("IdleWalkRun");
+            _anim.SetBool("IdleWalkRun", true);
             _anim.SetFloat("Speed", _speed);
         }
         if (!moving && _playerMovement.GroundCheck())
         {
             //Set to IdleWalkRun and set to the idle value
-            _anim.SetTrigger("IdleWalkRun");
+            _anim.SetBool("IdleWalkRun", true);
             _anim.SetFloat("Speed", 0);
         }
 
         if (swiping && _playerMovement.GroundCheck())
         {
             //Set to SwipeGround
-            _anim.SetTrigger("SwipeGround");
+            _anim.SetBool("SwipeGround", true);
             _anim.SetFloat("Speed", 0);
         }
         else if(swiping && !_playerMovement.GroundCheck())
         {
             //Set to AirSwipe
-            _anim.SetTrigger("AirSwipe");
+            _anim.SetBool("AirSwipe", true);
             _anim.SetFloat("Speed", 0);
         }
 
@@ -92,6 +92,8 @@ public class PlayerAnimationsTrigger : MonoBehaviour
         //If curret state isnt airswipe and in air
         if (!_anim.GetCurrentAnimatorStateInfo(0).IsName("AirSwipe") && !_playerMovement.GroundCheck() && _rb.velocity.y <=1)
         {
+            _anim.SetBool("IdleWalkRun", false);
+            _anim.SetBool("JumpStart", false);
             _anim.SetBool("JumpAir", true);
             _anim.SetFloat("Speed", 0);
         }
@@ -99,20 +101,9 @@ public class PlayerAnimationsTrigger : MonoBehaviour
         //If current state is JumpAir and grounded
         if (_anim.GetCurrentAnimatorStateInfo(0).IsName("JumpAir") && _playerMovement.GroundCheck())
         {
+            _anim.SetBool("JumpAir", false);
             _anim.SetBool("JumpEnd", true);
             _anim.SetFloat("Speed", 0);
         }
     }
-
-    //IEnumerator PreparingAnimations(string swipeGround)
-    //{
-    //    _anim.SetTrigger("SwipeGround");
-
-    //    while (_anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-    //    {
-    //        yield return null;
-    //    }
-
-    //    Debug.Log("Animation finished");
-    //}
 }
