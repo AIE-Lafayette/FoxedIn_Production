@@ -18,6 +18,10 @@ public class BoxMovement : MonoBehaviour
     private float _distancePerIter = 0.15f;
     private float _distanceTracker = 0.0f;
 
+    private bool _hitVisualActive;
+    private bool _bouncingRight;
+    private float _bounceDistance;
+
     public bool IsSliding { get { return _sliding; } }
 
     //True means hit from left false means hit from right
@@ -68,122 +72,137 @@ public class BoxMovement : MonoBehaviour
         return closestGridPoint;
     }
 
+    public void StartVisual()
+    {
+        _hitVisualActive = true;
+    }
+
+    void BoxHitVisual()
+    {
+
+    }
     // Update is called once per frame
     void Update()
     {
-        #region "Raycast Checks"
-
-        //Left Cast
-        if (Physics.Raycast(transform.position, new Vector3(-1, 0, 0), transform.localScale.x / 2))
+        if (!_hitVisualActive)
         {
-            _anObjectToLeft = true;
-            if (!_hitFromLeft)
+            #region "Raycast Checks"
+
+            //Left Cast
+            if (Physics.Raycast(transform.position, new Vector3(-1, 0, 0), transform.localScale.x / 2))
             {
-                StopSliding();
+                _anObjectToLeft = true;
+                if (!_hitFromLeft)
+                {
+                    StopSliding();
+                }
+            }
+            else
+            {
+                _anObjectToLeft = false;
+            }
+            //Right Cast
+            if (Physics.Raycast(transform.position, new Vector3(1, 0, 0), transform.localScale.x / 2))
+            {
+                _anObjectToRight = true;
+                if (_hitFromLeft)
+                {
+                    StopSliding();
+                }
+            }
+            else
+            {
+                _anObjectToRight = false;
+            }
+
+            #endregion
+
+            if (!_sliding)
+            {
+                transform.position = new Vector3(FindNearestXGridPoint(), transform.position.y, transform.position.z);
+                _distanceTracker = 0;
+                return;
+            }
+
+            //If the box was hit from the left (meaning the player was on the left on the box)
+            if (_hitFromLeft == true && _anObjectToRight == false)
+            {
+                //Push box to Right
+
+                //Used
+                #region "Box pushing with translate"
+
+                //Setting iter value
+                _distancePerIter = Mathf.Abs(_distancePerIter);
+
+                //Translating right
+                Vector3 translate = new Vector3(_distancePerIter, 0.0f, 0.0f);
+                transform.Translate(translate);
+
+                //Increment __distanceTracker
+                _distanceTracker += _distancePerIter;
+
+                //Stop sliding after translating a total of a box to the right
+                if (_distanceTracker >= 5)
+                {
+                    _nearestGridPoint = FindNearestXGridPoint();
+                    StopSliding();
+                }
+
+                #endregion
+
+                //Unused
+                #region "Box pushing with velocity"
+
+                //boxRigidBody.velocity = new Vector3(15, 0, 0);
+                //Invoke(nameof(StopSliding), 0.5f);
+
+                #endregion
+
+            }
+
+            //If the box was hit from the right (meaning the player was on the right on the box)
+            else if (_hitFromLeft == false && _anObjectToLeft == false)
+            {
+                //Push box to left
+
+                //Used
+                #region "Box pushing with translate"
+
+                //Setting iter value
+                _distancePerIter = Mathf.Abs(_distancePerIter);
+                _distancePerIter = _distancePerIter * -1;
+
+                //Translating left
+                Vector3 translate = new Vector3(_distancePerIter, 0.0f, 0.0f);
+                transform.Translate(translate);
+
+                //Increment i
+                _distanceTracker -= _distancePerIter;
+
+                //Stop sliding after translating a total of a box to the left
+                if (_distanceTracker >= 5)
+                {
+                    _nearestGridPoint = FindNearestXGridPoint();
+                    StopSliding();
+                }
+
+                #endregion
+
+                //Unused
+                #region "Box pushing with velocity"
+
+                //boxRigidBody.velocity = new Vector3(-15, 0, 0);
+                //Invoke(nameof(StopSliding), 0.5f); 
+
+                #endregion
+
             }
         }
         else
         {
-            _anObjectToLeft = false;
+            BoxHitVisual();
         }
-        //Right Cast
-        if (Physics.Raycast(transform.position, new Vector3(1, 0, 0), transform.localScale.x / 2))
-        {
-            _anObjectToRight = true;
-            if (_hitFromLeft)
-            {
-                StopSliding();
-            }
-        }
-        else
-        {
-            _anObjectToRight = false;
-        }
-
-        #endregion
-
-        if (!_sliding)
-        {
-            transform.position = new Vector3 (FindNearestXGridPoint(), transform.position.y, transform.position.z);
-            
-            _distanceTracker = 0;
-            return;
-        }
-
-        //If the box was hit from the left (meaning the player was on the left on the box)
-        if (_hitFromLeft == true && _anObjectToRight == false)
-        {
-            //Push box to Right
-
-            //Used
-            #region "Box pushing with translate"
-
-            //Setting iter value
-            _distancePerIter = Mathf.Abs(_distancePerIter);
-
-            //Translating right
-            Vector3 translate = new Vector3(_distancePerIter, 0.0f, 0.0f);
-            transform.Translate(translate);
-
-            //Increment __distanceTracker
-            _distanceTracker += _distancePerIter;
-
-            //Stop sliding after translating a total of a box to the right
-            if (_distanceTracker >= 5)
-            {
-                _nearestGridPoint = FindNearestXGridPoint();
-                StopSliding();
-            }
-
-            #endregion
-
-            //Unused
-            #region "Box pushing with velocity"
-
-            //boxRigidBody.velocity = new Vector3(15, 0, 0);
-            //Invoke(nameof(StopSliding), 0.5f);
-
-            #endregion
-
-        }
-        //If the box was hit from the right (meaning the player was on the right on the box)
-        else if (_hitFromLeft == false && _anObjectToLeft == false)
-        {
-            //Push box to left
-
-            //Used
-            #region "Box pushing with translate"
-
-            //Setting iter value
-            _distancePerIter = Mathf.Abs(_distancePerIter);
-            _distancePerIter = _distancePerIter * -1;
-
-            //Translating left
-            Vector3 translate = new Vector3(_distancePerIter, 0.0f, 0.0f);
-            transform.Translate(translate);
-
-            //Increment i
-            _distanceTracker -= _distancePerIter;
-
-            //Stop sliding after translating a total of a box to the left
-            if (_distanceTracker >= 5)
-            {
-                _nearestGridPoint = FindNearestXGridPoint();
-                StopSliding();
-            }
-
-            #endregion
-
-            //Unused
-            #region "Box pushing with velocity"
-
-            //boxRigidBody.velocity = new Vector3(-15, 0, 0);
-            //Invoke(nameof(StopSliding), 0.5f); 
-
-            #endregion
-
-        }
-
     }
 
     private void OnDisable()

@@ -11,7 +11,7 @@ public class ModelRotation : MonoBehaviour
         //    // -110
         //    transform.eulerAngles = new Vector3(0, -110, 0);
         //}
-        //if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        //if (Input.GetKey(KeyCode.D) || Input.GetKey(KeayCode.RightArrow))
         //{
         //    // 200
         //    transform.eulerAngles = new Vector3(0, 200, 0);
@@ -25,8 +25,7 @@ public class ModelRotation : MonoBehaviour
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             // 200
-            //transform.eulerAngles = new Vector3(0, -195, 0);
-            transform.eulerAngles = new Vector3(0, -190, 0);
+            transform.eulerAngles = new Vector3(0, -155, 0);
         }
     }
 }

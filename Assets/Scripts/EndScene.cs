@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class EndScene : MonoBehaviour
 {
+
+
     public void PlayGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

@@ -52,7 +52,7 @@ public class BoxFallingBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //If object is at or somehow below 0
         if(ObjectRigidBody.position.y <= 0)
@@ -80,6 +80,20 @@ public class BoxFallingBehavior : MonoBehaviour
             {
                 colliding = true;
                 DisableFalling();
+            }
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        Vector3 otherPosition = collision.transform.position;
+
+        //If the collision object is in the same grid column
+        if (transform.position.x == otherPosition.x)
+        {
+            //If the collision object is below
+            if (otherPosition.y < transform.position.y)
+            {
+                colliding = false;
             }
         }
     }
