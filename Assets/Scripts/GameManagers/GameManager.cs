@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
         if (_roofBoxManager.BoxAtTop)
         {
             OnBoxReachesTop.Invoke();
+            RestartGame();
         }
 
 
