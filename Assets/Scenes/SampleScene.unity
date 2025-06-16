@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84150debefb87aa4db408c35a701c00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingSpawnRate: 2.5
+  _startingSpawnRate: 5
   _spawnLimit: 100
   _debugSpawnInOneSpot: 0
   _debugSpawnLeftToRight: 0
@@ -8750,8 +8750,8 @@ MonoBehaviour:
   useGreen: 1
   useBlue: 1
   useGold: 1
-  useBomb: 0
-  useRocket: 0
+  useBomb: 1
+  useRocket: 1
 --- !u!1 &1420790888
 GameObject:
   m_ObjectHideFlags: 0
