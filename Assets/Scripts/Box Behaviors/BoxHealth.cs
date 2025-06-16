@@ -42,6 +42,10 @@ public class BoxHealth : MonoBehaviour
                     bombBehavior.SpawnBomb();
                 }
             }
+            BoxWorth worth = transform.GetComponent<BoxWorth>();
+            PlayerScore.instance.IncreaseScore(worth.BoxPointWorth);
+            PlayerScore.instance.DisplayGainedScore(worth.BoxPointWorth);
+            PlayerScore.instance.SetGainedScorePosition(transform.position);
             transform.gameObject.SetActive(false);
         }
     }

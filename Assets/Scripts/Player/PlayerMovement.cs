@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Settings")]
     [SerializeField] private float _moveSpeed = 10.0f;
-    [SerializeField] private float _jumpPower = 28.5f;
+    [SerializeField] private float _jumpPower = 20.0f;
     [SerializeField] private float _maxDistance = 1.0f;
 
     [Header("Ground Check")]
@@ -18,17 +18,27 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] private Vector3 _objectSize;
 
+    
+
     // Standard float for horizontal movement
     private float horizontal;
     private Rigidbody _playerRB;
-    private Animator _animator;
+    //private Animator _animator;
+    private bool _increaseGravity;
+    private float _velocityCheck;
+    private bool _jumpPerformed;
 
+    //public float playerSpeed;
+    public float PlayerHorizontal { get { return horizontal; } }
+    public bool JumpPerformed { get { return _jumpPerformed; } set { _jumpPerformed = value; } }
     //public InputActionReference move;
 
     private void Start()
     {
         _playerRB = GetComponent<Rigidbody>();
-        _animator = GetComponent<Animator>();
+        //_animator = GetComponent<Animator>();
+        _velocityCheck = 0.0f;
+        //playerSpeed = _playerRB.velocity.x;
     }
 
     private void FixedUpdate()
@@ -36,12 +46,28 @@ public class PlayerMovement : MonoBehaviour
         // Moves the character
         _playerRB.velocity = new Vector2(horizontal * _moveSpeed, _playerRB.velocity.y);
 
+        
+
+        if (_velocityCheck > _playerRB.velocity.y)
+        {
+            _increaseGravity = true;
+        }
+
+        _velocityCheck = _playerRB.velocity.y;
+
+        if (_increaseGravity)
+        {
+            _playerRB.velocity = new Vector2(_playerRB.velocity.x, _playerRB.velocity.y - 0.5f);
+        }
+
         //Rotates the character
         Vector3 movement = new Vector3(horizontal, 0.0f, 0.0f);
+
         if (movement.x == 0)
         {
             return;
         }
+
         transform.rotation = Quaternion.LookRotation(movement);
     }
 
@@ -56,31 +82,33 @@ public class PlayerMovement : MonoBehaviour
         // If the jump control is performed and we are grounded
         if (context.performed && GroundCheck())
         {
+            _jumpPerformed = true;
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
-            _playerRB.velocity = new Vector2(_playerRB.velocity.x, _jumpPower);
- 
+            _playerRB.velocity = new Vector2(/*_playerRB.velocity.x*/0, _jumpPower);
         }
 
         // Whenever button is released, cut the y velocity.
         if (context.canceled && _playerRB.velocity.y > 0f)
         {
+            _jumpPerformed = false;
             _playerRB.velocity = new Vector2(_playerRB.velocity.x, _playerRB.velocity.y * 0.3f);
+            _increaseGravity = true;
         }
     }
 
-    public void Fall(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            _playerRB.velocity = new Vector2(_playerRB.velocity.x, -_jumpPower);
-        }
-    }
+    //public void Fall(InputAction.CallbackContext context)
+    //{
+    //    if (context.performed)
+    //    {
+    //        _playerRB.velocity = new Vector2(_playerRB.velocity.x, -_jumpPower);
+    //    }
+    //}
 
-    bool GroundCheck()
+    public bool GroundCheck()
     {
         if (Physics.BoxCast(transform.position, _objectSize, -transform.up, transform.rotation, _maxDistance, layerMask))
         {
-            //_jumped = false;
+            _increaseGravity = false;
             return true;
             
         }

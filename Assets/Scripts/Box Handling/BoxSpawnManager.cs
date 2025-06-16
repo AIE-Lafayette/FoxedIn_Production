@@ -112,6 +112,12 @@ public class BoxSpawner : MonoBehaviour
         {
             boxToSpawn = ObjectPool.SharedInstance.rocketBoxToPool;
         }
+        //brown
+        else if (boxChoice > 0 && ObjectPool.SharedInstance.useBrown)
+        {
+            boxChoice = 10;
+            boxToSpawn = ObjectPool.SharedInstance.brownBoxToPool;
+        }
 
         //If number doesn't allign with anything that is enabled
         else
@@ -173,16 +179,16 @@ public class BoxSpawner : MonoBehaviour
 
         GameObject Box = ObjectPool.SharedInstance.GetSpecifiedPooledObject(boxToSpawn);
         //If somehow all the boxes of this color are already active then instantiate a new one
-        if (Box == null)
-        {
-            GameObject temp = Instantiate(boxToSpawn);
-            temp.SetActive(false);
-            ObjectPool.SharedInstance.AddObjectToPool(boxToSpawn);
-            Box = temp;
-        }
+        //if (Box == null)
+        //{
+        //    GameObject temp = Instantiate(boxToSpawn);
+        //    temp.SetActive(false);
+        //    ObjectPool.SharedInstance.AddObjectToPool(boxToSpawn);
+        //    Box = temp;
+        //}
 
         ObjectPool.SharedInstance.ActivateAnObject(Box);
-        Box.transform.localScale = new Vector3(_boxSize, _boxSize, 10);
+        Box.transform.localScale = new Vector3(_boxSize, _boxSize, _boxSize);
         Box.transform.GetComponent<Rigidbody>().velocity = new Vector3(0, 5, 0);
 
         if (!(_debugSpawnLeftToRight) && !(_debugSpawnInOneSpot))
