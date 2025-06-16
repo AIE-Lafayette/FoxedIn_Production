@@ -4,24 +4,25 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerAnimationsTrigger : MonoBehaviour
 {
-    //private Rigidbody _rb;
     [Header("Player Component References")]
     private PlayerMovement _playerMovement;
     private PlayerTailSwipe _tailSwipe;
     private Animator _anim;
+    private Rigidbody _rb;
 
     private float _speed = 1.0f;
-    private float _jumpSpeed = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         _anim = GetComponentInChildren<Animator>();
-        //_rb = GetComponent<Rigidbody>();
         _playerMovement = GetComponent<PlayerMovement>();
+        _rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -29,60 +30,80 @@ public class PlayerAnimationsTrigger : MonoBehaviour
     {
         bool moving = Input.GetKey("a") || Input.GetKey("d");
         bool swiping = Input.GetKeyDown("e");
+        bool jumping = Input.GetKey("w");
 
-        if (swiping)
+
+        //If there is no input, is grounded,
+        if (!moving && !swiping && !jumping && _playerMovement.GroundCheck())
         {
-            StartCoroutine(PreparingAnimations("SwipeGround"));
+            //...and the current animation is done
+            if (_anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+            {
+                //reset triggers
+
+                //...return to idle animation
+                _anim.SetBool("IdleWalkRun", true);
+                _anim.SetFloat("Speed", 0);
+            }
         }
 
-        if (moving)
+        if (moving && _playerMovement.GroundCheck())
         {
-            //_anim.SetBool("IdleWalkRun", true);
+            //Set to IdleWalkRun and set to the run value
+            _anim.SetBool("IdleWalkRun", true);
             _anim.SetFloat("Speed", _speed);
         }
-        else if (!moving)
+        if (!moving && _playerMovement.GroundCheck())
         {
+            //Set to IdleWalkRun and set to the idle value
+            _anim.SetBool("IdleWalkRun", true);
             _anim.SetFloat("Speed", 0);
         }
 
-        bool jumping = Input.GetKey("w");
-
-        if (jumping)
+        if (swiping && _playerMovement.GroundCheck())
         {
-            _anim.SetTrigger("JumpCycle");
-            //_anim.SetBool("JumpCycle", true);
-            //_anim.SetFloat("Speed", _jumpSpeed);
-            //_jumpSpeed += 0.1f;
+            //Set to SwipeGround
+            _anim.SetBool("SwipeGround", true);
+            _anim.SetFloat("Speed", 0);
         }
-        else if (!jumping)
+        else if(swiping && !_playerMovement.GroundCheck())
         {
-            _anim.SetBool("JumpCycle", false);
-            //_jumpSpeed = 0.0f;
+            //Set to AirSwipe
+            _anim.SetBool("AirSwipe", true);
+            _anim.SetFloat("Speed", 0);
         }
 
-        //if (swiping)
-        //{
-        //    _anim.SetTrigger("SwipeGround");
-        //    // Wait for the transition to end
-        //    //yield return new WaitUntil(() => _anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f);
-        //}
-    }
-
-    IEnumerator PreparingAnimations(string swipeGround)
-    {
-        _anim.SetTrigger("SwipeGround");
-
-        //// Wait for transition to end
-        //yield return new WaitUntil(() => _anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f);
-
-        //// Wait for the animation to end
-        //yield return new WaitWhile(() => _anim.GetCurrentAnimatorStateInfo(0).IsName("SwipeGround"));
-
-        while (_anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        //if not jumpin and on ground
+        if(!jumping && _playerMovement.GroundCheck())
         {
-            yield return null;
+            _anim.SetBool("JumpStart", false);
+            _anim.SetBool("JumpAir", false);
+            _anim.SetBool("JumpEnd", false);
         }
 
-        Debug.Log("Animation finished");
+        //If jumping and and can jump
+        if (!_anim.GetCurrentAnimatorStateInfo(0).IsName("AirSwipe") && _rb.velocity.y > 1)
+        {
+            _anim.SetBool("IdleWalkRun", false);
+            _anim.SetBool("JumpStart", true);
+            _anim.SetFloat("Speed", 0);
+        }
+
+        //If curret state isnt airswipe and in air
+        if (!_anim.GetCurrentAnimatorStateInfo(0).IsName("AirSwipe") && !_playerMovement.GroundCheck() && _rb.velocity.y <=1)
+        {
+            _anim.SetBool("IdleWalkRun", false);
+            _anim.SetBool("JumpStart", false);
+            _anim.SetBool("JumpAir", true);
+            _anim.SetFloat("Speed", 0);
+        }
+
+        //If current state is JumpAir and grounded
+        if (_anim.GetCurrentAnimatorStateInfo(0).IsName("JumpAir") && _playerMovement.GroundCheck())
+        {
+            _anim.SetBool("JumpAir", false);
+            _anim.SetBool("JumpEnd", true);
+            _anim.SetFloat("Speed", 0);
+        }
     }
 }

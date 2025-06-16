@@ -112,6 +112,12 @@ public class BoxSpawner : MonoBehaviour
         {
             boxToSpawn = ObjectPool.SharedInstance.rocketBoxToPool;
         }
+        //brown
+        else if (boxChoice > 0 && ObjectPool.SharedInstance.useBrown)
+        {
+            boxChoice = 10;
+            boxToSpawn = ObjectPool.SharedInstance.brownBoxToPool;
+        }
 
         //If number doesn't allign with anything that is enabled
         else
@@ -182,7 +188,7 @@ public class BoxSpawner : MonoBehaviour
         }
 
         ObjectPool.SharedInstance.ActivateAnObject(Box);
-        Box.transform.localScale = new Vector3(_boxSize, _boxSize, 10);
+        Box.transform.localScale = new Vector3(_boxSize, _boxSize, 7.5f);
         Box.transform.GetComponent<Rigidbody>().velocity = new Vector3(0, 5, 0);
 
         if (!(_debugSpawnLeftToRight) && !(_debugSpawnInOneSpot))
