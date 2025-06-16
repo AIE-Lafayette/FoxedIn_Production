@@ -18,15 +18,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] private Vector3 _objectSize;
 
+    
+
     // Standard float for horizontal movement
     private float horizontal;
     private Rigidbody _playerRB;
     //private Animator _animator;
     private bool _increaseGravity;
     private float _velocityCheck;
+    private bool _jumpPerformed;
 
     //public float playerSpeed;
-
+    public float PlayerHorizontal { get { return horizontal; } }
+    public bool JumpPerformed { get { return _jumpPerformed; } }
     //public InputActionReference move;
 
     private void Start()
@@ -78,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
         // If the jump control is performed and we are grounded
         if (context.performed && GroundCheck())
         {
+            _jumpPerformed = true;
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
             _playerRB.velocity = new Vector2(/*_playerRB.velocity.x*/0, _jumpPower);
         }
@@ -85,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         // Whenever button is released, cut the y velocity.
         if (context.canceled && _playerRB.velocity.y > 0f)
         {
+            _jumpPerformed = false;
             _playerRB.velocity = new Vector2(_playerRB.velocity.x, _playerRB.velocity.y * 0.3f);
             _increaseGravity = true;
         }

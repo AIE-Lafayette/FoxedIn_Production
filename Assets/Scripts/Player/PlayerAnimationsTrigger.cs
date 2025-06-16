@@ -22,15 +22,44 @@ public class PlayerAnimationsTrigger : MonoBehaviour
     {
         _anim = GetComponentInChildren<Animator>();
         _playerMovement = GetComponent<PlayerMovement>();
+        _tailSwipe = GetComponent<PlayerTailSwipe>();
         _rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        bool moving = Input.GetKey("a") || Input.GetKey("d");
-        bool swiping = Input.GetKeyDown("e");
-        bool jumping = Input.GetKey("w");
+        bool moving;
+        bool swiping;
+        bool jumping;
+
+        if (_playerMovement.PlayerHorizontal == 0)
+        {
+            moving = false;
+        }
+        else
+        {
+            moving = true;
+        }
+
+        if (_tailSwipe.TailSwipePerformed)
+        {
+            swiping = true;
+            _tailSwipe.TailSwipePerformed = false;
+        }
+        else
+        {
+            swiping = false;
+        }
+
+        if (_playerMovement.JumpPerformed)
+        {
+            jumping = true;
+        }
+        else
+        {
+            jumping = false;
+        }
 
 
         //If there is no input, is grounded,
@@ -82,7 +111,7 @@ public class PlayerAnimationsTrigger : MonoBehaviour
         }
 
         //If jumping and and can jump
-        if (!_anim.GetCurrentAnimatorStateInfo(0).IsName("AirSwipe") && _rb.velocity.y > 1)
+        if (jumping && !_anim.GetCurrentAnimatorStateInfo(0).IsName("AirSwipe") && _rb.velocity.y > 1)
         {
             _anim.SetBool("IdleWalkRun", false);
             _anim.SetBool("JumpStart", true);

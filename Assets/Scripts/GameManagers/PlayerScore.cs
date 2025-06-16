@@ -29,13 +29,6 @@ public class PlayerScore : MonoBehaviour
     {
         // Updating the displayed score
         _playerScore.text = "Current Score: " + _currentScore.ToString();
-
-        if (_displayActive)
-        {
-            _playerScoreEarned.text = "+" + _scoreEarned.ToString();
-            StartCoroutine(DeativateScore());
-            _displayActive = false;
-        }
     }
 
     public void IncreaseScore(int v)
@@ -54,6 +47,10 @@ public class PlayerScore : MonoBehaviour
         _scoreEarned = v;
         _displayLength -= Time.deltaTime;
         _displayActive = true;
+
+        string _scoreEarnedTXT = _scoreEarned.ToString();
+        _playerScoreEarned.text = "+" + _scoreEarnedTXT;
+        //StartCoroutine(DeactivateScore());
     }
 
     public void SetGainedScorePosition(Vector3 pos)
@@ -65,10 +62,10 @@ public class PlayerScore : MonoBehaviour
         _playerScoreEarned.transform.position = screenPoint;
     }
 
-    IEnumerator DeativateScore()
-    {
-        yield return new WaitForSeconds(_displayLength);
-        _scoreEarnedImage.SetActive(false);
-    }
+    //IEnumerator DeactivateScore()
+    //{
+    //    yield return new WaitForSeconds(_displayLength);
+    //    _displayActive = false;
+    //}
 
 }
