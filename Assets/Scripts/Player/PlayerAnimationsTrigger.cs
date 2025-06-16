@@ -16,10 +16,12 @@ public class PlayerAnimationsTrigger : MonoBehaviour
     private Rigidbody _rb;
 
     private float _speed = 1.0f;
+    private bool _canJump;
 
     // Start is called before the first frame update
     void Start()
     {
+        _canJump = false;
         _anim = GetComponentInChildren<Animator>();
         _playerMovement = GetComponent<PlayerMovement>();
         _tailSwipe = GetComponent<PlayerTailSwipe>();
@@ -55,6 +57,7 @@ public class PlayerAnimationsTrigger : MonoBehaviour
         if (_playerMovement.JumpPerformed)
         {
             jumping = true;
+            _playerMovement.JumpPerformed = false;
         }
         else
         {
@@ -103,7 +106,7 @@ public class PlayerAnimationsTrigger : MonoBehaviour
         }
 
         //if not jumpin and on ground
-        if(!jumping && _playerMovement.GroundCheck())
+        if(!jumping && _rb.velocity.y < 1 && _rb.velocity.y > -1)
         {
             _anim.SetBool("JumpStart", false);
             _anim.SetBool("JumpAir", false);
@@ -111,7 +114,7 @@ public class PlayerAnimationsTrigger : MonoBehaviour
         }
 
         //If jumping and and can jump
-        if (jumping && !_anim.GetCurrentAnimatorStateInfo(0).IsName("AirSwipe") && _rb.velocity.y > 1)
+        if (!_anim.GetCurrentAnimatorStateInfo(0).IsName("AirSwipe") && _rb.velocity.y > 1)
         {
             _anim.SetBool("IdleWalkRun", false);
             _anim.SetBool("JumpStart", true);

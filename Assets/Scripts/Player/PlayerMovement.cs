@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     //public float playerSpeed;
     public float PlayerHorizontal { get { return horizontal; } }
-    public bool JumpPerformed { get { return _jumpPerformed; } }
+    public bool JumpPerformed { get { return _jumpPerformed; } set { _jumpPerformed = value; } }
     //public InputActionReference move;
 
     private void Start()

@@ -421,7 +421,7 @@ MonoBehaviour:
   _maxDistance: 1
   layerMask:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 456
   groundCheck: {fileID: 5872566131305109085}
   _objectSize: {x: 1, y: 1, z: 1}
 --- !u!114 &4425300515672272893
