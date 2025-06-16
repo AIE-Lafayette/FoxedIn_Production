@@ -182,7 +182,7 @@ public class BoxSpawner : MonoBehaviour
         }
 
         ObjectPool.SharedInstance.ActivateAnObject(Box);
-        Box.transform.localScale = new Vector3(_boxSize, _boxSize, 10);
+        Box.transform.localScale = new Vector3(_boxSize, _boxSize, _boxSize);
         Box.transform.GetComponent<Rigidbody>().velocity = new Vector3(0, 5, 0);
 
         if (!(_debugSpawnLeftToRight) && !(_debugSpawnInOneSpot))
