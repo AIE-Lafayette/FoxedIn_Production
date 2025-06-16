@@ -25,7 +25,7 @@ public class ModelRotation : MonoBehaviour
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             // 200
-            transform.eulerAngles = new Vector3(0, -155, 0);
+            transform.eulerAngles = new Vector3(0, -180, 0);
         }
     }
 }

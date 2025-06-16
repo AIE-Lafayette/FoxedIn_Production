@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 882094680266583402}
   - component: {fileID: 8098929079573801499}
   - component: {fileID: 7164998433848928103}
-  - component: {fileID: 8655694002613542399}
   m_Layer: 5
   m_Name: PointsEarnedText (TMP)
   m_TagString: Untagged
@@ -225,18 +224,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8655694002613542399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5495216436679878367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a900f2434dac66d4ea6670197a486528, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &480683526919922781
 PrefabInstance:
   m_ObjectHideFlags: 0

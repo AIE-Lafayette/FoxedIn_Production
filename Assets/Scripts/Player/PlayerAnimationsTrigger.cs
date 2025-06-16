@@ -16,21 +16,53 @@ public class PlayerAnimationsTrigger : MonoBehaviour
     private Rigidbody _rb;
 
     private float _speed = 1.0f;
+    private bool _canJump;
 
     // Start is called before the first frame update
     void Start()
     {
+        _canJump = false;
         _anim = GetComponentInChildren<Animator>();
         _playerMovement = GetComponent<PlayerMovement>();
+        _tailSwipe = GetComponent<PlayerTailSwipe>();
         _rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        bool moving = Input.GetKey("a") || Input.GetKey("d");
-        bool swiping = Input.GetKeyDown("e");
-        bool jumping = Input.GetKey("w");
+        bool moving;
+        bool swiping;
+        bool jumping;
+
+        if (_playerMovement.PlayerHorizontal == 0)
+        {
+            moving = false;
+        }
+        else
+        {
+            moving = true;
+        }
+
+        if (_tailSwipe.TailSwipePerformed)
+        {
+            swiping = true;
+            _tailSwipe.TailSwipePerformed = false;
+        }
+        else
+        {
+            swiping = false;
+        }
+
+        if (_playerMovement.JumpPerformed)
+        {
+            jumping = true;
+            _playerMovement.JumpPerformed = false;
+        }
+        else
+        {
+            jumping = false;
+        }
 
 
         //If there is no input, is grounded,
@@ -74,7 +106,7 @@ public class PlayerAnimationsTrigger : MonoBehaviour
         }
 
         //if not jumpin and on ground
-        if(!jumping && _playerMovement.GroundCheck())
+        if(!jumping && _rb.velocity.y < 1 && _rb.velocity.y > -1)
         {
             _anim.SetBool("JumpStart", false);
             _anim.SetBool("JumpAir", false);
