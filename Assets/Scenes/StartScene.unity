@@ -857,6 +857,8 @@ MonoBehaviour:
   _creditsTextBackground: {fileID: 47340133}
   _optionsTextBackground: {fileID: 1200423205}
   _scoreboardTextBackground: {fileID: 847119021}
+  _target: {fileID: 1634819398}
+  _smoothTime: 0.25
 --- !u!114 &217804452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5034,6 +5036,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240662280}
   m_CullTransparentMesh: 1
+--- !u!1001 &1253301621
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3621654634091542016, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_Name
+      value: Arcade Room Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525086598070032950, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525086598070032950, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525086598070032950, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525086598070032950, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525086598070032950, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525086598070032950, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525086598070032950, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525086598070032950, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525086598070032950, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525086598070032950, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
 --- !u!1 &1282696923
 GameObject:
   m_ObjectHideFlags: 0
@@ -8236,3 +8295,4 @@ SceneRoots:
   - {fileID: 883543144}
   - {fileID: 1282696926}
   - {fileID: 543131126}
+  - {fileID: 1253301621}
