@@ -1223,6 +1223,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1329682203283730614, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
+      propertyPath: m_Size.y
+      value: 1.9
+      objectReference: {fileID: 0}
     - target: {fileID: 1776562801995509357, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1754,6 +1758,10 @@ PrefabInstance:
     - target: {fileID: 9133214570371015102, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
       propertyPath: m_Radius
       value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133214570371015102, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

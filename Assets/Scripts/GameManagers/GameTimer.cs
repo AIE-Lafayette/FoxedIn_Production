@@ -13,8 +13,12 @@ public class PlayerTimer : MonoBehaviour
 
     // The time that has passed
     private float _currentTime;
+    //private int _difficultyTimer;
+    //private int _difficultyLevel;
     private PlayerDeath _playerDeath;
     public float CurrentTime { get { return _currentTime; } }
+    //public float DifficultyTimer { get { return _difficultyTimer; } }
+    //public float DifficultyLevel { get { return _difficultyLevel; } }
 
     void Update()
     {
