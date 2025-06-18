@@ -20,6 +20,7 @@ public class PlayerTailSwipe : MonoBehaviour
     public bool cannotSwing = false;
     private float _reloadSwingTimer = 0.75f;
     private bool _tailSwipePerformed;
+    private bool _hasCollided = false;
 
     public bool TailSwipePerformed { get { return _tailSwipePerformed; } set { _tailSwipePerformed = value; } }
 
@@ -54,6 +55,10 @@ public class PlayerTailSwipe : MonoBehaviour
             Invoke(nameof(DisableSwipeHitBox), 0.5f);
             //_anim.SetTrigger("SwipeGround");
         }
+        if (_hasCollided)
+        {
+            Invoke(nameof(DisableSwipeHitBox), 0.1f);
+        }
     }
 
     void DisableSwipeHitBox()
@@ -79,7 +84,18 @@ public class PlayerTailSwipe : MonoBehaviour
 
         //_canSwing = true;
         cannotSwing = false;
+        _hasCollided = false;
+        Debug.Log(_hasCollided);
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!_hasCollided)
+        {
+            _hasCollided = true;
+            Debug.Log(_hasCollided);
+        }
+    }
+
+
 }
