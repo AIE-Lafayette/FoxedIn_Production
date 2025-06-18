@@ -216,7 +216,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 2, z: 1.0000002}
+  m_Size: {x: 1.0000002, y: 1.9, z: 1.0000002}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &9133214570371015102
 CapsuleCollider:
@@ -235,7 +235,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
@@ -583,3 +583,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9737b59e73706d488c6022c4f507a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HitEffect: {fileID: 0}

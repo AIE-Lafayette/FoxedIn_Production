@@ -32,6 +32,15 @@ public class PlayerDeath : MonoBehaviour
         {
             _wasCrushed = false;
         }
+
+        if (_wasCrushed)
+        {
+            Time.timeScale = 0;
+        }
+        //else
+        //{
+        //    Time.timeScale = 1;
+        //}
     }
 
     private void OnCollisionStay(Collision collision)
