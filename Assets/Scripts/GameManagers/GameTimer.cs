@@ -8,12 +8,18 @@ public class PlayerTimer : MonoBehaviour
 {
     [Header("Game Timer Text Reference")]
     [SerializeField] private TextMeshProUGUI _timerText;
+    [Header("Time to difficulty increase")]
+    [SerializeField] private TextMeshProUGUI _timerDifficultyIncreaseText;
+    [Header("Current difficulty")]
+    [SerializeField] private TextMeshProUGUI _timerCurrentDifficultyText;
     [Header("Player Object Reference")]
     [SerializeField] private GameObject _player;
 
     // The time that has passed
     private float _currentTime;
-    private PlayerDeath _playerDeath;
+    private float _currentGameSpeed = 1.10f;
+    private float _boxesfalling = 2;
+    private float _increaseTime = 1;
     public float CurrentTime { get { return _currentTime; } }
 
     void Update()
@@ -24,6 +30,8 @@ public class PlayerTimer : MonoBehaviour
         //}
 
         DisplayCurrentTime();
+        DisplayDifficultyIncrease();
+        DisplayCurrentDifficulty();
     }
 
     void DisplayCurrentTime()
@@ -35,5 +43,22 @@ public class PlayerTimer : MonoBehaviour
         float minutes = Mathf.FloorToInt(_currentTime / 60);
         float seconds = Mathf.FloorToInt(_currentTime % 60);
         _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    void DisplayDifficultyIncrease()
+    {
+        if (!_player)
+            return;
+
+        _timerDifficultyIncreaseText.text = string.Format("Next Difficulty Increase: " + _increaseTime);
+    }
+
+    void DisplayCurrentDifficulty()
+    {
+        if (!_player)
+            return;
+
+        _timerCurrentDifficultyText.text = string.Format("Game Speed: " + _currentGameSpeed + "    Boxes Falling:  " + _boxesfalling);
+        //_timerCurrentDifficultyText.text = string.Format("{0}:{3}" + "{1}:{2}", _currentGameSpeed, _boxesfalling);
     }
 }
