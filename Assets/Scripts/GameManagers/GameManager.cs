@@ -42,8 +42,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        controlLayoutSelectorObject = GameObject.Find("LayoutSelector");
-        _layout = controlLayoutSelectorObject.GetComponent<ControlLayoutSelector>().ControlScheme;
 
         //Player Script checks
         if (!(player.TryGetComponent<PlayerDeath>(out _playerDeath)))

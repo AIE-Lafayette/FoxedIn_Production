@@ -27,10 +27,13 @@ public class PlayerMovement : MonoBehaviour
     private bool _increaseGravity;
     private float _velocityCheck;
     private bool _jumpPerformed;
+    private bool _moving = false;
 
     //public float playerSpeed;
     public float PlayerHorizontal { get { return horizontal; } }
     public bool JumpPerformed { get { return _jumpPerformed; } set { _jumpPerformed = value; } }
+
+    public bool Moving { get { return _moving; } set { _moving = value; } }
     //public InputActionReference move;
 
     private void Start()
@@ -75,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<Vector2>().x;
+        _moving = true;
     }
 
     public void Jump(InputAction.CallbackContext context)
