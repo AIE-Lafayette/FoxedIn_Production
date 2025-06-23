@@ -168,11 +168,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingSpawnRate: 5
   _spawnLimit: 100
+  _amountToSpawn: 1
   _debugSpawnInOneSpot: 0
   _debugSpawnLeftToRight: 0
   _gridWidth: 10
   _gridHeight: 10
   _boxSize: 5
+  gameManager: {fileID: 801490600}
 --- !u!1 &27661392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1701,7 +1703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5922064123709004589, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
       propertyPath: _canDie
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5952771938373175827, guid: f163fb4c050716e4f902a47785efbf95, type: 3}
       propertyPath: m_Layer
@@ -9461,7 +9463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6308788570755824627, guid: 7f8274e67e92fb04594bcd4228eba3cf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
