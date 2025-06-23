@@ -21,6 +21,7 @@ public class PlayerTailSwipe : MonoBehaviour
     public bool cannotSwing = false;
     private float _reloadSwingTimer = 0.75f;
     private bool _tailSwipePerformed;
+    private bool _hasCollided = false;
 
     public bool TailSwipePerformed { get { return _tailSwipePerformed; } set { _tailSwipePerformed = value; } }
 
@@ -88,5 +89,14 @@ public class PlayerTailSwipe : MonoBehaviour
         cannotSwing = false;
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!_hasCollided)
+        {
+            _hasCollided = true;
+            Debug.Log(_hasCollided);
+        }
+    }
+
+
 }
