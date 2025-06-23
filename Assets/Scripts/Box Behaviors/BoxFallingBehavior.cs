@@ -73,8 +73,17 @@ public class BoxFallingBehavior : MonoBehaviour
         Vector3 otherPosition = collision.transform.position;
 
         //If the collision object is in the same grid column
-        if (transform.position.x == otherPosition.x)
+        if (transform.position.x == collision.transform.position.x)
         {
+            ////If the collision object is at a close enough y to be inside of the box
+            //if (collision.transform.position.y > (transform.position.y - 2.5) && collision.transform.position.y < (transform.position.y + 2.5) || otherPosition.y == transform.position.y)
+            //{
+            //    float randomX = Random.Range(0, 10);
+            //    float randomPos = randomX * 5;
+            //    transform.position = new Vector3 (randomPos, transform.position.y, transform.position.z);
+            //    Debug.Log("Position Changed to " + transform.position.x);
+            //}
+
             //If the collision object is below
             if(otherPosition.y < transform.position.y)
             {
