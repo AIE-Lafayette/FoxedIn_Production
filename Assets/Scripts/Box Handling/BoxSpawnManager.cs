@@ -76,6 +76,12 @@ public class BoxSpawner : MonoBehaviour
     public int GridHeight { get { return _gridHeight; } }
     public int BoxSize { get { return _boxSize; } }
 
+    public int DifficultyLevel { get { return difficultyLevel; } }
+
+    public int AmountSpawning { get { return _amountToSpawn; } }
+
+    public float SpawnRate { get { return _spawnRate; } }
+
     // Start is called before the first frame update
     void Start()
     {

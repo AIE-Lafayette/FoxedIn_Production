@@ -3061,6 +3061,7 @@ MonoBehaviour:
   _timerDifficultyIncreaseText: {fileID: 1711392094}
   _timerCurrentDifficultyText: {fileID: 680407299}
   _player: {fileID: 1816555574}
+  _boxSpawnManager: {fileID: 7080765}
 --- !u!114 &801490604
 MonoBehaviour:
   m_ObjectHideFlags: 0

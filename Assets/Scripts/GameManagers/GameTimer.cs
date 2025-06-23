@@ -14,6 +14,9 @@ public class PlayerTimer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _timerCurrentDifficultyText;
     [Header("Player Object Reference")]
     [SerializeField] private GameObject _player;
+    [Header("Box Spawn Manager Reference")]
+    [SerializeField] private GameObject _boxSpawnManager;
+    private BoxSpawner _boxSpawner;
 
     // The time that has passed
     private float _currentTime;
@@ -23,6 +26,11 @@ public class PlayerTimer : MonoBehaviour
     private bool _increasedTime;
     private int _increasedTimeCounter = 0;
     public float CurrentTime { get { return _currentTime; } }
+
+    private void Start()
+    {
+        _boxSpawner = _boxSpawnManager.GetComponent<BoxSpawner>();
+    }
 
     void Update()
     {
@@ -70,19 +78,20 @@ public class PlayerTimer : MonoBehaviour
         if (!_player)
             return;
 
-        // If time is increased, increase game speed counter
-        if (_increasedTime)
-        {
-            _increasedTime = false;
-            _currentGameSpeed += 0.1f;
-        }
-        // If the time is increased 12 times, reset the counter and increase the boxes falling counter
-        if (_increasedTimeCounter >= 30)
-        {
-            _boxesfalling += 1;
-            _increasedTimeCounter = 0;
-        }
+        //// If time is increased, increase game speed counter
+        //if (_increasedTime)
+        //{
+        //    _increasedTime = false;
+        //    _currentGameSpeed += 0.1f;
+        //}
+        //// If the time is increased 12 times, reset the counter and increase the boxes falling counter
+        //if (_increasedTimeCounter >= 30)
+        //{
+        //    _boxesfalling += 1;
+        //    _increasedTimeCounter = 0;
+        //}
         // Display the current game speed and the amount of boxes falling
-        _timerCurrentDifficultyText.text = string.Format("Game Speed: " + _currentGameSpeed + "    Boxes Falling:  " + _boxesfalling);
+        _timerCurrentDifficultyText.text = string.Format("Drop Rate: " + _boxSpawner.SpawnRate + "\n" +
+            "Boxes Falling:  " + _boxSpawner.AmountSpawning);
     }
 }
