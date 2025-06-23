@@ -91,7 +91,11 @@ public class PlayerTimer : MonoBehaviour
         //    _increasedTimeCounter = 0;
         //}
         // Display the current game speed and the amount of boxes falling
-        _timerCurrentDifficultyText.text = string.Format("Drop Rate: " + _boxSpawner.SpawnRate + "\n" +
+
+        float spawnrate = _boxSpawner.SpawnRate;
+        spawnrate = Mathf.Round(spawnrate * 100) * 0.01f;
+
+        _timerCurrentDifficultyText.text = string.Format("Drop Rate: " + spawnrate + "\n" +
             "Boxes Falling:  " + _boxSpawner.AmountSpawning);
     }
 }
