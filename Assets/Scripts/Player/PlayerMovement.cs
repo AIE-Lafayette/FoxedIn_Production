@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField] private float _moveSpeed = 10.0f;
     [SerializeField] private float _jumpPower = 20.0f;
-    [SerializeField] private float _maxDistance = 1.0f;
+    //[SerializeField] private float _maxDistance = 1.0f;
 
     [Header("Ground Check")]
     //The Layermask is what the ground check will be checking for

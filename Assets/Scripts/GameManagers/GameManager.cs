@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject lineCheck;
     public GameObject roofBoxcheck;
+    private GameObject controlLayoutSelectorObject;
 
     [Header("Ending Events")]
     public UnityEvent OnPlayerCrushed;
@@ -35,9 +37,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject _endScreenTextBackground;
 
+    int _layout;
+
     // Start is called before the first frame update
     void Start()
     {
+        controlLayoutSelectorObject = GameObject.Find("LayoutSelector");
+        _layout = controlLayoutSelectorObject.GetComponent<ControlLayoutSelector>().ControlScheme;
+
         //Player Script checks
         if (!(player.TryGetComponent<PlayerDeath>(out _playerDeath)))
             Debug.LogError("GameManager: Start, Could not get _playerDeath");
@@ -55,6 +62,22 @@ public class GameManager : MonoBehaviour
         //Roof box scripts checks
         if (!(roofBoxcheck.TryGetComponent<RoofBoxManager>(out _roofBoxManager)))
             Debug.LogError("GameManager: Start, Could not get _roofBoxManager");
+
+        //Set player controls
+        switch (_layout)
+        {
+            //Control scheme 1 (W to jump SPACE to tailswipe)
+            case 1:
+                _playerInput.actions.FindActionMap("Player").Enable();
+                _playerInput.actions.FindActionMap("Player1").Disable();
+                break;
+
+            //Control scheme 2 (SPACE to jump W to tailswipe)
+            case 2:
+                _playerInput.actions.FindActionMap("Player1").Enable();
+                _playerInput.actions.FindActionMap("Player").Disable();
+                break;
+        }
     }
 
     // Update is called once per frame
