@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.VFX;
@@ -21,6 +22,11 @@ public class TailSwipeCollision : MonoBehaviour
             Rigidbody boxRigidBody = other.GetComponent<Rigidbody>();
             BoxMovement boxMove = other.GetComponent<BoxMovement>();
             BoxHealth boxHealth = other.GetComponent<BoxHealth>();
+
+            if (!boxHealth.CanBeHit)
+            {
+                return;
+            }
 
             #region "Hit Effect"
 

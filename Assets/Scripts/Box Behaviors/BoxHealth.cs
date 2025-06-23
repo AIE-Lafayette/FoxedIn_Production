@@ -10,18 +10,27 @@ public class BoxHealth : MonoBehaviour
     [Range(0, 5), SerializeField]
     int _boxStartingHealth;
     int _boxCurrentHealth;
+    bool _canBeHit;
 
     public int CurrentHealth { get { return _boxCurrentHealth; } }
+    public bool CanBeHit { get { return _canBeHit; } }
 
     // Start is called before the first frame update
     void Start()
     {
+        _canBeHit = true;
         _boxCurrentHealth = _boxStartingHealth;
     }
 
     public void SubtractHealth()
     {
         _boxCurrentHealth--;
+        _canBeHit = false;
+        Invoke(nameof(SetToCanBeHit), 0.5f);
+    }
+    public void SetToCanBeHit()
+    {
+        _canBeHit = true;
     }
 
     // Update is called once per frame
