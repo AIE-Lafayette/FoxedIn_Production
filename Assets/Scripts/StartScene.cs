@@ -27,13 +27,13 @@ public class StartScene : MonoBehaviour
 
     private void Awake()
     {
-        _offset = transform.position - _target.position;
+        //_offset = transform.position - _target.position;
     }
 
     private void FixedUpdate()
     {
-        Vector3 targetPosition = _target.position + _offset;
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _currentVelocity, _smoothTime);
+        //Vector3 targetPosition = _target.position + _offset;
+        //transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _currentVelocity, _smoothTime);
     }
 
     public void PlayGame()
