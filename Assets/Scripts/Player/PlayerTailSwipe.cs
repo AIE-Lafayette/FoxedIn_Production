@@ -74,7 +74,9 @@ public class PlayerTailSwipe : MonoBehaviour
     void EnableSwipeHitBox()
     {
         boxCol.enabled = true;
-        boxRend.enabled = true;
+
+        //To show the tailswipe hitbox uncomment, to hide the tailswipehitbox comment out
+        //boxRend.enabled = true;
     }
 
     IEnumerator PreparingSwing()
