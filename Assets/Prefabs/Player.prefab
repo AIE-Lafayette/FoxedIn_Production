@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8497165442357620722}
   - component: {fileID: 35888468400923315}
   - component: {fileID: 1776562801995509357}
+  - component: {fileID: 655752648287811868}
   m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.1, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3021137271933689146}
@@ -94,17 +95,29 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 72
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 384
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &655752648287811868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870551525357471715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1012a4816e42c7147a3f50d3e8a15807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1950176223605209737
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +129,7 @@ GameObject:
   - component: {fileID: 3021137271933689146}
   - component: {fileID: 1122358106546056009}
   - component: {fileID: 1998098450946592948}
+  - component: {fileID: 1329682203283730614}
   - component: {fileID: 9133214570371015102}
   - component: {fileID: 5922064123709004589}
   - component: {fileID: 4812393951941680528}
@@ -196,6 +210,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1329682203283730614
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950176223605209737}
+  m_Material: {fileID: 13400000, guid: 126ca7db849c2f642bd5ab811e4204e3, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000002, y: 1.9, z: 1.0000002}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &9133214570371015102
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -361,6 +396,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9b2b8a12-db1c-439c-bfbe-bdb0c102a86b
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f87c5dc8-9091-4d92-a6a5-095db8d9b85a
+    m_ActionName: Player1/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d9d31103-9c62-4687-8649-6b4e9b85215c
+    m_ActionName: Player1/Jump[/Keyboard/space,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8c8b5127-7812-4c0b-8dea-372baaaa4445
+    m_ActionName: Player1/Fall[/Keyboard/s,/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9bda6bcb-4341-49c4-95e3-c84da944f31d
+    m_ActionName: Player1/TailSwipe[/Keyboard/e,/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -383,9 +434,9 @@ MonoBehaviour:
   _maxDistance: 1
   layerMask:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 456
   groundCheck: {fileID: 5872566131305109085}
-  _objectSize: {x: 1, y: 0.2, z: 1}
+  _objectSize: {x: 1, y: 1, z: 1}
 --- !u!114 &4425300515672272893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,6 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tailSwipeHitbox: {fileID: 5952771938373175827}
+  cannotSwing: 0
 --- !u!54 &5357019682876290435
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -455,8 +507,8 @@ Transform:
   m_GameObject: {fileID: 5952771938373175827}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.877}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3021137271933689146}
@@ -476,7 +528,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5952771938373175827}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -544,3 +596,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9737b59e73706d488c6022c4f507a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HitEffect: {fileID: 0}

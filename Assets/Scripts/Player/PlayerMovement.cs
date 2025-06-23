@@ -18,15 +18,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] private Vector3 _objectSize;
 
+    
+
     // Standard float for horizontal movement
     private float horizontal;
     private Rigidbody _playerRB;
     //private Animator _animator;
     private bool _increaseGravity;
     private float _velocityCheck;
+    private bool _jumpPerformed;
 
     //public float playerSpeed;
-
+    public float PlayerHorizontal { get { return horizontal; } }
+    public bool JumpPerformed { get { return _jumpPerformed; } set { _jumpPerformed = value; } }
     //public InputActionReference move;
 
     private void Start()
@@ -76,17 +80,22 @@ public class PlayerMovement : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         // If the jump control is performed and we are grounded
-        if (context.performed && GroundCheck())
+        if (context.performed && OnGround())
         {
+            _jumpPerformed = true;
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
             _playerRB.velocity = new Vector2(/*_playerRB.velocity.x*/0, _jumpPower);
         }
 
         // Whenever button is released, cut the y velocity.
-        if (context.canceled && _playerRB.velocity.y > 0f)
+        if (context.canceled) // && _playerRB.velocity.y > 0f)
         {
-            _playerRB.velocity = new Vector2(_playerRB.velocity.x, _playerRB.velocity.y * 0.3f);
+            _jumpPerformed = false;
             _increaseGravity = true;
+            if (_playerRB.velocity.y > 0f)
+            {
+                _playerRB.velocity = new Vector2(_playerRB.velocity.x, _playerRB.velocity.y * 0.3f);
+            }
         }
     }
 
@@ -98,13 +107,13 @@ public class PlayerMovement : MonoBehaviour
     //    }
     //}
 
-    public bool GroundCheck()
+    public bool OnGround()
     {
-        if (Physics.BoxCast(transform.position, _objectSize, -transform.up, transform.rotation, _maxDistance, layerMask))
+        GroundCheck childGroundCheck = transform.GetChild(0).GetComponent<GroundCheck>();
+        if (childGroundCheck.OnGround) //(Physics.BoxCast(transform.position, _objectSize, -transform.up, transform.rotation, _maxDistance, layerMask))
         {
             _increaseGravity = false;
             return true;
-            
         }
         else
         {
