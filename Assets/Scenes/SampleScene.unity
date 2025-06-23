@@ -168,11 +168,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingSpawnRate: 5
   _spawnLimit: 100
+  _amountToSpawn: 1
   _debugSpawnInOneSpot: 0
   _debugSpawnLeftToRight: 0
   _gridWidth: 10
   _gridHeight: 10
   _boxSize: 5
+  gameManager: {fileID: 801490600}
 --- !u!1 &27661392
 GameObject:
   m_ObjectHideFlags: 0

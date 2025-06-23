@@ -77,7 +77,7 @@ public class PlayerTimer : MonoBehaviour
             _currentGameSpeed += 0.1f;
         }
         // If the time is increased 12 times, reset the counter and increase the boxes falling counter
-        if (_increasedTimeCounter >= 12)
+        if (_increasedTimeCounter >= 30)
         {
             _boxesfalling += 1;
             _increasedTimeCounter = 0;
