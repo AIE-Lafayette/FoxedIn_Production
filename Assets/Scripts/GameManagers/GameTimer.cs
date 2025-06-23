@@ -20,11 +20,11 @@ public class PlayerTimer : MonoBehaviour
 
     // The time that has passed
     private float _currentTime;
-    private float _currentGameSpeed = 0.9f;
-    private int _boxesfalling = 1;
     private float _difficultyIncreaseTime;
-    private bool _increasedTime;
-    private int _increasedTimeCounter = 0;
+    //private float _currentGameSpeed = 0.9f;
+    //private int _boxesfalling = 1;
+    //private bool _increasedTime;
+    //private int _increasedTimeCounter = 0;
     public float CurrentTime { get { return _currentTime; } }
 
     private void Start()
@@ -61,9 +61,7 @@ public class PlayerTimer : MonoBehaviour
         // If the current time is greater than the difficulty increase time, increase the difficulty increase timer
         if (_currentTime >= _difficultyIncreaseTime)
         {
-            _increasedTime = true;
             _difficultyIncreaseTime += 10.0f;
-            _increasedTimeCounter += 1;
         }
         float minutes = Mathf.FloorToInt(_difficultyIncreaseTime / 60);
         float seconds = Mathf.FloorToInt(_difficultyIncreaseTime % 60);
@@ -91,7 +89,11 @@ public class PlayerTimer : MonoBehaviour
         //    _increasedTimeCounter = 0;
         //}
         // Display the current game speed and the amount of boxes falling
-        _timerCurrentDifficultyText.text = string.Format("Drop Rate: " + _boxSpawner.SpawnRate + "\n" +
+
+        float spawnrate = _boxSpawner.SpawnRate;
+        spawnrate = Mathf.Round(spawnrate * 100) * 0.01f;
+
+        _timerCurrentDifficultyText.text = string.Format("Drop Rate: " + spawnrate + "\n" +
             "Boxes Falling:  " + _boxSpawner.AmountSpawning);
     }
 }

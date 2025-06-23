@@ -8,30 +8,61 @@ public class ControlLayoutSelector : MonoBehaviour
     private GameObject _player;
     private PlayerInput _playerInput;
 
-    public void Awake()
+    
+    [SerializeField]
+    GameObject DefaultControlImage;
+    [SerializeField]
+    GameObject AltControlImage;
+    [SerializeField]
+    GameObject OptionsImage;
+
+    private static int _controlScheme = 1;
+    public int ControlScheme { get { return _controlScheme; } set { _controlScheme = value; } }
+
+    public void Start()
     {
-        _playerInput = GetComponent<PlayerInput>();
+        Debug.Log("Start");
+        DontDestroyOnLoad(transform.root.gameObject);
+       _playerInput = GetComponent<PlayerInput>();
         // Setting the defauly action map
         //_inputSelector.SwitchCurrentActionMap("Player");
     }
 
     public void Update()
     {
-        
-    }
-    public void DefaultControls()
-    {
-        // This is an option to switch back to the standard action map
-        //_playerInput.SwitchCurrentActionMap("Player");
-        _playerInput.actions.FindActionMap("Player").Enable();
-        _playerInput.actions.FindActionMap("Player1").Disable();
+        Debug.Log("ControlScheme: " + _controlScheme);
+
+        //Guard
+        if (DefaultControlImage == null || AltControlImage == null || OptionsImage == null)
+        {
+            return;
+        }
+
+        if(OptionsImage.activeInHierarchy)
+        {
+            if (_controlScheme == 1)
+            {
+                AltControlImage.SetActive(false);
+                DefaultControlImage.SetActive(true);
+            }
+            else if(_controlScheme == 2)
+            {
+                DefaultControlImage.SetActive(false);
+                AltControlImage.SetActive(true);
+            }
+        }
+
     }
 
+    //Default
+    public void ControlScheme1()
+    {
+        _controlScheme = 1;
+    }
+
+    //Alt
     public void ControlScheme2()
     {
-        // This is an option to switch to an action map that uses space as jump.
-        //_playerInput.SwitchCurrentActionMap("Player1");
-        _playerInput.actions.FindActionMap("Player1").Enable();
-        _playerInput.actions.FindActionMap("Player").Disable();
+        _controlScheme = 2;
     }
 }

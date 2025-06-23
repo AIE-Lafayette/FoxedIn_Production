@@ -38,14 +38,14 @@ public class PlayerTailSwipe : MonoBehaviour
     {
         GameObject.FindGameObjectsWithTag("TestBox");
 
-        if (animTrigger.Anim.GetCurrentAnimatorStateInfo(0).IsName("AirSwipe"))
-        {
-            Debug.Log("AirSwipe");
-        }
-        if (animTrigger.Anim.GetCurrentAnimatorStateInfo(0).IsName("TailSwipe"))
-        {
-            Debug.Log("TailSwipe");
-        }
+        //if (animTrigger.Anim.GetCurrentAnimatorStateInfo(0).IsName("AirSwipe"))
+        //{
+        //    Debug.Log("AirSwipe");
+        //}
+        //if (animTrigger.Anim.GetCurrentAnimatorStateInfo(0).IsName("TailSwipe"))
+        //{
+        //    Debug.Log("TailSwipe");
+        //}
 
         if (!animTrigger.Anim.GetCurrentAnimatorStateInfo(0).IsName("AirSwipe") && !animTrigger.Anim.GetCurrentAnimatorStateInfo(0).IsName("TailSwipe"))
         {
@@ -96,7 +96,6 @@ public class PlayerTailSwipe : MonoBehaviour
         if (!_hasCollided)
         {
             _hasCollided = true;
-            Debug.Log(_hasCollided);
         }
     }
 

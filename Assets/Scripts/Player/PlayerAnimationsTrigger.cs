@@ -4,9 +4,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
-using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerAnimationsTrigger : MonoBehaviour
 {
@@ -17,14 +14,14 @@ public class PlayerAnimationsTrigger : MonoBehaviour
     private Rigidbody _rb;
 
     private float _speed = 1.0f;
-    private bool _canJump;
+    //private bool _canJump;
 
     public Animator Anim { get { return _anim; } }
 
     // Start is called before the first frame update
     void Start()
     {
-        _canJump = false;
+        //_canJump = false;
         _anim = GetComponentInChildren<Animator>();
         _playerMovement = GetComponent<PlayerMovement>();
         _tailSwipe = GetComponent<PlayerTailSwipe>();
@@ -118,8 +115,6 @@ public class PlayerAnimationsTrigger : MonoBehaviour
             _anim.SetBool("AirSwipe", false);
         }
 
-        Debug.Log(jumping);
-
         //Jump Start anim
         if (!_anim.GetCurrentAnimatorStateInfo(0).IsName("AirSwipe") && jumping)
         {
@@ -127,8 +122,6 @@ public class PlayerAnimationsTrigger : MonoBehaviour
             {
                 _playerMovement.JumpPerformed = false;
             }
-
-            Debug.Log("JumpStarted");
             _anim.SetBool("IdleWalkRun", false);
             _anim.SetBool("JumpStart", true);
             _anim.SetFloat("Speed", 0);
