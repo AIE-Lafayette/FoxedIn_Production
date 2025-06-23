@@ -38,12 +38,21 @@ public class GameManager : MonoBehaviour
     private GameObject _endScreenTextBackground;
 
     int _layout;
+    bool _hellMode = false;
+
+    public bool HellModeEnabled { get { return _hellMode; } }
 
     // Start is called before the first frame update
     void Start()
     {
         controlLayoutSelectorObject = GameObject.Find("LayoutSelector");
-        _layout = controlLayoutSelectorObject.GetComponent<ControlLayoutSelector>().ControlScheme;
+
+        if (controlLayoutSelectorObject != null)
+        {
+            _layout = controlLayoutSelectorObject.GetComponent<ControlLayoutSelector>().ControlScheme;
+            _hellMode = controlLayoutSelectorObject.GetComponent<HellCheck>().HellModeEnabled;
+            Debug.Log("GameManager HellMode: " + _hellMode);
+        }
 
         //Player Script checks
         if (!(player.TryGetComponent<PlayerDeath>(out _playerDeath)))
