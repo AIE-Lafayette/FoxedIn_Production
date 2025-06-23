@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         // If the jump control is performed and we are grounded
-        if (context.performed && GroundCheck())
+        if (context.performed && OnGround())
         {
             _jumpPerformed = true;
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
@@ -88,11 +88,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Whenever button is released, cut the y velocity.
-        if (context.canceled && _playerRB.velocity.y > 0f)
+        if (context.canceled) // && _playerRB.velocity.y > 0f)
         {
             _jumpPerformed = false;
-            _playerRB.velocity = new Vector2(_playerRB.velocity.x, _playerRB.velocity.y * 0.3f);
             _increaseGravity = true;
+            if (_playerRB.velocity.y > 0f)
+            {
+                _playerRB.velocity = new Vector2(_playerRB.velocity.x, _playerRB.velocity.y * 0.3f);
+            }
         }
     }
 
@@ -104,13 +107,13 @@ public class PlayerMovement : MonoBehaviour
     //    }
     //}
 
-    public bool GroundCheck()
+    public bool OnGround()
     {
-        if (Physics.BoxCast(transform.position, _objectSize, -transform.up, transform.rotation, _maxDistance, layerMask))
+        GroundCheck childGroundCheck = transform.GetChild(0).GetComponent<GroundCheck>();
+        if (childGroundCheck.OnGround) //(Physics.BoxCast(transform.position, _objectSize, -transform.up, transform.rotation, _maxDistance, layerMask))
         {
             _increaseGravity = false;
             return true;
-            
         }
         else
         {

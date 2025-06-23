@@ -15,16 +15,19 @@ public class PlayerTailSwipe : MonoBehaviour
 
     private BoxCollider boxCol;
     private MeshRenderer boxRend;
+    private PlayerAnimationsTrigger animTrigger;
     //private bool _canSwing = true;
     //private bool _cannotSwing = false;
     public bool cannotSwing = false;
     private float _reloadSwingTimer = 0.75f;
     private bool _tailSwipePerformed;
+    private bool _hasCollided = false;
 
     public bool TailSwipePerformed { get { return _tailSwipePerformed; } set { _tailSwipePerformed = value; } }
 
     private void Start()
     {
+        animTrigger = GetComponent<PlayerAnimationsTrigger>();
         boxCol = _tailSwipeHitbox.GetComponent<BoxCollider>();
         boxRend = _tailSwipeHitbox.GetComponent<MeshRenderer>();
         boxCol.enabled = false;
@@ -35,24 +38,29 @@ public class PlayerTailSwipe : MonoBehaviour
     {
         GameObject.FindGameObjectsWithTag("TestBox");
 
-        //if (cannotSwing)
-        //{
-        //    _anim.SetBool("SwipeGround", false);
-        //}
+        if (animTrigger.Anim.GetCurrentAnimatorStateInfo(0).IsName("AirSwipe"))
+        {
+            Debug.Log("AirSwipe");
+        }
+        if (animTrigger.Anim.GetCurrentAnimatorStateInfo(0).IsName("TailSwipe"))
+        {
+            Debug.Log("TailSwipe");
+        }
+
+        if (!animTrigger.Anim.GetCurrentAnimatorStateInfo(0).IsName("AirSwipe") && !animTrigger.Anim.GetCurrentAnimatorStateInfo(0).IsName("TailSwipe"))
+        {
+            Invoke(nameof(DisableSwipeHitBox), 0.0f);
+        }
     }
 
     public void TailSwipe(InputAction.CallbackContext context)
     {
         if (context.performed && !cannotSwing)
         {
-            _tailSwipePerformed = true;
             StartCoroutine(PreparingSwing());
+            _tailSwipePerformed = true;
 
             Invoke(nameof(EnableSwipeHitBox), 0.1f);
-            // was previously set to 0.5f
-            // How long the hitbox appears for after the tailswipe button is pressed
-            Invoke(nameof(DisableSwipeHitBox), 0.5f);
-            //_anim.SetTrigger("SwipeGround");
         }
     }
 
@@ -66,6 +74,8 @@ public class PlayerTailSwipe : MonoBehaviour
     void EnableSwipeHitBox()
     {
         boxCol.enabled = true;
+
+        //To show the tailswipe hitbox uncomment, to hide the tailswipehitbox comment out
         //boxRend.enabled = true;
     }
 
@@ -81,5 +91,14 @@ public class PlayerTailSwipe : MonoBehaviour
         cannotSwing = false;
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!_hasCollided)
+        {
+            _hasCollided = true;
+            Debug.Log(_hasCollided);
+        }
+    }
+
+
 }
