@@ -15,9 +15,6 @@ public class StartScene : MonoBehaviour
     [Header("Options Text Reference")]
     [SerializeField] private GameObject _optionsTextBackground;
 
-    [Header("Scoreboard Text Reference")]
-    [SerializeField] private GameObject _scoreboardTextBackground;
-
     [Header("Main Camera Zoom Variables")]
 
     [SerializeField] private Transform _target;
@@ -42,7 +39,7 @@ public class StartScene : MonoBehaviour
     public void PlayGame()
     {
         Time.timeScale = 1;
-        StartCoroutine(nameof(Intro));
+        //StartCoroutine(nameof(Intro));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -75,20 +72,8 @@ public class StartScene : MonoBehaviour
         _optionsTextBackground.SetActive(false);
     }
 
-    public void DisplayScoreboard()
-    {
-        _MainMenuButtonsBackground.SetActive(false);
-        _scoreboardTextBackground.SetActive(true);
-    }
-
-    public void ExitScoreboard()
-    {
-        _MainMenuButtonsBackground.SetActive(true);
-        _scoreboardTextBackground.SetActive(false);
-    }
-
-    IEnumerator Intro()
-    {
-        yield return new WaitForSeconds(3.0f);
-    }
+    //IEnumerator Intro()
+    //{
+    //    //yield return new WaitForSeconds(3.0f);
+    //}
 }
