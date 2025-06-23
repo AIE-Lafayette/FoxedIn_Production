@@ -15,7 +15,7 @@ public class BoxMovement : MonoBehaviour
     private GameObject _objectToLeft;
     private bool _anObjectToRight;
     private GameObject _objectToRight;
-    private float _distancePerIter = 0.15f;
+    private float _distancePerIter = 0.5f;
     private float _distanceTracker = 0.0f;
 
     private bool _hitVisualActive;
@@ -82,7 +82,7 @@ public class BoxMovement : MonoBehaviour
 
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!_hitVisualActive)
         {
