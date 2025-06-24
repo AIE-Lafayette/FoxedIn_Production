@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c4b637543d51d5c49a7707a513fc3d87, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -96,8 +96,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 250caf67c7e90644398da9e963aa35eb, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 2d6a8f3122f71144d9a7eb0db451e5dd, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2446,7 +2446,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!108 &705507994
 Light:
@@ -2505,7 +2505,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 4.2e-44, z: 2.7251e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -3116,6 +3116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdad0a4f14999444996d36e5ea0f4f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaultControlImage: {fileID: 0}
+  AltControlImage: {fileID: 0}
+  OptionsImage: {fileID: 0}
 --- !u!1 &852210247
 GameObject:
   m_ObjectHideFlags: 0
@@ -15042,6 +15045,66 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[30].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[31].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[32].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[33].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[34].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[35].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[36].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[37].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[38].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[39].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[40].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[41].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[42].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[43].z
+      value: 2.048099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813775216767406027, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_SourcePositions.Array.data[44].z
+      value: 2.048099
+      objectReference: {fileID: 0}
     - target: {fileID: 3621654634091542016, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
       propertyPath: m_Name
       value: Arcade Room Background

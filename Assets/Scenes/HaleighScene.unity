@@ -277,7 +277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1489119925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +404,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2992827374329533272, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364340401550800699, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b99beccee9121f744b5371a64e0ea69c, type: 2}
     - target: {fileID: 3621654634091542016, guid: 9c46ee583575682428483b6d68ae7c54, type: 3}
       propertyPath: m_Name
       value: Arcade Room Background
