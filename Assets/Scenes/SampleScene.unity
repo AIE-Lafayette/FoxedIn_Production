@@ -166,11 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84150debefb87aa4db408c35a701c00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingSpawnRate: 1
+  _startingSpawnRate: 5
   _spawnLimit: 100
   _amountToSpawnStart: 1
   _debugSpawnInOneSpot: 0
-  _debugSpawnLeftToRight: 1
+  _debugSpawnLeftToRight: 0
   _gridWidth: 10
   _gridHeight: 10
   _boxSize: 5

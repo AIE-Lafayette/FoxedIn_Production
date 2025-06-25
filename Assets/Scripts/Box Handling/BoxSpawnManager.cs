@@ -60,6 +60,7 @@ public class BoxSpawner : MonoBehaviour
     [Header("Game Manager")]
     [SerializeField]
     private GameObject gameManager;
+
     private PlayerTimer playerTimer;
     private float difficultyTimer = 0.0f;
     private int difficultyLevel = 0;
@@ -315,7 +316,7 @@ public class BoxSpawner : MonoBehaviour
         if(_hellModeActive)
         {
             difficultyTimer = 10;
-            _spawnRate = 1;
+            _spawnRate = 0.5f;
             _amountToSpawn = 3;
 
             return;
