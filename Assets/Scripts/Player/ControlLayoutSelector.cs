@@ -21,7 +21,6 @@ public class ControlLayoutSelector : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log("Start");
         DontDestroyOnLoad(transform.root.gameObject);
        _playerInput = GetComponent<PlayerInput>();
         // Setting the defauly action map
@@ -30,7 +29,6 @@ public class ControlLayoutSelector : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log("ControlScheme: " + _controlScheme);
 
         //Guard
         if (DefaultControlImage == null || AltControlImage == null || OptionsImage == null)
