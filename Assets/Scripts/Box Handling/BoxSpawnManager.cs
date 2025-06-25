@@ -35,6 +35,7 @@ public class BoxSpawner : MonoBehaviour
     [Range(0, 100), SerializeField]
     int _spawnLimit = 100;
     [Range(0, 5), SerializeField]
+    private int _amountToSpawnStart = 1;
     //Should start off at 1
     private int _amountToSpawn;
 
@@ -71,6 +72,7 @@ public class BoxSpawner : MonoBehaviour
     
     private float boxNextSpawn = 0.0f;
     bool _incremented = false;
+    bool _hellModeActive = false;
 
     public int GridWidth { get { return _gridWidth; } }
     public int GridHeight { get { return _gridHeight; } }
@@ -85,10 +87,9 @@ public class BoxSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //_amountToSpawn = 1;
-        difficultyTimer = 10;
+        ResetDifficulty();
         playerTimer = gameManager.GetComponent<PlayerTimer>();
-        _spawnRate = _startingSpawnRate;
+
         _spawningActive = true;
         Invoke(nameof(SpawnTargets), 0);
     }
@@ -307,6 +308,19 @@ public class BoxSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _hellModeActive = gameManager.GetComponent<GameManager>().HellModeEnabled;
+
+        Debug.Log("Hellmode: " + _hellModeActive);
+
+        if(_hellModeActive)
+        {
+            difficultyTimer = 10;
+            _spawnRate = 1;
+            _amountToSpawn = 3;
+
+            return;
+        }
+
         if (Mathf.FloorToInt(playerTimer.CurrentTime) == difficultyTimer)
         {
             if (!_incremented)
@@ -329,6 +343,13 @@ public class BoxSpawner : MonoBehaviour
         }
     }
 
+    void ResetDifficulty()
+    {
+        difficultyTimer = 10;
+        _spawnRate = _startingSpawnRate;
+        _amountToSpawn = _amountToSpawnStart;
+    }
+
     void DifficultyIncrement()
     {
         _incremented = true;
@@ -338,23 +359,23 @@ public class BoxSpawner : MonoBehaviour
         difficultyLevel++;
 
         //Decrement spawnrate by 0.1 every difficulty level
-        if (difficultyLevel < 30)
+        if (difficultyLevel < 15)
         {
-            _spawnRate -= 0.1f;
+            _spawnRate -= 0.2f;
         }
-        //Set spawnrate to 4 and amount to spawn to 2 at difficlty 30 (5 minutes in)
-        else if (difficultyLevel == 30)
+        //Set spawnrate to 4 and amount to spawn to 2 at difficlty 15 (2:30 minutes in)
+        else if (difficultyLevel == 15)
         {
             _spawnRate = 4;
             _amountToSpawn = 2;
         }
         //Decrement spawnrate by 0.05 every difficulty level
-        else if (difficultyLevel < 50)
+        else if (difficultyLevel < 35)
         {
             _spawnRate -= 0.05f;
         }
         //Set spawnrate to 5 and amount to spawn to 3 at difficlty 50 (8 minutes 20 in)
-        else if (difficultyLevel == 50)
+        else if (difficultyLevel == 35)
         {
             _spawnRate = 5;
             _amountToSpawn = 3;
