@@ -21,10 +21,7 @@ public class PlayerTimer : MonoBehaviour
     // The time that has passed
     private float _currentTime;
     private float _difficultyIncreaseTime;
-    //private float _currentGameSpeed = 0.9f;
-    //private int _boxesfalling = 1;
-    //private bool _increasedTime;
-    //private int _increasedTimeCounter = 0;
+
     public float CurrentTime { get { return _currentTime; } }
 
     private void Start()
@@ -75,20 +72,6 @@ public class PlayerTimer : MonoBehaviour
         // Guard clause
         if (!_player)
             return;
-
-        //// If time is increased, increase game speed counter
-        //if (_increasedTime)
-        //{
-        //    _increasedTime = false;
-        //    _currentGameSpeed += 0.1f;
-        //}
-        //// If the time is increased 12 times, reset the counter and increase the boxes falling counter
-        //if (_increasedTimeCounter >= 30)
-        //{
-        //    _boxesfalling += 1;
-        //    _increasedTimeCounter = 0;
-        //}
-        // Display the current game speed and the amount of boxes falling
 
         float spawnrate = _boxSpawner.SpawnRate;
         spawnrate = Mathf.Round(spawnrate * 100) * 0.01f;
