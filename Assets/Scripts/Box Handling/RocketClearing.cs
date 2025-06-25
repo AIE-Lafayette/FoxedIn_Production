@@ -19,7 +19,7 @@ public class RocketClearing : MonoBehaviour
     void Update()
     {
         rocketRigidbody.velocity = new Vector3(0, _rocketSpeed, 0);
-        if (transform.position.y >= 47.5)
+        if (transform.position.y >= 50)
         {
             transform.gameObject.SetActive(false);
         }
