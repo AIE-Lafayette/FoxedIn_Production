@@ -52,7 +52,6 @@ public class ObjectPool : MonoBehaviour
             {
                 if (pooledObjects[i].gameObject.tag == gameObject.tag)
                 {
-                    Debug.Log("Returned game Object");
                     return pooledObjects[i];
                 }
             }

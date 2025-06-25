@@ -31,7 +31,6 @@ public class AudioManager : MonoBehaviour
         //Bomb Audio
         if(ObjectPool.SharedInstance.GetSpecifiedActiveObject(Bomb) != null && _bombAudioStarted == false)
         {
-            Debug.Log("Bomb Audio Started");
             _bombAudioStarted = true;
             _bombTracker = ObjectPool.SharedInstance.GetSpecifiedActiveObject(Bomb);
             BombAudio.Play();
@@ -44,7 +43,6 @@ public class AudioManager : MonoBehaviour
         //Rocket Audio
         if (ObjectPool.SharedInstance.GetSpecifiedActiveObject(Rocket) != null && _rocketAudioStarted == false)
         {
-            Debug.Log("Rocket Audio Started");
             _rocketAudioStarted = true;
             _rocketTracker = ObjectPool.SharedInstance.GetSpecifiedActiveObject(Rocket);
             RocketAudio.volume = 1.00f;

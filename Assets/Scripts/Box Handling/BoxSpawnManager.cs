@@ -311,8 +311,6 @@ public class BoxSpawner : MonoBehaviour
     {
         _hellModeActive = gameManager.GetComponent<GameManager>().HellModeEnabled;
 
-        Debug.Log("Hellmode: " + _hellModeActive);
-
         if(_hellModeActive)
         {
             difficultyTimer = 10;

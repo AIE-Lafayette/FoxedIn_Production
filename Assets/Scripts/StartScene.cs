@@ -20,6 +20,9 @@ public class StartScene : MonoBehaviour
 
     [SerializeField] private Transform _target;
     [SerializeField] private float _smoothTime;
+
+    [SerializeField] private AudioSource _hellNotifier;
+
     private Vector3 _offset;
 
     private Vector3 _currentVelocity = Vector3.zero;
@@ -39,7 +42,6 @@ public class StartScene : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("Hell Mode: " + _hellModeActive);
         //Vector3 targetPosition = _target.position + _offset;
         //transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _currentVelocity, _smoothTime);
     }
@@ -100,87 +102,76 @@ public class StartScene : MonoBehaviour
         //ENTER 11
         if (Input.GetKey(KeyCode.Return) && _hellChecker == 10)
         {
-            Debug.Log("ENTER");
             _hellModeActive = true;
+            _hellNotifier.Play();
             _hellChecker = 11;
             _hellResetCheck = _hellChecker;
         }
         //A 10
         else if (Input.GetKey(KeyCode.A) && _hellChecker == 9)
         {
-            Debug.Log("A");
             _hellChecker = 10;
             _hellResetCheck = _hellChecker;
         }
         //B 9
         else if (Input.GetKey(KeyCode.B) && _hellChecker == 8)
         {
-            Debug.Log("B");
             _hellChecker = 9;
             _hellResetCheck = _hellChecker;
         }
         //Right 8
         else if (Input.GetKey(KeyCode.RightArrow) && _hellChecker == 7)
         {
-            Debug.Log("RIGHT");
             _hellChecker = 8;
             _hellResetCheck = _hellChecker;
         }
         //Left 7
         else if (Input.GetKey(KeyCode.LeftArrow) && _hellChecker == 6)
         {
-            Debug.Log("LEFT");
             _hellChecker = 7;
             _hellResetCheck = _hellChecker;
         }
         //Right 6
         else if (Input.GetKey(KeyCode.RightArrow) && _hellChecker == 5)
         {
-            Debug.Log("RIGHT");
             _hellChecker = 6;
             _hellResetCheck = _hellChecker;
         }
         //Left 5
         else if (Input.GetKey(KeyCode.LeftArrow) && _hellChecker == 4)
         {
-            Debug.Log("LEFT");
             _hellChecker = 5;
             _hellResetCheck = _hellChecker;
         }
         //Down 4
         else if (Input.GetKey(KeyCode.DownArrow) && _hellChecker == 3)
         {
-            Debug.Log("DOWN");
             _hellChecker = 4;
             _hellResetCheck = _hellChecker;
         }
         //Down 3
         else if (Input.GetKey(KeyCode.DownArrow) && _hellChecker == 2)
         {
-            Debug.Log("DOWN");
             _hellChecker = 3;
             _hellResetCheck = _hellChecker;
         }
         //Up 2
         else if (Input.GetKey(KeyCode.UpArrow) && _hellChecker == 1)
         {
-            Debug.Log("UP");
             _hellChecker = 2;
             _hellResetCheck = _hellChecker;
         }
         //Up 1
         else if(Input.GetKey(KeyCode.UpArrow) && _hellChecker == 0)
         {
-            Debug.Log("UP");
             _hellChecker = 1;
             _hellResetCheck = _hellChecker;
-            Invoke(nameof(HellModeCheckReset), 5f);
+            Invoke(nameof(HellModeCheckReset), 7.77f);
         }
     }
 
     private void HellModeCheckReset()
     {
-        Debug.Log("_hellResetCheck");
         if (_hellResetCheck == _hellChecker)
         {
             return;
