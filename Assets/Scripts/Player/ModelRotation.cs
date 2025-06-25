@@ -27,12 +27,12 @@ public class ModelRotation : MonoBehaviour
         if (_playerMovement.PlayerHorizontal <= -1)
         {
             // -110
-            transform.eulerAngles = new Vector3(0, -70, 0);
+            transform.eulerAngles = new Vector3(0, -75, 0);
         }
         if (_playerMovement.PlayerHorizontal >= 1)
         {
             // -180
-            transform.eulerAngles = new Vector3(0, -220, 0);
+            transform.eulerAngles = new Vector3(0, -215, 0);
         }
     }
 }
