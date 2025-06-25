@@ -93,7 +93,7 @@ public class PlayerTimer : MonoBehaviour
         float spawnrate = _boxSpawner.SpawnRate;
         spawnrate = Mathf.Round(spawnrate * 100) * 0.01f;
 
-        _timerCurrentDifficultyText.text = string.Format("Drop Rate: " + spawnrate + "\n" +
-            "Boxes Falling:  " + _boxSpawner.AmountSpawning);
+        _timerCurrentDifficultyText.text = string.Format("Drop Rate: " + spawnrate + "\n" + "\n" +
+            "Boxes Falling: " + "\n" + _boxSpawner.AmountSpawning);
     }
 }
