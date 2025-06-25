@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField] private float _moveSpeed = 10.0f;
     [SerializeField] private float _jumpPower = 20.0f;
+    [SerializeField]
+    AudioSource JumpAudio;
     //[SerializeField] private float _maxDistance = 1.0f;
 
     [Header("Ground Check")]
@@ -18,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] private Vector3 _objectSize;
 
-    
+
+
 
     // Standard float for horizontal movement
     private float horizontal;
@@ -83,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && OnGround())
         {
             _jumpPerformed = true;
+            JumpAudio.Play();
             // Set our rigidbody velocity equal to our jumping power and leave the x velocity the same
             _playerRB.velocity = new Vector2(/*_playerRB.velocity.x*/0, _jumpPower);
         }
