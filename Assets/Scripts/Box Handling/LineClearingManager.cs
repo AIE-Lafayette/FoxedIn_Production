@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LineClearingManager : MonoBehaviour
 {
+    [SerializeField]
+    AudioSource BreakingROWScoreUp;
+
     int triggeredBoxes;
     int clearedBoxes;
 
@@ -225,6 +228,8 @@ public class LineClearingManager : MonoBehaviour
 
                     if (clearedBoxes >= 10)
                     {
+                        BreakingROWScoreUp.time = .5f;
+                        BreakingROWScoreUp.Play();
                         CalculateScore();
                     }
                 }

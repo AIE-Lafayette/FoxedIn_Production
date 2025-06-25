@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rocketSpeed: 20
+  RocketAudio: {fileID: 4011147585915407035, guid: d898fbb8c7e8eb54fb3c40309ae54dd2, type: 3}
 --- !u!1001 &2510070786406561008
 PrefabInstance:
   m_ObjectHideFlags: 0

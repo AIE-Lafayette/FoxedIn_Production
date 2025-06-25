@@ -9,6 +9,8 @@ public class TailSwipeCollision : MonoBehaviour
 {
     [SerializeField]
     VisualEffect HitEffect;
+    [SerializeField]
+    AudioSource HitAudio;
 
     private void Update()
     {
@@ -45,6 +47,7 @@ public class TailSwipeCollision : MonoBehaviour
 
             HitEffect.transform.position = collisionPoint;
             HitEffect.Play();
+            HitAudio.Play();
 
             #endregion
 
