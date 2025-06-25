@@ -9,6 +9,12 @@ public class TailSwipeCollision : MonoBehaviour
 {
     [SerializeField]
     VisualEffect HitEffect;
+    [SerializeField]
+    AudioSource HitAudio;
+
+    [Range(1, 3), SerializeField]
+    private int _maxHits = 2;
+    private int _hitCount = 0;
 
     private void Update()
     {
@@ -23,7 +29,7 @@ public class TailSwipeCollision : MonoBehaviour
             BoxMovement boxMove = other.GetComponent<BoxMovement>();
             BoxHealth boxHealth = other.GetComponent<BoxHealth>();
 
-            if (!boxHealth.CanBeHit)
+            if (!boxHealth.CanBeHit || _hitCount == _maxHits)
             {
                 return;
             }
@@ -43,8 +49,11 @@ public class TailSwipeCollision : MonoBehaviour
             //Debug.Log("Collision Point y" + collisionPoint.y);
             //Debug.Log("Collision Point z" + collisionPoint.z);
 
+            _hitCount++;
+
             HitEffect.transform.position = collisionPoint;
             HitEffect.Play();
+            HitAudio.Play();
 
             #endregion
 
@@ -84,5 +93,10 @@ public class TailSwipeCollision : MonoBehaviour
             #endregion
 
         }
+    }
+
+    private void OnDisable()
+    {
+        _hitCount = 0;
     }
 }

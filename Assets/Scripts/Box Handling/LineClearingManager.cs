@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LineClearingManager : MonoBehaviour
 {
+    [SerializeField]
+    AudioSource BreakingROWScoreUp;
+
     int triggeredBoxes;
     int clearedBoxes;
 
@@ -170,10 +173,8 @@ public class LineClearingManager : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        
-
         //If trigger is colliding with a box
-        if(other.transform.TryGetComponent(out BoxFallingBehavior boxFallingBehavior))
+        if(other.gameObject.layer == 3)
         {
             //Increment trigggeredBoxes
             triggeredBoxes++;
@@ -225,6 +226,8 @@ public class LineClearingManager : MonoBehaviour
 
                     if (clearedBoxes >= 10)
                     {
+                        BreakingROWScoreUp.time = .5f;
+                        BreakingROWScoreUp.Play();
                         CalculateScore();
                     }
                 }

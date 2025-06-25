@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
         {
             _layout = controlLayoutSelectorObject.GetComponent<ControlLayoutSelector>().ControlScheme;
             _hellMode = controlLayoutSelectorObject.GetComponent<HellCheck>().HellModeEnabled;
-            Debug.Log("GameManager HellMode: " + _hellMode);
         }
 
         //Player Script checks

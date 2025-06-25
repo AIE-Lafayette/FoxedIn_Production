@@ -66,6 +66,7 @@ public class PlayerTailSwipe : MonoBehaviour
 
     void DisableSwipeHitBox()
     {
+        _tailSwipeHitbox.SetActive(false);
         _tailSwipePerformed = false;
         boxCol.enabled = false;
         boxRend.enabled = false;
@@ -73,6 +74,7 @@ public class PlayerTailSwipe : MonoBehaviour
 
     void EnableSwipeHitBox()
     {
+        _tailSwipeHitbox.SetActive(true);
         boxCol.enabled = true;
 
         //To show the tailswipe hitbox uncomment, to hide the tailswipehitbox comment out

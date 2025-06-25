@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!241 &24100000
+AudioMixerController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BreakingROW
+  m_OutputGroup: {fileID: 0}
+  m_MasterGroup: {fileID: 24300002}
+  m_Snapshots:
+  - {fileID: 24500006}
+  m_StartSnapshot: {fileID: 24500006}
+  m_SuspendThreshold: -80
+  m_EnableSuspend: 1
+  m_UpdateMode: 0
+  m_ExposedParameters: []
+  m_AudioMixerGroupViews: []
+  m_CurrentViewIndex: 0
+  m_TargetSnapshot: {fileID: 24500006}
+--- !u!243 &24300002
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Master
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 31302853e2e95d74eaedc25995d501f8
+  m_Children: []
+  m_Volume: a44f1e546684c404885b08ed3ff70c69
+  m_Pitch: a908466f8a415064ea080aafdbf95019
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 24400004}
+  - {fileID: 1476303953680099830}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &24400004
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 95de41487042c2246be974ec487afdda
+  m_EffectName: Attenuation
+  m_MixLevel: 099143c990bb0d14b8efca0d295785c1
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!245 &24500006
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Snapshot
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 2bc7f4e0db71d514c9846283edc859e9
+  m_FloatValues:
+    a71551f34b5aa1c43836b39144ed7f54: 1000
+    756d961453ce15b4585bc89a0e4975c2: 1
+    a44f1e546684c404885b08ed3ff70c69: 5
+    326912da5d2b9a44c835248ca0656607: 12500
+    d5df5e2ef208d5b4f8b554bab81cf520: 1
+  m_TransitionOverrides: {}
+--- !u!244 &1476303953680099830
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 2d52b3d2af2f6ad4ea94b0083508496b
+  m_EffectName: Highpass
+  m_MixLevel: 43be885fbf240644dad0b19915ffefe8
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 326912da5d2b9a44c835248ca0656607
+  - m_ParameterName: Resonance
+    m_GUID: 756d961453ce15b4585bc89a0e4975c2
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0

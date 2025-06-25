@@ -21,7 +21,6 @@ public class ObjectPool : MonoBehaviour
     public GameObject bombToPool;
     public GameObject rocketToPool;
 
-
     [Header("UI elements")]
     public GameObject scoreEarnedImage;
 
@@ -42,6 +41,24 @@ public class ObjectPool : MonoBehaviour
     {
         //Makes the shared instance
         SharedInstance = this;
+    }
+
+    //Get the first active object of a specified type
+    public GameObject GetSpecifiedActiveObject(GameObject gameObject)
+    {
+        for (int i = 0; i < pooledObjects.Count; i++)
+        {
+            if (pooledObjects[i].activeInHierarchy)
+            {
+                if (pooledObjects[i].gameObject.tag == gameObject.tag)
+                {
+                    return pooledObjects[i];
+                }
+            }
+
+            
+        }
+        return null;
     }
 
     //Get the first not active object in the pool
