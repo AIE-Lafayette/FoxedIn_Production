@@ -173,10 +173,8 @@ public class LineClearingManager : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        
-
         //If trigger is colliding with a box
-        if(other.transform.TryGetComponent(out BoxFallingBehavior boxFallingBehavior))
+        if(other.gameObject.layer == 3)
         {
             //Increment trigggeredBoxes
             triggeredBoxes++;
